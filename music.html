@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="The SoftMax" />
+    <meta property="og:description" content="Lets deep dive in the world of ML and AI." />
+    <meta property="og:image" content="https://thesoftmax.com/assets/images/favicon/favicon.png" />
+    <meta property="og:url" content="https://thesoftmax.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- title and SEO -->
+    <title>Music Player</title>
+    <meta name="description" content="An immersive music player with shuffle, loop, and volume control features.">
+    
+    <!-- Progressive Web App (PWA) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/favicon.png"> <!-- Fallback for older browsers due to svg format-->
+    
+    <!-- css -->
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #131417;
+        color: #fff;
+        text-align: center;
+        padding: 40px 0 40px 0!important;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        html, body {
+        height: 100%;
+        overflow: hidden;
+        }
+
+        h2 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        }
+
+        audio {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        margin-top: 30px !important;
+        display: block;
+        }
+
+        button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 5px;
+        border: none;
+        border-radius: 8px;
+        background-color: #252830;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        }
+
+        button:hover {
+        background-color: #666;
+        }
+
+        .controls button {
+        font-size: 24px;
+        padding: 8px 12px 7px 12px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: opacity 0.3s, background-color 0.3s;
+        }
+        .controls button:hover {
+        background-color: #666;
+        }
+        .controls button.active {
+        opacity: 1;
+        }
+        .controls i {
+            color: white;
+        }
+
+    /* White glow animation */
+    @keyframes whiteGlow {
+    from {
+        text-shadow: 0 0 5px #ffffff80, 0 0 10px #ffffff60;
+        color: #ffffff;
+    }
+    to {
+        text-shadow: 0 0 15px #ffffffcc, 0 0 25px #ffffffaa;
+        color: #ffffff;
+    }
+    }
+
+    /* Apply whiteGlow when playing */
+    #track-title.playing {
+    animation: whiteGlow 1.5s infinite alternate;
+    }
+
+    #volume-feedback {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #252830;
+        color: white;
+        padding: 4px 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 9999;
+        pointer-events: none;
+        min-width: 60px;
+        text-align: center;
+    }
+    #volume-feedback.show {
+        opacity: 1;
+    }
+
+        /* Ring animation behind volume icon */
+    .wave-ring {
+        width: 40px;
+        height: 40px;
+        margin: auto;
+        border-radius: 50%;
+        background-color: #252830;
+        animation: wave 1.8s infinite ease-in-out;
+        visibility: hidden; /* only shown when music is playing */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        color: white;
+        /* Position at top-right */
+        position: fixed;
+        top: 25px;
+        right: 24px;
+        z-index: 10000;
+    }
+
+    @keyframes wave {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            transform: scale(1);
+        }
+        70% {
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            transform: scale(1.1);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            transform: scale(1);
+        }
+    }
+
+    /* Equalizer bars animation */
+    .equalizer {
+    display: flex;
+    gap: 4px;
+    height: 20px;
+    align-items: flex-end;
+    visibility: hidden;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    transform: scaleX(-1); /* flip horizontally so base is at right */
+    min-width: 60px;
+    justify-content: center;
+    }
+
+    .equalizer div {
+    width: 5px;
+    background: #1db954;
+    animation: equalize 1s infinite ease-in-out;
+    }
+
+    /* Delay each bar for wave effect */
+    .equalizer div:nth-child(1) { animation-delay: 0s; }
+    .equalizer div:nth-child(2) { animation-delay: 0.2s; }
+    .equalizer div:nth-child(3) { animation-delay: 0.4s; }
+    .equalizer div:nth-child(4) { animation-delay: 0.6s; }
+    .equalizer div:nth-child(5) { animation-delay: 0.8s; }
+    .equalizer div:nth-child(6) { animation-delay: 1s; }
+
+    @keyframes equalize {
+    0%, 100% { height: 5px; }
+    50% { height: 20px; }
+    }
+
+    @media (max-width: 500px) {
+        button {
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+        #volume-feedback {
+            font-size: 12px;
+            min-width: 50px;
+            padding: 3px 8px;
+        }
+        .equalizer {
+            min-width: 50px;
+        }
+    }
+
+    #loading-spinner {
+        position: absolute;  /* Take it out of flow */
+        bottom: -50px;        /* Show below the container */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 18px;
+        text-align: center;
+        display: none;
+    }
+    #loading-spinner.show {
+        display: block;
+    }
+
+    /* Help Overlay Styling */
+    #helpOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.9);
+    color: #fff;
+    display: none;
+    z-index: 10000;
+    overflow-y: auto;
+    font-family: 'Segoe UI', sans-serif;
+    }
+
+    #helpOverlay.visible {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+    }
+
+    #helpContent {
+    max-width: 600px;
+    margin: 60px auto;
+    background: #252830;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 20px #252830;
+    }
+
+    #helpContent h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    }
+
+    #helpContent ul {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.8;
+    }
+
+    #helpContent ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid #444;
+    }
+
+    #helpContent ul li:last-child {
+    border-bottom: none;
+    }
+
+    #helpClose {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+    }
+
+    #helpClose:hover {
+    color: #fff;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .skip-feedback {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #252830;
+        color: white;
+        padding: 5px 10px 4px 10px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        z-index: 9999;
+        min-width: 65px;
+        animation: fadeOut 0.8s forwards;
+    }
+
+    .skip-feedback.left {
+        left: 20px;
+    }
+
+    .skip-feedback.right {
+        right: 20px;
+    }
+
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    #audio-player {
+        width: 45vw;
+        max-width: 80vw;
+    }
+
+    @media (max-width: 768px) {
+        #audio-player {
+            width: 80vw;
+        }
+    }
+
+    #player-container {
+        position: relative;
+        top: -8vh;
+    }
+
+    #settingsMenu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #252830;
+        background-color: #131417;
+        color: white;
+        z-index: 10001;
+        overflow-y: auto;
+        font-family: 'Segoe UI', sans-serif;
+        animation: fadeSlideDown 0.3s ease-in-out;
+    }
+
+    @keyframes fadeSlideDown {
+        from {
+            transform: translateY(-20px);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    #settingsContent select,
+    #settingsContent input[type="time"] {
+        width: 20%;min-width: 150px;
+        padding: 10px 15px;
+        font-size: 1rem;
+        font-family: 'Segoe UI', sans-serif;
+        background: #1e1f23;
+        border: 1px solid #444;
+        border-radius: 8px;
+        color: white;
+        transition: border 0.3s, box-shadow 0.3s;
+        box-sizing: border-box;
+    }
+
+    #settingsContent select:focus,
+    #settingsContent input[type="time"]:focus {
+        outline: none;
+        border: 1px solid white;
+        box-shadow: 0 0 8px white;
+    }
+
+    #settingsContent label {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #ddd;
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #settingsContent button {
+        margin: 10px 5px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 10px;
+        border: none;
+        background: linear-gradient(135deg, white, white);
+        color: #000;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #settingsContent button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px white;
+    }
+
+    #settingsContent h2 {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 25px;
+    }
+
+    #settingsClose {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    #settingsClose:hover {
+        color: #fff;
+    }
+
+    #timerProgressContainer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background-color: #1e1e1e; /* dark base */
+        z-index: 9999;
+    }
+
+    #timerProgressBar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #ff8a00, #e52e71); /* vibrant gradient */
+        transition: width 1s linear;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+    #timerProgressBar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #ff8a00, #e52e71); /* your theme color */
+        transition: width 1s linear;
+        /* animation: pulse 2s infinite; */
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .custom-cursor {
+        position: fixed;
+        top: -5px;
+        left: -5px;
+        width: 12px;
+        height: 12px;
+        background-color: #00ffcc; /* Soft white */
+        border: none; /* Accent color */
+        border-radius: 50%;
+        pointer-events: none;
+        /* transform: translate(-50%, -50%); */
+        transition: transform 0.1s ease, background-color 0.1s ease, width 0.1s, height 0.1s;
+        z-index: 9999;
+        backdrop-filter: blur(4px);
+        will-change: transform; /* ✅ Smoothness boost */
+        /* transition: none; */
+    }
+
+    .custom-cursor.hover {
+        top: -17px;
+        left: -17px;
+        width: 40px;
+        height: 40px;
+        background-color: #00ffcc;
+        border-color: #00ffcc;
+    }
+
+    @media (pointer: coarse) {
+        .custom-cursor {
+            display: none !important;
+        }
+    }
+    </style>
+
+</head>
+
+    <body>
+        <div id="player-container">
+            <!-- <h2>Music Player</h2> -->
+            <p id="track-title" style="user-select: auto !important;">Loading...</p>
+            
+            <audio id="audio-player" controls preload="none"></audio>
+            <div id="volume-feedback">🔊 20%</div>
+            
+            <div class="controls">
+                <button id="shuffleBtn" aria-label="Shuffle" title="Shuffle" class="active"><i class="fas fa-random"></i></button>
+                <button id="prevBtn" aria-label="Previous" title="Previous"><i class="fas fa-backward"></i></button>
+                <button id="playPauseBtn" aria-label="Play/Pause" title="Play/Pause"><i class="fas fa-play"></i></button>
+                <button id="nextBtn" aria-label="Next" title="Next"><i class="fas fa-forward"></i></button>
+                <button id="repeatBtn" aria-label="Repeat" title="Repeat" class="active"><i class="fas fa-repeat"></i></button>
+                <button id="settingsBtn" aria-label="Settings" title="Settings"><i class="fas fa-cog"></i></button>
+            </div>
+            <div id="loading-spinner">⏳ Loading...</div>
+        </div>
+
+        <div id="helpOverlay">
+            <div id="helpClose">&times;</div>
+            <div id="helpContent">
+                <h2>🎧 Keyboard Shortcuts Help</h2>
+                <ul>
+                    <li><b>H</b> – Show/Hide Help Overlay</li>
+                    <li><b>Space</b> – Play / Pause</li>
+                    <li><b>← / →</b> – Seek Backward / Forward</li>
+                    <li><b>↑ / ↓</b> – Volume Up / Down</li>
+                    <li><b>N</b> – Next Track</li>
+                    <li><b>P</b> – Previous Track</li>
+                    <li><b>S</b> – Toggle Shuffle</li>
+                    <li><b>R</b> – Toggle Repeat</li>
+                    <li><b>Esc</b> – Close Help Overlay</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="wave-ring">🔊</div>
+        <div class="equalizer">
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+
+        <div id="settingsMenu">
+            <div id="settingsClose">&times;</div>
+            <div id="settingsContent">
+                <h2>🎛️ Filters & Timer</h2>
+
+                <label>Language:</label><br>
+                <select id="languageSelect">
+                    <option value="All">All</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="English">English</option>
+                </select><br><br>
+
+                <label>Emotion:</label><br>
+                <select id="emotionSelect">
+                    <option value="All">All</option>
+                    <option value="🎉 Party">🎉 Party</option>
+                    <option value="😢 Sad">😢 Sad</option>
+                    <option value="❤️ Romantic">❤️ Romantic</option>
+                    <option value="💽 Rap">💽 Rap</option>
+                </select><br><br>
+
+                <label>⏱️ Duration (HH:MM):</label><br>
+                <input type="time" id="timerInput" value="02:00"><br><br>
+
+                <button onclick="applySettings()">✅ Apply</button>
+                <button onclick="resetFilters()">🔄 Reset Filters</button>
+                <button onclick="closeSettings()">❌ Cancel</button>
+            </div>
+        </div>
+
+        <div id="timerProgressContainer">
+            <div id="timerProgressBar"></div>
+        </div>
+
+        <div class="custom-cursor" ></div>
+        <script>
+            // Initialize global variables for player state
+            let isShuffle = true;
+            let isRepeat = true;
+            let currentTrack = 0;
+            let playedIndices = new Set();
+            let playlist = [];
+            let timerTimeout = null;
+            let shouldStopAfterTimer = false;
+            let masterPlaylist = [];
+            let timerStartTime = null;
+            let timerEndTime = null;
+            let timerInterval = null;
+            // Button elements
+            const playPauseBtn = document.getElementById("playPauseBtn");
+            const shuffleBtn = document.getElementById("shuffleBtn");
+            const repeatBtn = document.getElementById("repeatBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            const prevBtn = document.getElementById("prevBtn");
+            // Audio player and track title elements
+            const audioPlayer = document.getElementById('audio-player');
+            const trackTitle = document.getElementById('track-title');
+            // Help overlay elements
+            const helpOverlay = document.getElementById("helpOverlay");
+            const helpClose = document.getElementById("helpClose");
+            // base url for the audio files
+            const baseURL = "https://archive.org/download/70s-special-mashup-devotees-insanos-chand-mera-dil-chadhti-jawani-meri-bheegi-bheegi-si-compressed/";
+
+            // Loads the playlist JSON file, updates the playlist array, and calls initializePlayer() to start the player.
+            async function fetchPlaylist() {
+                try {
+                    const response = await fetch('playlist.json'); // adjust path if needed
+                    if (!response.ok) throw new Error("Failed to fetch playlist");
+                    playlist = await response.json();
+                    masterPlaylist = [...playlist];
+                    initializePlayer(); // call your existing setup
+                } catch (error) {
+                    console.error("Error loading playlist:", error);
+                    document.getElementById("track-title").textContent = "⚠️ Failed to load playlist";
+                }
+            }
+
+            // Closes the settings menu without applying changes.
+            function closeSettings() {
+                document.getElementById("settingsMenu").style.display = "none";
+            }
+
+            // Applies the selected settings from the filters and timer inputs, updates the playlist, and resets the player.
+            function applySettings() {
+                const lang = document.getElementById("languageSelect").value;
+                const emo = document.getElementById("emotionSelect").value;
+                const timeVal = document.getElementById("timerInput").value; // e.g., "16:25"
+                filterLanguage = lang;
+                filterEmotion = emo;
+                // Filter the playlist
+                const filtered = masterPlaylist.filter(song =>
+                    (lang === "All" || song.language === lang) &&
+                    (emo === "All" || song.emotion === emo)
+                );
+                if (filtered.length === 0) {
+                    alert("⚠️ No songs match the selected filters.");
+                    return;
+                }
+                playlist = filtered;
+                playedIndices.clear();
+                currentTrack = 0;
+                loadTrack(currentTrack);
+                // Timer logic
+                const now = new Date();
+                const [hh, mm] = timeVal.split(":").map(Number);
+                if (isNaN(hh) || isNaN(mm)) {
+                    alert("⛔ Invalid time input.");
+                    return;
+                }
+                const target = new Date();
+                target.setHours(hh);
+                target.setMinutes(mm);
+                target.setSeconds(0);
+                target.setMilliseconds(0);
+                // If target time already passed today, assume it's for tomorrow
+                if (target < now) {
+                    target.setDate(target.getDate() + 1);
+                }
+                const diffMs = target - now;
+                if (diffMs > 0) {
+                    timerTimeout = setTimeout(() => {
+                        shouldStopAfterTimer = true;
+                        audioPlayer.pause();
+                        trackTitle.classList.remove("playing");
+                        alert("⏰ Music stopped after timer!");
+                    }, diffMs);
+                }
+                closeSettings();
+
+                // Timer setup
+                const end = new Date(now);
+                end.setHours(hh, mm, 0, 0);
+                if (end <= now) end.setDate(end.getDate() + 1); // next day if earlier
+
+                timerStartTime = now;
+                timerEndTime = end;
+
+                if (timerInterval) clearInterval(timerInterval);
+                updateTimerBar(); // initial
+                timerInterval = setInterval(updateTimerBar, 1000);
+
+                // close settings menu
+                document.getElementById("settingsMenu").style.display = "none";
+            }
+
+            // Updates the timer progress bar based on the remaining time until the timer ends.
+            function updateTimerBar() {
+                const now = new Date();
+                const total = timerEndTime - timerStartTime;
+                const remaining = timerEndTime - now;
+
+                if (remaining <= 0) {
+                    document.getElementById("timerProgressBar").style.width = "0%";
+                    clearInterval(timerInterval);
+                    return;
+                }
+
+                const percentage = 100 - (remaining / total) * 100 + 3;
+                document.getElementById("timerProgressBar").style.width = `${percentage}%`;
+            }
+
+            // Resets the filters to show the full playlist and resets the player state.
+            function resetFilters() {
+                playlist = [...masterPlaylist];
+                playedIndices.clear();
+                currentTrack = 0;
+                loadTrack(currentTrack);
+                closeSettings();
+            }
+
+            // 	Sets up the audio player UI, event listeners, default settings, and loads the first track.
+            function initializePlayer() {
+                if (timerTimeout) clearTimeout(timerTimeout);
+                shouldStopAfterTimer = false;
+                if (!playlist || playlist.length === 0) {
+                    trackTitle.textContent = "⚠️ No tracks in playlist.";
+                    return;
+                }
+
+                audioPlayer.volume = parseFloat(localStorage.getItem('volume')) || 0.2;
+                isShuffle = localStorage.getItem('shuffle') !== 'false';
+                isRepeat = localStorage.getItem('repeat') !== 'false';
+                shuffleBtn.classList.toggle("active", isShuffle);
+                repeatBtn.classList.toggle("active", isRepeat);
+                loadTrack(currentTrack);
+
+                shuffleBtn.addEventListener("click", () => {
+                    isShuffle = !isShuffle;
+                    localStorage.setItem("shuffle", isShuffle);
+                    shuffleBtn.classList.toggle("active");
+                    shuffleBtn.setAttribute("aria-pressed", isShuffle); // ✅ Add this line
+                    playedIndices.clear();
+                    shuffleBtn.innerHTML = isShuffle ? '<i class="fas fa-random"></i>' : '<i class="fas fa-random" style="color: red;"></i> '; // Or use '➡️'
+                    shuffleBtn.title = isShuffle ? "Shuffle ON" : "Shuffle OFF";
+                });
+                
+                repeatBtn.addEventListener("click", () => {
+                    isRepeat = !isRepeat;
+                    localStorage.setItem("repeat", isRepeat);
+                    repeatBtn.classList.toggle("active");
+                    repeatBtn.setAttribute("aria-pressed", isRepeat); // ✅ Add this line
+                    repeatBtn.innerHTML = isRepeat ? '<i class="fas fa-repeat"></i>' : '<i class="fas fa-repeat" style="color: red;"></i>';  // Use 🚫 or '↩️' for OFF
+                    repeatBtn.title = isRepeat ? "Repeat ON" : "Repeat OFF";
+                });
+                
+                nextBtn.addEventListener("click", nextTrack);
+                
+                prevBtn.addEventListener("click", prevTrack);
+                
+                playPauseBtn.addEventListener("click", togglePlayPause);
+                
+                audioPlayer.addEventListener("pause", () => {
+                    trackTitle.classList.remove("playing");
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playPauseBtn.title = "Play";
+                    updateEqualizer(false);
+                });
+                
+                audioPlayer.addEventListener("play", () => {
+                    trackTitle.classList.add("playing"); // 🔁 Add glow again on resume
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playPauseBtn.title = "Pause";
+                    updateEqualizer(true);
+                });
+
+                audioPlayer.addEventListener("ended", () => {
+                    if (shouldStopAfterTimer) return;
+                    trackTitle.classList.remove("playing");
+                    if (isRepeat && !isShuffle) {
+                        loadTrack(currentTrack); // repeat same song
+                    } else if (isShuffle && isRepeat) {
+                        playedIndices.clear(); // infinite shuffle
+                        nextTrack();
+                    } else {
+                        nextTrack();
+                    }
+                    updateEqualizer(false);
+                });
+                
+                document.addEventListener("keydown", (e) => {
+                    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key)) {
+                        e.preventDefault();
+                    }
+                    if (e.code === "Space") {
+                        togglePlayPause();
+                    } else if (e.key.toLowerCase() === "n") {
+                        nextTrack();
+                    } else if (e.key.toLowerCase() === "p") {
+                        prevTrack();
+                    } else if (e.key === "ArrowLeft") {
+                        audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10);
+                    } else if (e.key === "ArrowRight") {
+                        audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 10);
+                    } else if (e.key === "ArrowUp") {
+                        audioPlayer.volume = Math.min(1, audioPlayer.volume + 0.1);
+                        localStorage.setItem("volume", audioPlayer.volume);
+                        showVolumeFeedback(audioPlayer.volume);
+                    } else if (e.key === "ArrowDown") {
+                        audioPlayer.volume = Math.max(0, audioPlayer.volume - 0.1);
+                        localStorage.setItem("volume", audioPlayer.volume);
+                        showVolumeFeedback(audioPlayer.volume);
+                    } else if (e.key.toLowerCase() === 'h') {
+                        helpOverlay.classList.toggle("visible");
+                    } else if (e.key === "Escape") {
+                        helpOverlay.classList.remove("visible");
+                        document.getElementById("settingsMenu").style.display = "none"
+                    }
+                });
+
+                document.body.addEventListener('dblclick', (e) => {
+                    const x = e.clientX;
+                    const width = window.innerWidth;
+                    if (x < width / 2) {
+                        audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10);
+                        showSkipFeedback('backward');
+                    } else {
+                        audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 10);
+                        showSkipFeedback('forward');
+                    }
+                });
+
+                helpClose.addEventListener("click", () => {
+                helpOverlay.classList.remove("visible");
+                });
+
+                audioPlayer.addEventListener("waiting", () => {
+                    document.getElementById("loading-spinner").classList.add("show");
+                });
+                
+                audioPlayer.addEventListener("playing", () => {
+                    document.getElementById("loading-spinner").classList.remove("show");
+                });
+            }
+
+            // Decodes and cleans up a filename into a more readable track title.
+            function decodeTitle(fileName) {
+                try {
+                    // Decode URI and remove `_compressed.webm` or similar suffix
+                    const decoded = decodeURIComponent(fileName).replace(/\+/g, ' ');
+                    return decoded.replace(/(_compressed)?\.webm$/i, '');
+                } catch (e) {
+                    return "Unknown Title";
+                }
+            }
+
+            // Loads and plays a specific track by index from the playlist. Also updates UI and media metadata.
+            function loadTrack(index) {
+                if (!playlist[index]) return console.warn("Invalid track index:", index);
+                unloadAudio();  // 🔁 Unload previous track to free memory
+                const fileName = playlist[index].file_name;
+                const url = baseURL + fileName;
+                currentTrack = index;
+                const emojis = ['🎧','🎶','🎵','🎼','🎹','🎷','🎺','🎸','🎻','🥁','📻','🪕'];
+                const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                trackTitle.textContent = `${randomEmoji} ${decodeTitle(fileName)} ｜ ${playlist[index].emotion} ｜ 🌏 ${playlist[index].language}`; // can add inside string 
+                audioPlayer.src = url;
+                audioPlayer.play().then(() => {
+                    fadeInVolume(parseFloat(localStorage.getItem("volume")) || 0.2);
+                });
+                updateMediaSession(trackTitle.textContent);
+            }
+
+            // Stops the audio player and resets its source — used before loading a new track.
+            function unloadAudio() {
+            audioPlayer.pause(); // stops any playing
+            audioPlayer.removeAttribute('src'); // removes the current source
+            audioPlayer.load(); // tells browser to reset the player
+            }
+
+            // Moves to the next track in the playlist, with support for shuffle and repeat logic.
+            function nextTrack() {
+                if (isShuffle) {
+                    if (playedIndices.size >= playlist.length) {
+                        if (isRepeat) playedIndices.clear();
+                        else return;
+                    }
+                    let nextIndex;
+                    do {
+                    nextIndex = Math.floor(Math.random() * playlist.length);
+                } while (playedIndices.has(nextIndex));
+                    playedIndices.add(nextIndex);
+                    loadTrack(nextIndex);
+                } else {
+                    if (currentTrack < playlist.length - 1) {
+                        loadTrack(currentTrack + 1);
+                    } else if (isRepeat) {
+                        loadTrack(0);
+                    }
+                }
+            }
+
+            // Goes to the previous track in the playlist (or wraps to the end if at start).
+            function prevTrack() {
+                currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+                loadTrack(currentTrack);
+            }
+
+            // Toggles between playing and pausing the audio.
+            function togglePlayPause() {
+                if (audioPlayer.paused) {
+                    audioPlayer.play();
+                } else {
+                    audioPlayer.pause();
+                }
+            }
+
+            // 	Shows or hides a visual equalizer effect depending on playback status.
+            function updateEqualizer(isPlaying) {
+                const equalizer = document.querySelector('.equalizer');
+                const waveRing = document.querySelector('.wave-ring');
+                const mode = localStorage.getItem('visualizer') || 'equalizer';
+
+                if (isPlaying) {
+                    if (mode === 'equalizer') {
+                        equalizer.style.visibility = 'visible';
+                        waveRing.style.visibility = 'hidden';
+                    } else {
+                        equalizer.style.visibility = 'hidden';
+                        waveRing.style.visibility = 'visible';
+                    }
+                } else {
+                    equalizer.style.visibility = 'hidden';
+                    waveRing.style.visibility = 'hidden';
+                }
+            }
+
+            // 	Smoothly increases the volume to the target value for a fade-in effect.
+            function fadeInVolume(targetVolume = 0.2, step = 0.02, interval = 50) {
+                const fade = setInterval(() => {
+                    if (audioPlayer.volume < targetVolume) {
+                        audioPlayer.volume = Math.min(audioPlayer.volume + step, targetVolume);
+                    } else {
+                        clearInterval(fade);
+                    }
+                }, interval);
+            }
+
+            // Shows a visual feedback when user skips backward or forward.
+            function showSkipFeedback(direction = 'forward') {
+                const feedback = document.createElement('div');
+                feedback.classList.add('skip-feedback');
+                feedback.classList.add(direction === 'backward' ? 'left' : 'right');
+                feedback.innerHTML = direction === 'backward'
+                    ? '<i class="fas fa-backward"></i> 10s'
+                    : '<i class="fas fa-forward"></i> 10s';
+                document.body.appendChild(feedback);
+                setTimeout(() => {
+                    feedback.remove();
+                }, 800); // match with animation duration
+            }
+
+            // Displays on-screen volume percentage when volume is adjusted.
+            function showVolumeFeedback(volume) {
+                const feedback = document.getElementById("volume-feedback");
+                if (!feedback) return;
+                const percent = Math.round(audioPlayer.volume * 100);
+                feedback.textContent = `🔊 ${percent}%`;
+                feedback.classList.add("show");
+
+                // Hide after 1.2 seconds
+                clearTimeout(feedback._timeout);
+                feedback._timeout = setTimeout(() => {
+                    feedback.classList.remove("show");
+                }, 1200);
+            }
+
+            // Integrates with browser Media Session API to control media playback using system media buttons.
+            function updateMediaSession(title, artist = "TheSoftMax.com", album = "My Playlist") {
+                if ('mediaSession' in navigator) {
+                    navigator.mediaSession.metadata = new MediaMetadata({
+                    title: title,
+                    artist: artist,
+                    album: album,
+                    artwork: [
+                        { src: 'assets/favicon.svg', sizes: '96x96', type: 'image/svg+xml' }
+                    ]
+                    });
+
+                    navigator.mediaSession.setActionHandler('play', () => audioPlayer.play());
+                    navigator.mediaSession.setActionHandler('pause', () => audioPlayer.pause());
+                    navigator.mediaSession.setActionHandler('previoustrack', prevTrack);
+                    navigator.mediaSession.setActionHandler('nexttrack', nextTrack);
+                }else {
+                    console.warn("Media Session API not supported in this browser.");
+                }
+            }
+
+            // Initialize the help overlay toggle
+            function initAnimationToggle(audioPlayer) {
+                const waveRing = document.querySelector('.wave-ring');
+                const equalizer = document.querySelector('.equalizer');
+                
+                let currentMode = localStorage.getItem('visualizer') || 'equalizer';
+                
+                function showAnimation(mode) {
+                    if (!audioPlayer.paused) {
+                        // only show if playing
+                        if (mode === 'equalizer') {
+                            equalizer.style.visibility = 'visible';
+                            waveRing.style.visibility = 'hidden';
+                        } else {
+                            waveRing.style.visibility = 'visible';
+                            equalizer.style.visibility = 'hidden';
+                        }
+                        localStorage.setItem('visualizer', mode);
+                    }
+                    localStorage.setItem('visualizer', mode);
+                }
+
+                // Toggle on click
+                waveRing.addEventListener('click', () => {
+                    showAnimation('equalizer');
+                });
+
+                equalizer.addEventListener('click', () => {
+                    showAnimation('wave-ring');
+                });
+
+                // Only show when music is playing
+                audioPlayer.addEventListener('play', () => {
+                    showAnimation(currentMode);
+                });
+
+                // Hide both on pause
+                audioPlayer.addEventListener('pause', () => {
+                    waveRing.style.visibility = 'hidden';
+                    equalizer.style.visibility = 'hidden';
+                });
+            }
+
+            // Call after player initialized
+            document.addEventListener('DOMContentLoaded', () => {
+                fetchPlaylist().then(() => {
+                    initAnimationToggle(audioPlayer);
+                });
+
+                // Set volume
+                audioPlayer.volume = parseFloat(localStorage.getItem('volume')) || 0.2;
+
+                // First-time visit logic
+                if (localStorage.getItem('visited') !== 'true') {
+                    isShuffle = true;
+                    isRepeat = true;
+                    localStorage.setItem('shuffle', 'true');
+                    localStorage.setItem('repeat', 'true');
+                    localStorage.setItem('visited', 'true'); // mark as visited
+                } else {
+                    isShuffle = localStorage.getItem('shuffle') === 'true';
+                    isRepeat = localStorage.getItem('repeat') === 'true';
+                }
+
+                // Reflect on UI
+                shuffleBtn.classList.toggle("active", isShuffle);
+                repeatBtn.classList.toggle("active", isRepeat);
+
+                loadTrack(currentTrack);
+            });
+
+            // Opens the settings menu when the settings button is clicked.
+            document.getElementById("settingsBtn").addEventListener("click", () => {
+                document.getElementById("settingsMenu").style.display = "block";
+            });
+
+            document.getElementById("settingsClose").addEventListener("click", () => {
+                document.getElementById("settingsMenu").style.display = "none";
+            });
+
+            // Check if the device is a touch device (mobile/tablet)
+            const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+            if (!isTouchDevice) {
+                const cursor = document.querySelector('.custom-cursor');
+                let mouseX = 0, mouseY = 0;
+
+                document.addEventListener('mousemove', (e) => {
+                    const { clientX, clientY } = e;
+                    cursor.style.transform = `translate(${clientX}px, ${clientY}px)`;
+                });
+
+                // Detect hover on clickable elements
+                const clickable = ['a', 'button', 'input', '.clickable'];
+                document.querySelectorAll(clickable.join(',')).forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        cursor.classList.add('hover');
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        cursor.classList.remove('hover');
+                    });
+                });
+            }
+
+            // Service worker registration (this runs for all devices)
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/assets/js/service-worker.js')
+                    .then(reg => console.log('Service Worker registered!', reg))
+                    .catch(err => console.error('Service Worker registration failed:', err));
+                });
+                }
+        </script>
+    </body>
+
+</html>

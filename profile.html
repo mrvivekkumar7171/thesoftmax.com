@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google-adsense-account" content="ca-pub-5009810171147906">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="The SoftMax" />
+        <meta property="og:description" content="Lets deep dive in the world of ML and AI." />
+        <meta property="og:image" content="https://thesoftmax.com/assets/images/favicon/favicon.png" />
+        <meta property="og:url" content="https://thesoftmax.com/" />
+        <meta property="og:type" content="website" />
+
+        <title>The SoftMax</title>
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon.svg">
+        <!-- Remix icons -->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <style>
+.course-card {
+    display: block;
+    color: var(--light-color);
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+.course-card:hover {
+    background-color: var(--primary-background-color);
+}
+
+.contact-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.contact-title {
+    font-size: 2.3rem;
+    margin-bottom: 4rem;
+    margin-top: 3.2rem;
+}
+
+.contact-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    flex-direction: column; /* Vertical layout */
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    justify-items: center;
+    justify-content: right;
+    padding: 2rem 0;
+}
+
+.contact-item a {
+    background-color: var(--secondary-background-color);
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.contact-item a:hover {
+    background: var(--light-color-alt);
+    color: var(--primary-background-color) !important;
+    transform: scale(1.05);
+}
+
+.contact-item i {
+    font-size: var(--font-size-md);
+}
+        </style>
+    </head>
+<body>
+        <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="./index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <img src=" ./assets/images/favicon/favicon.png" alt="thesoftmax's logo" width="50" height="50" class="logo" style="margin-right: 10px;">
+                <h2 class="logo" style="margin: 0; font-size: 25px;">The SoftMax</h2>
+            </a> 
+
+            <div class="menu" id="menu">
+                <ul class="list">
+                    <li class="list-item">
+                        <a href="./index.html" class="list-link current">Home</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./profile.html" class="list-link">About Me</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./blogs.html" class="list-link">Blogs</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./projects.html" class="list-link">Projects</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./music.html" class="list-link">Music</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list list-right">
+
+                <button class="btn place-items-center" id="search-icon">
+                    <i class="ri-search-line"></i>
+                </button>
+
+                <button class="btn place-items-center screen-lg-hidden menu-toggle-icon" id="menu-toggle-icon">
+                    <i class="ri-menu-3-line open-menu-icon"></i>
+                    <i class="ri-close-line close-menu-icon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search -->
+    <div class="search-form-container container" id="search-form-container">
+        <div class="form-container-inner">
+            <form action="" class="form">
+                <input class="form-input" type="text" placeholder="What are you looking for?">
+                <button class="btn form-btn" type="submit">
+                    <i class="ri-search-line"></i>
+                </button>
+            </form>
+            <span class="form-note">Press ESC to exit.</span>
+        </div>
+
+        <button class="btn form-close-btn place-items-center" id="form-close-btn">
+            <i class="ri-close-line"></i>
+        </button>
+    </div>
+
+    <section class="blog-post section-header-offset">
+        <div class="blog-post-container container">
+            
+            <!-- Profile section -->
+            <div class="profile-section" style="display: flex; align-items: flex-start; gap: 3rem;">
+                <img src="/assets/images/profile/profile.jpg" href="/resume.html" alt="Vivek Kumar profile photo" style="width: 25%; height: 25%; object-fit: cover; border-radius: 50%; margin: 80px 20px 20px 60px;" />
+                <div>
+                    <h3 class="title blog-post-title" style="margin: 5% 0 7% 0; text-align: center;">Vivek Kumar <span style="font-size: 50%;">in a Nutshell</span></h3>
+                    
+                    <!-- about me: I am a data scientist with a passion for storytelling. I believe that words and data are the two most powerful tools to change the world.  Most of my time is spent staring at a computer screen. During the day, I am usually programming, working to derive insight from large datasets. My skills include data analysis, visualization, and machine learning. I have developed a strong acumen for problem solving, and I enjoy an occasional challenge. I often work on end-to-end data science projects that usually begin from collecting data from third party sources and end with delivering business insight in the form of customer segments.  At night, I take some time off to work on things I'm passionate about. I write articles and publish them on the Internet. Sometimes, I create personal projects and write tutorials on them. I also enjoy going on sites like Leetcode and trying out their programming challenges.  You can take a look at some of my projects and articles in the section below. I will link my work to their GitHub repositories, so feel free to download my code and play around with it. Most of my education has come from online platforms. I have downloaded e-books, audited courses on Udemy, 365datascience, CampusX and Coursera, and spent countless hours on sites like Leetcode and FreeCodeCamp. I am grateful to online educators who have given me the opportunity to learn these things, and for democratizing education.  To give back to the community, I create tutorials detailing things I have learnt. I create starter code for data science and visualization projects and publish it for everyone to read. If you are a data science aspirant, please feel free to check out these my blog post, projects, and feel free to contact me. I have done 10+ projects which include 4 major end-to-end projects. reason why you wants to become a data scientist?: I feel please to solve business problems using math, probabitlity and statistics. I am proficient in communication. Initially i explored all major tech protfolio including cybersecurity, software engineering, web developer, android developer and game developer, but when i started reading/learning about Data science/ML/AI. It feel like i am made of this. -->
+                    <p style="text-indent: 5%;">
+                        I am a data scientist with a passion for storytelling. I believe that words and data are the two most powerful tools to change the world.
+                        Most of my time is spent staring at a computer screen—programming, analyzing large datasets, building machine learning models, and delivering business insights.
+                        I enjoy challenges, solve Leetcode problems, and write tutorials on what I learn.
+                    </p>
+                    <br>
+                    <p style="text-indent: 5%;">
+                        My journey began with exploring multiple domains like cybersecurity, web development, and Android development, and it eventually led me to the world of AI/ML. I feel fulfilled when I solve business problems using math and statistics. I believe I’m made for this.
+                    </p>
+                    <br>
+                    <p style="text-indent: 5%;">
+                        I’ve completed 10+ data science projects, including 4 major end-to-end ones. My learning has been largely self-driven through platforms like Udemy, 365DataScience, CampusX, Coursera, and FreeCodeCamp. I’m grateful to the educators who make this knowledge accessible.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Textual Resume -->
+            <div class="contact-item" style="display: flex; flex-direction: column; align-items: center; ">
+                <!-- Resume button -->
+                <a href="/resume.html" class="btn" style="display: inline-block; border-radius: 0.5rem; margin-top: 90px;">
+                Check Out My Resume
+                </a>
+            </div>
+
+            <!-- Video Resume -->
+            <div style="margin: 3rem 0; align-items: center; display: flex; flex-direction: column; align-items: center; padding-bottom: 90px;">
+                <iframe
+                width="70%"
+                height="475px"
+                src="https://www.youtube.com/embed/cS6jV2H9Jj8?si=TY8NwyNteY3H0go2"
+                title="Vivek Kumar's Video Resume in 1 Minute"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                ></iframe>
+            </div>
+
+            <!-- Certifications section -->
+            <h4 class="section-title" style="text-align: center; font-size: xx-large; color: white;">Courses & Certifications</h4>
+            <div class="d-grid" style="grid-template-columns: repeat(auto-fit, minmax(550px, 1fr)); gap: 2rem;">
+                <a href="https://github.com/mrvivekkumar7171" class="course-card" style="background: var(--secondary-background-color); padding: 1.5rem; text-align: center"><img src="/assets/images/posts/posts-1.jpg" alt="">📜 Example Course 1</a>
+                <a href="https://github.com/mrvivekkumar7171" class="course-card" style="background: var(--secondary-background-color); padding: 1.5rem; text-align: center"><img src="/assets/images/posts/posts-1.jpg" alt="">📜 Example Course 2</a>
+                <a href="https://github.com/mrvivekkumar7171" class="course-card" style="background: var(--secondary-background-color); padding: 1.5rem; text-align: center"><img src="/assets/images/posts/posts-1.jpg" alt="">📜 Example Course 3</a>
+                <a href="https://github.com/mrvivekkumar7171" class="course-card" style="background: var(--secondary-background-color); padding: 1.5rem; text-align: center"><img src="/assets/images/posts/posts-1.jpg" alt="">📜 Example Course 4</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer section">
+        <div class="footer-container container d-grid" style="background-color: var(--secondary-background-color)">
+            <div class="company-data">
+                <a href="./index.html">
+                    <h2 class="logo">The SoftMax</h2>
+                </a>
+
+                <ul class="list social-media">
+                    <li class="list-item">
+                        <a href="https://www.instagram.com/mr.vivekprasad.kushwaha/" class="list-link"><i class="ri-instagram-line"></i></a>
+                    </li>
+                    <li class="list-item">
+                        <a href="https://x.com/VivekKumar7171" class="list-link"><i class="ri-twitter-line"></i></a>
+                    </li>
+                    <li class="list-item">
+
+<!-- Linkedin Profile
+    - need to update continuously and get best result
+    - cover image of the linkedin must tell the story about you
+    - add experience (what you have learn there)
+    - about
+    - Education (12 and graduation skip grads if it is not high) and projects you did in college\
+    - Licence and certification (from Udemy and 365datascience and Campusx and what i learnt there)
+    - Skills like python statistics machine learning deep learning programming stocks marketing gaming
+    - all give skill assessment exam for top 5 skills
+    - Endorsement and recommendation by other professionals for skills if possible
+    - Publications (add medium blog link or Publications if you had done for posting Data Science research, tutorials, and case studies.)
+    - Projects (add your projects github code link, Summary/description, visual and Metric ) 3 major projects and two minor projects are Good
+    - Honors and Awards if you have
+    - Interest (Build connections and follow people) follow at least 10 person of data science and one or two the best in the profession
+    - Stay active posting daily or weekly posts, commenting, say congrats and resharing etc
+    - contribute give back roadmap, views, opinions and projects
+    - like only good things on linkedin feed to it will recommend only good things
+    - Form Groups and Community if possible
+    - see what others are doing and get projects ideas and what they are learning
+    - stay in touch with jobs and read description of jobs posts
+-->
+
+                        <a href="https://www.linkedin.com/in/Vivek-Kumar7171/" class="list-link"><i class="ri-linkedin-box-fill"></i></a>
+                    </li>
+                    <li class="list-item">
+
+<!-- All about Kaggle :-
+    - Dataset
+    - Online notebook and computing
+    - Code (contains all the notebook on the given dataset)
+    - Competitions (solve the problem within time and get the price money and also test or play on past competition)
+    - Discussions (can ask your questions and give answers to others, helping other also boost your profile)
+    - Courses to learn or refer the topic for beginner
+    - Ranking (Novice < Contributor < Expert < Master < Grandmaster and note ranking start from Expert level) visit :- https://www.kaggle.com/rankings
+        - Competitions
+        - Datasets
+        - Notebooks
+        - Discussion
+    also visit :- https://www.kaggle.com/datasets/kaggle/meta-kaggle/ to get a particular type of notebook etc from the whole kaggle datasets
+        - winning solutions of kaggle Competitions
+        - Data Science Glossary on Kaggle
+        - Hidden Gems: A Collection of Underrated Notebooks
+            go to above all the three and read about it
+-->
+
+                        <a href="https://www.kaggle.com/vivekprasadkushwaha" class="list-link"><i class="ri-bar-chart-box-line"></i></a>
+                    </li>
+                </ul>
+                <span class="copyright-notice"><a href="./terms.html" class="list-link">&copy;2025 The SoftMax. All rights reserved.</a></span>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Categories</h6>
+                <ul class="footer-list list">
+                    <li class="list-item">
+                        <a href="https://medium.com/@mrvivekkumar7171/data-science-in-finance-and-nlp-d9c12c452b77" class="list-link">Data Science</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="https://medium.com/@mrvivekkumar7171/machine-learning-explained-362f3da8b817" class="list-link">Machine Learning</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="https://medium.com/@mrvivekkumar7171/understanding-artificial-intelligence-ce28c393b632" class="list-link">Artificial Intelligence</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Useful links</h6>
+                <ul class="footer-list list">
+                    <li class="list-item">
+                        <a href="./shipping-delivery.html" class="list-link">Shipping & Delivery</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./cancellation-refund.html" class="list-link">Refund Policy</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Company</h6>
+                <ul class="footer-list list">
+                    <li class="list-item">
+                        <a href="./terms.html" class="list-link">Terms and Conditions</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./contact.html" class="list-link">Contact us</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./privacy.html" class="list-link">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom script with Swiper -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

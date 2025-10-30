@@ -1,0 +1,62 @@
+[
+    {
+        "audio_id": "001",
+        "file_name": "%27Abhi%20Toh%20Party%20Shuru%20Hui%20Hai%27%20FULL%20VIDEO%20Song%20%EF%BD%9C%20Khoobsurat%20%EF%BD%9C%20Badshah%20%EF%BD%9C%20Aastha_compressed.webm",
+        "emotion":"💽 Rap",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0021",
+        "file_name": "%23Video%20%EF%BD%9C%20%E0%A4%B9%E0%A4%BF%E0%A4%B0%E0%A5%8B%E0%A4%87%E0%A4%A8%20%EF%BD%9C%20%23Heroine%20with%20Lyrics%20%EF%BD%9C%20%23Neelkamal%20Singh%20New%20Song%20%EF%BD%9C%20Bhojpuri%20Gaana_compressed.webm",
+        "emotion":"💽 Rap",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0031",
+        "file_name": "%27Sooraj%20Dooba%20Hain%27%20FULL%20VIDEO%20SONG%20%EF%BD%9C%20Arijit%20singh%20Aditi%20Singh%20Sharma%20%EF%BD%9C%20T-SERIES_compressed.webm",
+        "emotion":"🎉 Party",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0049",
+        "file_name": "%27Tu%20Jo%20Mila%27%20VIDEO%20Song%20-%20K.K.%20Pritam%20%EF%BD%9C%20Salman%20Khan%2C%20Nawazuddin%2C%20Harshaali%20%EF%BD%9C%20Bajrangi%20Bhaijaan_compressed.webm",
+        "emotion":"🎉 Party",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0054",
+        "file_name": "3%20-%20Why%20This%20Kolaveri%20Di%20Official%20Video%20%EF%BD%9C%20Dhanush%20%EF%BD%9C%20Anirudh%20Ravichander%20%EF%BD%9C%20Shruti%20Haasan_compressed.webm",
+        "emotion":"😢 Sad",
+        "language":"English"
+    },
+    {
+        "audio_id": "0060",
+        "file_name": "90%27s%20Retro%20Mashup%20%EF%BD%9C%20Dj%20Parth%20%EF%BD%9C%20Sunix%20Thakor%20%EF%BD%9C%20Old%20Song%20Mashup%20%EF%BD%9C%20Music%20History%20Records_compressed.webm",
+        "emotion":"❤️ Romantic",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0074",
+        "file_name": "70s%20Special%20Mashup%E2%96%B6%20Devotees%20Insanos%20%EF%BD%9C%20Chand%20Mera%20Dil%20%EF%BD%9C%20Chadhti%20Jawani%20%EF%BD%9C%20Meri%20Bheegi%20Bheegi%20Si_compressed.webm",
+        "emotion":"❤️ Romantic",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0080",
+        "file_name": "AMBARSARIYA_compressed.webm",
+        "emotion":"❤️ Romantic",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0094",
+        "file_name": "Aadat%20%28From%20%EF%BC%82Kalyug%EF%BC%82%29_compressed.webm",
+        "emotion":"❤️ Romantic",
+        "language":"Hindi"
+    },
+    {
+        "audio_id": "0102",
+        "file_name": "Aahun%20Aahun%20%28Lyrical%20Full%20Song%29%20%EF%BD%9C%20Love%20Aaj%20Kal%20%EF%BD%9C%20Saif%20Ali%20Khan%20%26%20Deepika%20Padukone%20%EF%BD%9C%20Pritam_compressed.webm",
+        "emotion":"😢 Sad",
+        "language":"Hindi"
+    }
+]
