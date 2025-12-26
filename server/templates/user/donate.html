@@ -1,0 +1,155 @@
+<!-- <title>Donate</title> -->
+{% extends "user/layout.html" %}
+
+{% block content %}
+<style>
+
+    .payment-container {
+        max-width: 700px;
+        margin: 130px auto 50px auto;
+        padding: 18px;
+        background-color: #252830;
+        box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+
+    .payment-container h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 26px;
+    }
+
+    .bmc-button-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .bmc-button-container:hover {
+        transform: scale(1.025);
+        transition: transform 0.3s ease;
+    }
+
+    .form-section {
+        text-align: center;
+    }
+
+    .form-section label {
+        display: block;
+    }
+
+    .form-section input[type="number"] {
+        width: 60%;
+        padding: 10px;
+        border: 1px solid #4dabf7;
+        background-color: #131417;
+        color: white;
+        font-size: 15px;
+    }
+
+    .form-section button {
+        padding: 10px 25px;
+        background-color: #4dabf7;
+        color: #131417;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-section button:hover {
+        background-color: #3393e6;
+    }
+
+    .qr-section {
+        text-align: center;
+    }
+
+    .qr-section img {
+        max-width: 300px;
+        transition: transform 0.2s ease;
+    }
+
+    .bottom-nav {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .bottom-nav a {
+        color: #4dabf7;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .bottom-nav a:hover {
+        text-decoration: underline;
+    }
+
+    .nav-links {
+        margin: 50px 0 50px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        background-color: #3a3f4b;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        font-weight: 500;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        border: 1px solid #4dabf7;
+    }
+
+    .nav-links a:hover {
+        background-color: #4dabf7;
+        color: #131417;
+    }
+
+</style>
+
+    <div class="payment-container">
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <!-- Buy Me a Coffee Button -->
+            <div class="bmc-button-container">
+                <script type="text/javascript" 
+                    src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" 
+                    data-name="bmc-button" 
+                    data-slug="thesoftmax" 
+                    data-color="#131417" 
+                    data-emoji="☕"  
+                    data-font="Cookie" 
+                    data-text="Buy me a coffee" 
+                    data-outline-color="#ffffff" 
+                    data-font-color="#ffffff" 
+                    data-coffee-color="#FFDD00">
+                </script>
+            </div>
+
+            <!-- Direct UPI Payment -->
+            <div class="form-section">
+                <input type="number" name="amount" id="amount" placeholder="UPI Payment in INR">
+
+                <button type="submit">Generate QR Code</button>
+            </div>
+        </form>
+
+        <!-- QR Code if available -->
+        {% if generatedCode %}
+        <div class="qr-section">
+            <a href="{{ generatedCode }}" download="PaymentQRCode_TheSoftMax.png">
+                <img src="{{ generatedCode }}" alt="QR Code">
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('userDashboard') }}"> Dashboard</a>
+    </div>
+{% endblock content %}

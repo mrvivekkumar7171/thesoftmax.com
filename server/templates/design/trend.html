@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Trend Over Time</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        background: #131417;
+        }
+
+        .trend_chart {
+        border: 2px dashed #ccc;
+        background-color: #252830;
+        padding: 15px;
+        max-width: 1000px;
+        margin: auto;
+        }
+
+        canvas {
+        width: 100% !important;
+        height: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="trend_chart">
+        <h2 style="color: white; text-align: center;">Sentiment Trend Over Time</h2>
+        <canvas id="trendChart"></canvas>
+    </div>
+
+    <script>
+    const sentimentData = [
+        { timestamp: "2024-01-05", sentiment: -1 }, { timestamp: "2024-01-12", sentiment: -1 }, { timestamp: "2024-01-15", sentiment: -1 }, { timestamp: "2024-01-20", sentiment: -1 }, { timestamp: "2024-01-28", sentiment: -1 },
+        { timestamp: "2024-02-03", sentiment: -1 }, { timestamp: "2024-02-10", sentiment: -1 }, { timestamp: "2024-02-18", sentiment: 0 }, { timestamp: "2024-02-20", sentiment: -1 }, { timestamp: "2024-02-26", sentiment: -1 },
+        { timestamp: "2024-03-04", sentiment: 0 }, { timestamp: "2024-03-08", sentiment: 0 }, { timestamp: "2024-03-15", sentiment: 0 }, { timestamp: "2024-03-21", sentiment: 1 }, { timestamp: "2024-03-29", sentiment: 1 },
+        { timestamp: "2024-04-02", sentiment: 1 }, { timestamp: "2024-04-08", sentiment: 0 }, { timestamp: "2024-04-16", sentiment: -1 }, { timestamp: "2024-04-21", sentiment: 1 }, { timestamp: "2024-04-27", sentiment: 1 },
+        { timestamp: "2024-05-03", sentiment: 1 }, { timestamp: "2024-05-09", sentiment: 1 }, { timestamp: "2024-05-12", sentiment: 0 }, { timestamp: "2024-05-18", sentiment: -1 }, { timestamp: "2024-05-25", sentiment: 0 },
+        { timestamp: "2024-06-02", sentiment: -1 }, { timestamp: "2024-06-07", sentiment: 1 }, { timestamp: "2024-06-13", sentiment: 0 }, { timestamp: "2024-06-19", sentiment: 0 }, { timestamp: "2024-06-26", sentiment: 1 },
+        { timestamp: "2024-07-01", sentiment: 1 }, { timestamp: "2024-07-06", sentiment: 1 }, { timestamp: "2024-07-13", sentiment: 1 }, { timestamp: "2024-07-21", sentiment: 0 }, { timestamp: "2024-07-29", sentiment: 1 },
+        { timestamp: "2024-08-05", sentiment: 1 }, { timestamp: "2024-08-11", sentiment: 0 }, { timestamp: "2024-08-18", sentiment: 1 }, { timestamp: "2024-08-24", sentiment: 1 }, { timestamp: "2024-08-30", sentiment: 0 },
+        { timestamp: "2024-09-03", sentiment: 0 }, { timestamp: "2024-09-09", sentiment: 1 }, { timestamp: "2024-09-15", sentiment: 1 }, { timestamp: "2024-09-21", sentiment: 1 }, { timestamp: "2024-09-29", sentiment: 1 },
+        { timestamp: "2024-10-04", sentiment: 0 }, { timestamp: "2024-10-10", sentiment: -1 }, { timestamp: "2024-10-16", sentiment: 1 }, { timestamp: "2024-10-22", sentiment: 1 }, { timestamp: "2024-10-28", sentiment: 0 },
+        { timestamp: "2024-11-05", sentiment: 1 }, { timestamp: "2024-11-11", sentiment: 1 }, { timestamp: "2024-11-17", sentiment: -1 }, { timestamp: "2024-11-23", sentiment: 1 }, { timestamp: "2024-11-30", sentiment: 0 },
+        { timestamp: "2024-12-02", sentiment: 1 }, { timestamp: "2024-12-08", sentiment: 1 }, { timestamp: "2024-12-14", sentiment: 1 }, { timestamp: "2024-12-20", sentiment: 1 }, { timestamp: "2024-12-28", sentiment: 1 }
+        ];
+
+        const monthly = {};
+        sentimentData.forEach(({ timestamp, sentiment }) => {
+        const month = timestamp.slice(0, 7);
+        if (!monthly[month]) monthly[month] = { '-1': 0, '0': 0, '1': 0, total: 0 };
+        monthly[month][sentiment] += 1;
+        monthly[month].total += 1;
+    });
+
+    const labels = Object.keys(monthly).sort();
+    const dataNegative = labels.map(m => (monthly[m][-1] / monthly[m].total) * 100);
+    const dataNeutral = labels.map(m => (monthly[m][0] / monthly[m].total) * 100);
+    const dataPositive = labels.map(m => (monthly[m][1] / monthly[m].total) * 100);
+    const countsNegative = labels.map(m => monthly[m][-1]);
+    const countsNeutral = labels.map(m => monthly[m][0]);
+    const countsPositive = labels.map(m => monthly[m][1]);
+    const totals = labels.map(m => monthly[m].total);
+
+    const ctx = document.getElementById('trendChart').getContext('2d');
+    const trendChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Negative ',
+                    data: dataNegative,
+                    borderColor: 'red',
+                    yAxisID: 'y',
+                    tension: 0,
+                    pointRadius: 4,
+                    counts: countsNegative,
+                    totals: totals
+                },
+                {
+                    label: 'Neutral ',
+                    data: dataNeutral,
+                    borderColor: 'gray',
+                    yAxisID: 'y',
+                    tension: 0,
+                    pointRadius: 4,
+                    counts: countsNeutral,
+                    totals: totals
+                },
+                {
+                    label: 'Positive ',
+                    data: dataPositive,
+                    borderColor: 'green',
+                    yAxisID: 'y',
+                    tension: 0,
+                    pointRadius: 4,
+                    counts: countsPositive,
+                    totals: totals
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+            x: {
+                type: 'time',
+                time: { unit: 'month' },
+                title: { color: 'white', display: true, text: 'Sentiment The Last Year', font: { size: 18 } },
+                ticks: {color: 'white',font: { size: 14 }}
+            },
+            y: {
+                title: { color: 'white', display: true, text: 'Percentage (%)', font: { size: 18 } },
+                min: 0,
+                max: 100,
+                position: 'left',
+                ticks: {color: 'white',font: { size: 14 }}
+            },
+            y1: {
+                title: { color: 'white', display: true, text: 'Counting', font: { size: 18 } },
+                position: 'right',
+                grid: {drawOnChartArea: false},
+                ticks: {color: 'white',font: { size: 14 }}
+            }
+            },
+            plugins: {
+            legend: { position: 'top' ,labels: {color: 'white'}},
+            tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const date = tooltipItems[0].parsed.x;
+                        const options = { year: 'numeric', month: 'short' };
+                        return new Date(date).toLocaleDateString('en-US', options);
+                    },
+                    label: function(context) {
+                        const label = context.dataset.label || '';
+                        const percentage = context.raw.toFixed(1); // y contains %
+                        const count = context.dataset.counts?.[context.dataIndex] || 0;
+                        const total = context.dataset.totals?.[context.dataIndex] || 1;
+
+                        return `${label}: ${percentage}% - ${count}/${total}`;
+                    }
+                }
+            },
+            zoom: {
+                pan: { enabled: false, mode: 'x' },
+                zoom: { wheel: { enabled: false }, pinch: { enabled: false }, mode: 'x' }
+            }
+            }
+        }
+        });
+    </script>
+</body>
+</html>

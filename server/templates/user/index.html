@@ -1,0 +1,78 @@
+{% extends "user/layout.html"%}
+
+{% block content %}
+<style>
+    body {
+        background-color: #131417 !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-container {
+        max-width: 400px;
+        width: 80%;
+        margin: clamp(120px, 35%, 40px) auto 5% auto;
+        background-color: #252830;
+        padding: 40px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .login-container h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+        color: white;
+    }
+
+    .google-btn {
+        display: inline-block;
+        background-color: #4285F4;
+        color: white;
+        text-decoration: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .google-btn:hover {
+        background-color: #3367D6;
+    }
+
+</style>
+<div class="login-container">
+    <h1 >User Login</h1>
+    <div>
+        <button class="google-btn" onclick="startGoogleLogin()">Login with Google</button>
+    </div>
+</div>
+
+<script>
+async function startGoogleLogin() {
+    try {        
+        // const FingerprintJS = await import('https://openfpcdn.io/fingerprintjs/v5') // FingerprintJS Open Source
+        const FingerprintJS = await import('https://fpjscdn.net/v3/WiLe8qnlR2HdOoQiX4A4'); // FingerprintJS Pro
+        const fp = await FingerprintJS.load({ region: "ap" });
+        const result = await fp.get();
+        await fetch("{{ url_for('storeFingerprint') }}", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({visitorId: result.visitorId})
+        });
+    } catch (err) {
+        console.warn("Fingerprint failed, continuing login", err);
+    }
+    
+    // IMPORTANT: do NOT block login on fingerprint failure and Continue OAuth regardless.
+    window.location.href = "{{ url_for('googleLogin') }}";
+}
+</script>
+{% endblock content %}

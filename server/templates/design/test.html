@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    explain the js code in details
+<script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4/dist/fp.min.js"></script>
+<script>
+async function getFingerprint() {
+    // initializes the fingerprinting agent that can now be used to actually generate a fingerprint and scan the browser.
+  const fp = await FingerprintJS.load(); 
+  // the agent collects the browser/device information.
+  const result = await fp.get();
+  console.log(result);
+  // The hashing algorithm ensures the ID is deterministic (same device & browser produce the same hash each time) and anonymous (no personal data like name or email is used).
+  console.log("Visitor ID:", result.visitorId); // unique hash string representing the device/browser combination.
+  const ipData = await fetch('https://api.ipify.org?format=json').then(r => r.json());
+  const ipAddress = ipData.ip;
+  console.log("IP Address:", ipAddress);
+}
+getFingerprint();
+</script>
+</body>
+</html>

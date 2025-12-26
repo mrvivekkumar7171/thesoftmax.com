@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="The SoftMax" />
+    <meta property="og:description" content="Lets deep dive in the world of ML and AI." />
+    <meta property="og:image" content="https://thesoftmax.com/assets/images/favicon/favicon.png" />
+    <meta property="og:url" content="https://thesoftmax.com/" />
+    <meta property="og:type" content="website" />
+
+    <title>The SoftMax</title>
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="./index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <img src=" ./assets/images/favicon/favicon.png" alt="thesoftmax's logo" width="50" height="50" class="logo" style="margin-right: 10px;">
+                <h2 class="logo" style="margin: 0; font-size: 25px;">The SoftMax</h2>
+            </a> 
+
+            <div class="menu" id="menu">
+                <ul class="list">
+                    <li class="list-item">
+                        <a href="./index.html" class="list-link current">Home</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./profile.html" class="list-link">About Me</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./blogs.html" class="list-link">Blogs</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="./projects.html" class="list-link">Projects</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="https://mrvivekkumar7171.github.io/Music/" class="list-link">Music</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list list-right">
+
+                <button class="btn place-items-center" id="search-icon">
+                    <i class="ri-search-line"></i>
+                </button>
+
+                <button class="btn place-items-center screen-lg-hidden menu-toggle-icon" id="menu-toggle-icon">
+                    <i class="ri-menu-3-line open-menu-icon"></i>
+                    <i class="ri-close-line close-menu-icon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search -->
+    <div class="search-form-container container" id="search-form-container">
+        <div class="form-container-inner">
+            <form action="" class="form">
+                <input class="form-input" type="text" placeholder="What are you looking for?">
+                <button class="btn form-btn" type="submit">
+                    <i class="ri-search-line"></i>
+                </button>
+            </form>
+            <span class="form-note">Press ESC to exit.</span>
+        </div>
+
+        <button class="btn form-close-btn place-items-center" id="form-close-btn">
+            <i class="ri-close-line"></i>
+        </button>
+    </div>
+
+    <!-- Custom script with Swiper -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

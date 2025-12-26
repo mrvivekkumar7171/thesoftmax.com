@@ -1,0 +1,165 @@
+<!-- <title>Payment</title> -->
+{% extends "user/layout.html" %}
+
+{% block content %}
+<style>
+
+    .payment-container {
+        max-width: 700px;
+        margin: 130px auto 50px auto;
+        padding: 18px;
+        background-color: #252830;
+        box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+
+    .payment-container h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 26px;
+    }
+
+    .bmc-button-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .bmc-button-container:hover {
+        transform: scale(1.025);
+        transition: transform 0.3s ease;
+    }
+
+    .form-section {
+        text-align: center;
+    }
+
+    .form-section label {
+        display: block;
+    }
+
+    .form-section input[type="number"] {
+        width: 60%;
+        padding: 10px;
+        border: 1px solid #4dabf7;
+        background-color: #131417;
+        color: white;
+        font-size: 15px;
+    }
+
+    .form-section button {
+        padding: 10px 25px;
+        background-color: #4dabf7;
+        color: #131417;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-section button:hover {
+        background-color: #3393e6;
+    }
+
+    .qr-section {
+        text-align: center;
+    }
+
+    .qr-section img {
+        max-width: 300px;
+        transition: transform 0.2s ease;
+    }
+
+    .bottom-nav {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .bottom-nav a {
+        color: #4dabf7;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .bottom-nav a:hover {
+        text-decoration: underline;
+    }
+
+    .nav-links {
+        margin: 50px 0 50px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        background-color: #3a3f4b;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        font-weight: 500;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        border: 1px solid #4dabf7;
+    }
+
+    .nav-links a:hover {
+        background-color: #4dabf7;
+        color: #131417;
+    }
+
+</style>
+
+    <head><script src="https://checkout.razorpay.com/v1/checkout.js"></script></head>
+
+    <div class="payment-container">
+        <h3>Make a Payment</h3>
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <!-- Direct UPI Payment -->
+            <div class="form-section">
+                <input type="number" name="amount" id="amount-input" placeholder="Enter Amount in INR" required>
+
+                <button id="rzp-button" type="button">Pay</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('userDashboard') }}"> Dashboard</a>
+    </div>
+
+    <script>
+        document.getElementById('rzp-button').onclick = function(e) {
+
+            // Step 1: Create an order
+            const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+            const amountValue = document.getElementById('amount-input').value;
+            if (!amountValue) return alert("Please enter amount!");
+
+            fetch("{{ url_for('create_order') }}", {method: 'POST',headers: { "Content-Type": "application/json", "X-CSRFToken": csrfToken }, body: JSON.stringify({ amount: amountValue })})
+                .then(response => response.json())
+                .then(order => {
+
+                    // Step 2: Configure Razorpay options
+                    const options = {
+                        "key": "{{ key_id }}", // Razorpay key ID from backend 
+                        "amount": order.amount, // Order amount in paise
+                        "currency": "INR",
+                        "name": "The SoftMax.com",
+                        "description": "Payment for order #" + order.order_id,
+                        "order_id": order.order_id, // Pass order_id from backend
+                        "callback_url": "{{ url_for('verify_signature', _external=True) }}" // URL to handle payment success
+                    };
+
+                    // Step 3: Open Razorpay Checkout
+                    const rzp = new Razorpay(options);
+                    console.log(rzp);
+                    rzp.open();
+                })
+                .catch(err => alert("Error creating order!"));
+        };
+    </script>
+{% endblock content %}

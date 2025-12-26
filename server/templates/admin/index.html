@@ -1,0 +1,253 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+<style>
+/* === Main Body Wrapper Styling === */
+.main-body {
+    max-width: 600px;
+    margin: 10vh auto 3vh auto;
+    padding: 2.5rem;
+    background-color: #2e3039;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    /* font-size: clamp(0.95rem, 1vw, 1.1rem); */
+}
+
+/* === Heading === */
+.main-body h3 {
+    text-align: center;
+    /* font-size: clamp(1.3rem, 3vw, 2.2rem); */
+    margin-bottom: 1.5rem;
+}
+
+/* === Form Layout === */
+.main-body form > div {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-body label {
+    margin-bottom: 0.5rem;
+    font-weight:lighter;
+}
+
+.main-body input[type="text"],
+.main-body input[type="password"],
+.main-body input[type="email"] {
+    padding: 0.75rem;
+    border: none;
+    /* font-size: clamp(0.9rem, 1vw, 1rem); */
+    background-color: #444857;
+}
+
+.main-body input:focus {
+    outline: none;
+    background-color: #55596a;
+}
+
+/* === OTP Status Message === */
+.main-body #otp-status {
+    /* font-size: 0.9rem; */
+    margin-top: -0.3rem;
+    min-height: 1.2em;
+}
+
+/* === Buttons === */
+.main-body button {
+    padding: 0.75rem 1rem;
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    /* font-size: clamp(0.9rem, 1vw, 1rem); */
+    cursor: pointer;
+    margin: 0.5rem 0.7rem 0.5rem 0;
+    transition: background-color 0.3s ease;
+}
+
+.main-body button:hover {
+    background-color: #0077aa;
+}
+
+/* === Signup / Login Footer Text === */
+.main-body span {
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.main-body span a {
+    color: #00aaff;
+    text-decoration: none;
+}
+
+.main-body span a:hover {
+    text-decoration: underline;
+}
+
+/* === Responsive Styling === */
+@media (max-width: 1024px) {
+    .main-body {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem;
+        /* font-size: 0.95rem; */
+    }
+
+    /* .main-body h3 {
+        font-size: 1.8rem;
+    } */
+}
+
+@media (max-width: 768px) {
+    .main-body {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.5rem;
+    }
+
+    .main-body button {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    /* .main-body span {
+        font-size: 0.9rem;
+    } */
+}
+
+@media (max-width: 480px) {
+    /* .main-body h3 {
+        font-size: 1.4rem;
+    } */
+
+    .main-body input,
+    .main-body button {
+        /* font-size: 0.95rem; */
+        padding: 0.65rem;
+    }
+
+    .main-body {
+        padding: 1.2rem;
+        margin-left: 4vw;
+        margin-right: 4vw;
+    }
+}
+
+/* === Responsive Styling === */
+@media (max-height: 1024px) {
+    .main-body {
+        margin-top: 12vh;
+        margin-bottom: 4vh;
+    }
+}
+
+@media (max-height: 768px) {
+    .main-body {
+        margin-top: 16vh;
+        margin-bottom: 4vh;
+    }
+}
+
+@media (max-height: 480px) {
+    .main-body {
+        margin-top: 24vh;
+        margin-bottom: 4vh;
+    }
+}
+</style>
+<div class="main-body">
+        <div >
+            <h3>Admin Verification and Login</h3>
+            <form id="login-form" action="" method="POST" >
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div >
+                    <label for=""><b>Enter Your Username</b></label>
+                    <input type="text" name="admin_name" id="username" required>
+                </div>
+                <div>
+                    <label for=""><b>Enter Your Password</b></label>
+                    <input type="password" name="admin_password" id="password" required>
+                </div>
+                <div>
+                    <p id="otp-status" ></p>
+                </div>
+                <div >
+                    <label for=""><b>Enter OTP</b></label>
+                    <input type="text" name="otp" id="otp" required>
+                </div>
+                <div>
+                    <button type="button" id="get-otp" >Generate OTP</button>
+                    <button type="button" id="verify-login" >Verify OTP and Login</button>
+                </div>
+                <span >If you have't Account ? <a href="/admin/signup"
+                    >Signup</a></span>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Handle OTP Request
+        document.getElementById("get-otp").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent page reload
+
+            let formData = new FormData(document.getElementById("login-form"));
+            formData.append("action", "generate_otp"); // Identify OTP request
+
+            fetch("{{ url_for('admin') }}", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("otp-status").innerText = data.success;
+                    document.getElementById("otp-status").style.color = "green";
+                } else {
+                    document.getElementById("otp-status").innerText = data.error;
+                    document.getElementById("otp-status").style.color = "red";
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+
+        // Handle OTP Validation & Login
+        document.getElementById("verify-login").addEventListener("click", async function (event) {
+            event.preventDefault(); // Prevent reload
+
+            let formData = new FormData(document.getElementById("login-form"));
+            formData.append("action", "validate_otp"); // Identify OTP validation
+
+            try {
+                // const FingerprintJS = await import('https://openfpcdn.io/fingerprintjs/v5') // FingerprintJS Open Source
+                const FingerprintJS = await import('https://fpjscdn.net/v3/WiLe8qnlR2HdOoQiX4A4'); // FingerprintJS Pro
+                const fp = await FingerprintJS.load({ region: "ap" });
+                const result = await fp.get();
+                formData.append("visitorId", result.visitorId);
+            } catch (err) {
+                console.warn("Fingerprint failed, continuing login", err);
+            }
+
+            fetch("{{ url_for('admin') }}", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("otp-status").innerText = data.success;
+                    document.getElementById("otp-status").style.color = "green";
+                    setTimeout(() => {
+                        window.location.href = data.redirect;  // Redirect after 2 seconds
+                    }, 2000);
+                } else {
+                    document.getElementById("otp-status").innerText = data.error;
+                    document.getElementById("otp-status").style.color = "red";
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    });
+</script>
+{% endblock content %}

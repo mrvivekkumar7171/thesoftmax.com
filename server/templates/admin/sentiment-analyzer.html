@@ -1,0 +1,908 @@
+{% extends "user/layout.html"%}
+
+{% block content %}
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-cloud/build/d3.layout.cloud.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+    <style>
+
+        body {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            background: #131417;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            font-size: var(--font-size-sm);
+            color: var(--light-color-alt);
+            background-color: var(--primary-background-color);
+        }
+
+        .tooltip {
+            z-index: 1000;
+            font-family: sans-serif;
+            backdrop-filter: blur(5px);
+        }
+
+        .tooltip1,
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            pointer-events: none;
+            font-size: 18px;
+            display: none;
+        }
+
+        .tooltip-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tooltip-line {
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            margin: 0.25rem 0;
+        }
+
+        .word {
+            position: relative;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+
+        .word-group {
+            cursor: pointer;
+        }
+
+        .word-bg {
+            fill: currentColor;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .word-group:hover .word-bg {
+            opacity: 0.05;
+            filter: drop-shadow(0 0 6px white);
+        }
+
+        .word-group:hover .word {
+            filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.445));
+        }
+
+        svg {
+            overflow: visible;
+        }
+
+        .label-text {
+            font-size: 16px;
+            fill: white;
+            pointer-events: none;
+            font-weight: bold;
+        }
+
+        .trend_chart {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+
+        #word-cloud,
+        .trend_chart,
+        .Pie_chart {
+            position: relative;
+            border: 3.5px dashed #ccc;
+            background-color: #252830;
+            min-height: 300px;
+            padding: 1%;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .containers {
+            margin: 1% 1% 1% 1%;
+            display: grid;
+            width: 98%;
+            grid-template-areas:
+            "item1 item2"
+            "item3 item3";
+            grid-template-columns: minmax(300px, 40%) minmax(300px, 60%);
+            grid-template-rows: auto auto;
+            gap: clamp(10px, 2vw, 25px);
+        }
+
+        .item-1 {
+            grid-area: item1;
+        }
+
+        .item-2 {
+            grid-area: item2;
+        }
+
+        .item-3 {
+            grid-area: item3;
+        }
+
+        @media (max-width: 768px) {
+            .Pie_chart, .trend_chart, #word-cloud {
+                aspect-ratio: auto;
+                min-height: 300px;
+            }
+            .item-1,
+            .item-2,
+            .item-3 {
+            width: 100%;
+            }
+            .item-1,
+            .item-2 {
+            margin-bottom: 30px;
+            }
+            .containers {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .main-heading {
+            color: white;
+            text-align: center;
+            margin: clamp(120px, 35%, 120px) 0 5% 0;
+        }
+
+        .search-container {
+        margin: 30px auto 3.75% auto ;
+        max-width: 600px;
+        }
+
+        input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        color: white;
+        border: 1px solid #ccc;
+        background-color: #252830;
+        }
+
+        input[type="text"]::placeholder {
+            color: #cccccce5;
+        }
+
+        .status-message {
+        margin: 20px 0;
+        font-size: 16px;
+        display: none;
+        font-weight: lighter;
+        }
+
+        .loader {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #252830;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin: 20px auto;
+        animation: spin 1s linear infinite;
+        display: none;
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* @media (max-width: 480px) {
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+        } */
+
+        .box {
+        background: #252830;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .box-title {
+        /* font-weight: bold; */
+        text-align: center;
+        padding-bottom: 15px;
+        }
+
+        .box:hover {
+        transform: translateY(-5px);
+        }
+
+        .chart-container {
+        margin: 30px auto;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+        }
+
+        .comment-section {
+        margin: 30px auto;
+        text-align: left;
+        font-size: 15px;
+        width: 90%;
+        }
+
+        .comment {
+        /* background: #252830; */
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        /* box-shadow: 0 0 5px rgba(0,0,0,0.1); */
+        }
+
+        .pagination-buttons {
+        text-align: center;
+        margin: 20px;
+        }
+
+        #prevBtn,
+        #nextBtn {
+        padding: 10px 20px;
+        margin: 0 10px;
+        cursor: pointer;
+        background-color: #3a3f4b;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        border: 1px solid #4dabf7;
+        }
+
+        #prevBtn:disabled,
+        #nextBtn:disabled {
+        background: #2528305e;
+        color: #ccc;
+        }
+
+        #nextBtn:hover,
+        #prevBtn:hover {
+            background-color: #4dabf7;
+            color: #131417;
+        }
+
+        .comment-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        .comment:hover{
+            background-color: #252830;
+        }
+
+        .comment-text {
+        flex: 1;
+        padding-right: 10px;
+        }
+
+        .sentiment-box {
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: bold;
+        color: white;
+        min-width: 90px;
+        text-align: center;
+        }
+
+        .sentiment-box.positive {
+        /* background-color: lightgreen;  */
+        color: lightgreen; /* #1b5e20 */
+        }
+
+        .sentiment-box.negative {
+        /* background-color: #ffcccc;  */
+        color: #ffcccc; /* #990000 */
+        }
+
+        .sentiment-box.neutral {
+        /* background-color: lightblue;  */
+        color: lightblue; /* #003366 */
+        }
+
+        .nav-links {
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            background-color: #3a3f4b;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid #4dabf7;
+        }
+
+        .nav-links a:hover {
+            background-color: #4dabf7;
+            color: #131417;
+        }
+
+    </style>
+
+    <h2 class="main-heading" style="text-align: center;">YouTube Comments Analyzer</h2>
+    <div class="search-container">
+        <input id="videoInput" type="text" placeholder="Paste Youtube Video URL or Video ID" />
+    </div>
+
+    <div id="processingContainer" style="display: none; text-align: center;">
+        <div class="loader" id="loader"></div>
+        <h2 class="status-message" id="statusMessage"></h2>
+    </div>
+
+    <div id="resultsContainer" style="display: none;">
+
+        <div class="metrics" id="metrics">
+            <div class="box"><div class="box-title">Total Comments</div><div id="metric-total" style="text-align: center;">0</div></div>
+            <div class="box"><div class="box-title">Unique Commenters</div><div id="metric-unique" style="text-align: center;">0</div></div>
+            <div class="box"><div class="box-title" aria-label="Average Comment Length">Average Length</div><div id="metric-length" style="text-align: center;">0 Words</div></div>
+            <div class="box"><div class="box-title" aria-label="Average Sentiment Score">Average Score</div><div id="metric-score" style="text-align: center;">0 / 10</div></div>
+        </div>
+
+        <h2 style="margin-top: 40px; text-align: center;">Sentiment Analysis Result</h2>
+        <div class="chart-container containers" id="chartArea">
+
+            <!-- Pie Chart -->
+            <div class="item-1">
+                <div class="Pie_chart">
+                    <h3 style="text-align: center;">Sentiments in Pie Chart</h3>
+                    <svg id="pie-chart-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto;"></svg>
+                </div>
+                <div class="tooltip1" id="tooltip1"></div>
+            </div>
+
+            <!-- Word Cloud -->
+            <div class="item-2">
+                <div id="word-cloud">
+                    <h3 style="text-align: center;">Comments WordCloud</h3>
+                </div>
+                <div class="tooltip" id="tooltip">
+                    <div class="tooltip-content">
+                        <div id="tooltip-word">Word</div>
+                        <div class="tooltip-line"></div>
+                        <div id="tooltip-frequency">Frequency</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sentiment Trend -->
+            <div class="item-3">
+                <div class="trend_chart">
+                    <h3 style="text-align: center;">Sentiment Trend Over Time</h3>
+                    <canvas id="trendChart">Your browser does not support the chart.</canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 style="margin-top: 40px; text-align: center;">Top 25 Comments with Sentiment</h2>
+        <div class="comment-section" id="commentSection"></div>
+
+        <div class="pagination-buttons">
+            <button onclick="renderComments(-1)" id="prevBtn" disabled>Previous</button>
+            <button onclick="renderComments(1)" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('adminDashboard') }}">Dashboard</a>
+    </div>
+
+<script>
+
+    // Data
+    let processed_comments = [];
+
+    // Update Dashboard Metrics
+    function updateMetrics() {
+        const total = processed_comments.length;
+        
+        if (total === 0) {
+            document.getElementById('metric-total').innerText = "0";
+            document.getElementById('metric-unique').innerText = "0";
+            document.getElementById('metric-length').innerText = "0 Words";
+            document.getElementById('metric-score').innerText = "0 / 10";
+            return;
+        }
+
+
+        // 1. Total Comments
+        document.getElementById('metric-total').innerText = total;
+
+
+        // 2. Unique Commenters (Using Set to remove duplicates)
+        const uniqueAuthors = new Set(processed_comments.map(c => c.AuthorID)).size;
+        document.getElementById('metric-unique').innerText = uniqueAuthors;
+
+
+        // 3. Average Length (Word Count)
+        const totalWords = processed_comments.reduce((acc, c) => {
+            // Split by space to count words
+            const wordCount = c.Original_Comment ? c.Original_Comment.trim().split(/\s+/).length : 0;
+            return acc + wordCount;
+        }, 0);
+        const avgLength = (totalWords / total).toFixed(1);
+        document.getElementById('metric-length').innerText = `${avgLength} Words`;
+
+
+        // 4. Average Sentiment Score (Weighted Average by Confidence Formula: Sum(Sentiment * Confidence) / TotalComments)
+        // Example: Positive(1) * 0.9 confidence = 0.9 contribution and Negative(-1) * 0.8 confidence = -0.8 contribution.
+        const totalWeightedSentiment = processed_comments.reduce((acc, c) => {
+            return acc + (c.sentiment * c.confidence);
+        }, 0);
+        const avgWeightedScore = totalWeightedSentiment / total; 
+
+        // Scaling Logic: ((Score * 5) + 5 i.e. -1 to 0, 0 to 5 and +1 to 10)
+        // avgWeightedScore ranges from -1.0 (Pure Confident Negative) to +1.0 (Pure Confident Positive)
+        const scaledScore = ((avgWeightedScore * 5) + 5).toFixed(2);
+        document.getElementById('metric-score').innerText = `${scaledScore} / 10`;
+    }
+
+    // Drow PIE CHART
+    function drawPieChart() {
+
+        // 1. Calculate Pie Chart Data
+        const total = processed_comments.length || 1; // avoid divide by zero
+        const chart_data = [
+            { label: "Positive", value: ((processed_comments.filter(c => c.sentiment === 1).length / total) * 100).toFixed(1) },
+            { label: "Negative", value: ((processed_comments.filter(c => c.sentiment === -1).length / total) * 100).toFixed(1) },
+            { label: "Neutral", value: ((processed_comments.filter(c => c.sentiment === 0).length / total) * 100).toFixed(1) }
+        ];
+
+        // 2. Config
+        const width1 = 400;
+        const height1 = 400;
+        const radius = Math.min(width1, height1) / 2;
+
+        // 3. Select the container or specific SVG and Clean the container if there's any existing content
+        const svgContainer = d3.select("#pie-chart-svg")
+        svgContainer.selectAll("*").remove();
+
+        // 4. Create Group Element
+        const svg = svgContainer
+            .append("g")
+            .attr("transform", `translate(${width1 / 2}, ${height1 / 2})`);
+        const color = d3.scaleOrdinal()
+            .domain(chart_data.map(d => d.label))
+            .range(["#8ec055", "#e57f2d", "#3f69bd"]);
+        const pie = d3.pie() // Calculates the angles for each slice based on the data values.
+            .value(d => d.value);
+        const arc = d3.arc() // Defines the shape of the slice (inner radius > 0 makes it a donut chart).
+            .innerRadius(0)
+            .outerRadius(radius - 10);
+        const tooltip1 = d3.select("#tooltip1");
+
+        // 5. Bind Data
+        const arcs = svg.selectAll("g.slice") // Drawing : It actually appends the path elements (the slices) to the screen and colors them based on the label.
+            .data(pie(chart_data))
+            .enter()
+            .append("g")
+            .attr("class", "slice");
+
+        // 6. Draw Pie Slices
+        arcs.append("path")
+            .attr("d", arc)
+            .attr("fill", d => color(d.data.label))
+            .attr("stroke", "white")
+            .attr("stroke-width", 3)
+            .attr("stroke-linejoin", "round")
+            .on("mouseover", (event, d) => { // Interactivity : It listens for mouse events. When you hover over a slice, it updates tooltip1 with the label and percentage.
+                tooltip1.style("display", "block") // It moves the tooltip to follow your mouse cursor.
+                    .html(`${d.data.label} : ${d.data.value}%`);
+            })
+            .on("mousemove", (event) => {
+                tooltip1
+                .style("left", `${Math.min(event.pageX + 10, window.innerWidth - 150)}px`)
+                .style("top", `${Math.min(event.pageY - 28, window.innerHeight - 50)}px`);
+            })
+            .on("mouseout", () => {
+                tooltip1.style("display", "none");
+            });
+
+        // 7. Draw Labels (Always-visible ₹ value inside each slice)
+        arcs.append("text")
+            .attr("transform", d => `translate(${arc.centroid(d)})`)
+            .attr("class", "label-text")
+            .text(d => d.data.label)
+            .style("text-anchor", "middle");
+    }
+    
+    // Drow WORD CLOUD
+    function drawWordCloud() {
+
+        // Calculate Word Cloud Data (Simple Frequency)
+        const allText = processed_comments.map(c => c.Processed_Comment).join(" ");
+        const words = allText.split(/\s+/);
+        const freqMap = {};
+        words.forEach(w => {
+            const cleanWord = w.toLowerCase().replace(/[^a-z0-9]/g, "");
+            if(cleanWord.length > 3) { // Filter short words
+                freqMap[cleanWord] = (freqMap[cleanWord] || 0) + 1;
+            }
+        });
+
+        // Convert map to array and take top 50 words
+        const word_cloud_data = Object.keys(freqMap)
+            .map(key => ({ text: key, size: 10 + freqMap[key] * 5 })) // Scale size
+            .sort((a, b) => b.size - a.size)
+            .slice(0, 100);
+
+        // 1. Config
+        const width = 600;
+        const height = 400;
+
+        // 2. Clear the container before drawing a new one. (This removes any existing SVG inside the div so they don't stack up)
+        d3.select("#word-cloud").selectAll("svg").remove();
+
+        // 3. Define the Draw Callback
+        function draw(word_cloud_data) { // runs after the layout algorithm finishes. It appends <text> elements to the SVG and sets the font size and color.
+            const svg = d3.select("#word-cloud")
+                .append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`)
+                .attr("preserveAspectRatio", "xMidYMid slice")
+                // .style("position", "absolute")
+                .style("top", "0")
+                .style("left", "0")
+                .style("width", "100%")
+                .style("height", "100%");
+
+            const g = svg.append("g")
+                .attr("transform", `translate(${width / 2},${height / 2})`);
+
+            // On Hover, Shows a tooltip with the exact frequency count and on click, Opens a Wikipedia page for the clicked word.
+            const tooltip = document.getElementById('tooltip');
+            const tooltipWord = document.getElementById('tooltip-word');
+            const tooltipFreq = document.getElementById('tooltip-frequency');
+
+            const wordGroups = g.selectAll(".word-group")
+                .data(word_cloud_data)
+                .enter()
+                .append("g")
+                .attr("class", "word-group")
+                .attr("transform", d => `translate(${d.x},${d.y}) rotate(${d.rotate})`)
+                .on("mouseover", function (event, d) {
+                    if(tooltip) {
+                        tooltipWord.textContent = d.text;
+                        tooltipFreq.textContent = (d.size-10)/5; // reverse calculation to get frequency
+                        tooltip.style.display = 'block';
+                    }
+                })
+                .on("mousemove", function (event) {
+                    if(tooltip) {
+                        tooltip.style.left = `${Math.min(event.pageX + 15, window.innerWidth - 150)}px`;
+                        tooltip.style.top = `${Math.min(event.pageY + 15, window.innerHeight - 50)}px`;
+                    }
+                })
+                .on("mouseleave", function () {
+                    if(tooltip) tooltip.style.display = 'none';
+                })
+                .on("click", function (event, d) {
+                    const url = "https://en.wikipedia.org/wiki/" + encodeURIComponent(d.text);
+                    window.open(url, "_blank");
+                });
+
+            wordGroups.append("text")
+                .attr("class", "word")
+                .style("font-size", d => `${d.size}px`)
+                .style("font-family", "Impact")
+                .style("fill", (_, i) => d3.schemeCategory10[i % 10])
+                .attr("text-anchor", "middle")
+                .text(d => d.text);
+
+            }
+
+        // 4. Construct the Layout
+        const layout = d3.layout.cloud() // takes the list of words and calculates where to place them so they don't overlap. It also randomly rotates some words 90 degrees.
+            .size([width, height])
+            .words(word_cloud_data.map(d => ({ text: d.text, size: d.size })))
+            .padding(5)
+            .rotate(() => ~~(Math.random() * 2) * 90) // 0 or 90 degrees
+            .font("Impact")
+            .fontSize(d => d.size)
+            .on("end", draw);
+            
+        // 5. Start the calculation
+        layout.start();
+    }
+
+    // Sentiment TREND CHART
+    let trendChartInstance = null; // Stores the current chart so we can destroy it later
+    function drawTrendChart() {
+
+        // 1. Data Processing Logic (Same as your original code)
+        const monthly = {};
+
+        // Safety check: ensure data exists
+        if(!processed_comments || processed_comments.length === 0) return;
+
+        processed_comments.forEach(( item ) => {
+            const month = item.timestamp.slice(0, 7);
+
+            if (!monthly[month]) monthly[month] = { '-1': 0, '0': 0, '1': 0, total: 0 };
+                monthly[month][item.sentiment] += 1;
+                monthly[month].total += 1;
+        });
+
+        const labels = Object.keys(monthly).sort();
+        const dataNegative = labels.map(m => (monthly[m][-1] / monthly[m].total) * 100);
+        const dataNeutral = labels.map(m => (monthly[m][0] / monthly[m].total) * 100);
+        const dataPositive = labels.map(m => (monthly[m][1] / monthly[m].total) * 100);
+        
+        const countsNegative = labels.map(m => monthly[m][-1]);
+        const countsNeutral = labels.map(m => monthly[m][0]);
+        const countsPositive = labels.map(m => monthly[m][1]);
+        const totals = labels.map(m => monthly[m].total);
+
+        // 2. Chart Cleanup (If a chart already exists, destroy it to free up the canvas)
+        if (trendChartInstance) {
+            trendChartInstance.destroy();
+        }
+
+        // 3. Create the New Chart
+        const ctx = document.getElementById('trendChart').getContext('2d');
+
+        // Save the new instance to our global variable
+        trendChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Positive ',
+                        data: dataPositive,
+                        borderColor: 'green',
+                        yAxisID: 'y',
+                        tension: 0,
+                        pointRadius: 4,
+                        counts: countsPositive,
+                        totals: totals
+                    },
+                    {
+                        label: 'Neutral ',
+                        data: dataNeutral,
+                        borderColor: 'gray',
+                        yAxisID: 'y',
+                        tension: 0,
+                        pointRadius: 4,
+                        counts: countsNeutral,
+                        totals: totals
+                    },
+                    {
+                        label: 'Negative ',
+                        data: dataNegative,
+                        borderColor: 'red',
+                        yAxisID: 'y',
+                        tension: 0,
+                        pointRadius: 4,
+                        counts: countsNegative,
+                        totals: totals
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                x: {
+                    type: 'time',
+                    time: { unit: 'month' },
+                    title: { color: 'white', display: true, text: 'Sentiment The Last Year', font: { size: 18 } },
+                    ticks: {color: 'white',font: { size: 14 }}
+                },
+                y: {
+                    title: { color: 'white', display: true, text: 'Percentage (%)', font: { size: 18 } },
+                    min: 0,
+                    max: 100,
+                    position: 'left',
+                    ticks: {color: 'white',font: { size: 14 }}
+                },
+                y1: {
+                    title: { color: 'white', display: true, text: 'Counting', font: { size: 18 } },
+                    position: 'right',
+                    grid: {drawOnChartArea: false},
+                    ticks: {color: 'white',font: { size: 14 }}
+                }
+                },
+                plugins: {
+                legend: { position: 'top' ,labels: {color: 'white'}},
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const date = tooltipItems[0].parsed.x;
+                            const options = { year: 'numeric', month: 'short' };
+                            return new Date(date).toLocaleDateString('en-US', options);
+                        },
+                        label: function(context) {
+                            const label = context.dataset.label || '';
+                            const percentage = context.raw.toFixed(1); // y contains %
+                            const count = context.dataset.counts?.[context.dataIndex] || 0;
+                            const total = context.dataset.totals?.[context.dataIndex] || 1;
+
+                            return `${label}: ${percentage}% - ${count}/${total}`;
+                        }
+                    }
+                },
+                zoom: {
+                    pan: { enabled: false, mode: 'x' },
+                    zoom: { wheel: { enabled: false }, pinch: { enabled: false }, mode: 'x' }
+                }
+                }
+            }
+            });
+    }
+
+    // COMMENTS PAGINATION
+    let currentPage = 0;
+    function renderComments(direction = 0) {
+
+        // SAFETY CHECK: If no data, do nothing
+        if (!processed_comments || processed_comments.length === 0) return;
+
+        const pageSize = 5;
+        currentPage += direction;
+
+        // Ensure currentPage doesn't go below 0
+        if (currentPage < 0) currentPage = 0;
+
+        const start = currentPage * pageSize;
+        const end = start + pageSize;
+
+        const commentHTML = processed_comments.slice(start, end).map((c, idx) => {
+
+            // 1. Map number sentiment to string class
+            let sentimentClass = "";
+            let sentimentText = "";
+            const absoluteIndex = start + idx + 1;
+
+            if (c.sentiment === 1) {
+                sentimentClass = "positive";
+                sentimentText = "Positive";
+            } else if (c.sentiment === -1) {
+                sentimentClass = "negative";
+                sentimentText = "Negative";
+            } else {
+                sentimentClass = "neutral";
+                sentimentText = "Neutral";
+            }
+
+            // 2. Format the text like "1. This is the comment..."
+            const displayText = `${absoluteIndex}. ${c.Original_Comment}`;
+
+            return `
+            <div class="comment">
+                <div class="comment-row">
+                <div class="comment-text">${displayText}</div>
+                <div class="sentiment-box ${sentimentClass}">${sentimentText}</div>
+                </div>
+            </div>
+            `;
+        }).join('');
+
+        document.getElementById("commentSection").innerHTML = commentHTML;
+        document.getElementById("prevBtn").disabled = currentPage === 0;
+        document.getElementById("nextBtn").disabled = end >= processed_comments.length;
+    }
+
+    // MAIN LOGIC
+    document.getElementById("videoInput").addEventListener("keypress", async function (e) {
+
+        // Run the main logic on Enter key press
+        if (e.key === "Enter") {
+
+            // Logic to extract the Video ID
+            const inputValue = this.value.trim();
+            if (!inputValue) return;
+            let videoId = null;
+            const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([\w-]{11})/;
+            const shortUrlRegex = /(?:https?:\/\/)?youtu\.be\/([\w-]{11})/;
+            const urlMatch = inputValue.match(youtubeRegex);
+            const shortUrlMatch = inputValue.match(shortUrlRegex);
+
+            if (urlMatch && urlMatch[1]) {
+                videoId = urlMatch[1]; // User pasted a full URL
+            } else if (shortUrlMatch && shortUrlMatch[1]) {
+                videoId = shortUrlMatch[1]; // User pasted a short URL
+            } else if (inputValue.length === 11) {
+                videoId = inputValue; // User likely pasted just the ID
+            }
+
+            if (videoId) {
+                    
+                // Show processing UI
+                document.getElementById("processingContainer").style.display = "block";
+                document.getElementById("loader").style.display = "block";
+                document.getElementById("statusMessage").style.display = "block";
+                document.getElementById("statusMessage").innerText = "Analyzing Video...";
+                document.getElementById("resultsContainer").style.display = "none";
+                document.getElementById("metrics").style.display = "none";
+        
+                // const FingerprintJS = await import('https://openfpcdn.io/fingerprintjs/v5') // FingerprintJS Open Source
+                const FingerprintJS = await import('https://fpjscdn.net/v3/WiLe8qnlR2HdOoQiX4A4'); // FingerprintJS Pro
+                const fp = await FingerprintJS.load({ region: "ap" });
+                const result = await fp.get();
+
+                // Call Endpoint (fetch comments from videoId and Perform Sentiment Analysis/Prediction)
+                fetch('/api/analyze_video', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'                    },
+                    body: JSON.stringify({ videoId: videoId, visitorId: result.visitorId })
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error("Analysis failed");
+                    return response.json();
+                })
+                .then(data => {
+                    // Update the global data variable directly with server response
+                    processed_comments = data;
+                    console.table(processed_comments);
+
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("statusMessage").style.fontWeight = 'bold';
+                    document.getElementById("statusMessage").style.fontSize = '24px';
+                    document.getElementById("statusMessage").innerText = "Sentiment Analysis Summary";
+
+                    // Render Visualizations
+                    updateMetrics();
+                    drawPieChart();
+                    drawWordCloud();
+                    drawTrendChart();
+                    
+                    // Reset pagination and Render Comments using the NEW data
+                    currentPage = 0; // when new video is analyzed without refreshing and new video has less comments than previous one
+                    renderComments(); 
+
+                    // Show results
+                    document.getElementById("resultsContainer").style.display = "block";
+                    document.getElementById("metrics").style.display = "grid";
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("statusMessage").innerText = "Error analyzing video. Please try again.";
+                });
+            } else {
+                alert("Please enter a valid YouTube URL or Video ID.");
+            }
+        }
+    });
+</script>
+
+{% endblock content %}

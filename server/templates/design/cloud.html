@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments WordCloud</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-cloud/build/d3.layout.cloud.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 205vh;
+            background: #131417;
+        }
+
+        #word-cloud {
+            width: 800px;
+            height: 660px;
+            align-items:self-end;
+            border: 2px dashed #ccc;
+            background-color: #252830;
+        }
+
+        .tooltip {
+            position: absolute;
+            pointer-events: none;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            display: none;
+            z-index: 1000;
+            font-family: sans-serif;
+            backdrop-filter: blur(5px);
+        }
+
+        .tooltip-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tooltip-line {
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            margin: 0.25rem 0;
+        }
+
+        .word {
+            position: relative;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+
+        .word-group {
+            cursor: pointer;
+        }
+
+        .word-bg {
+            fill: currentColor;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .word-group:hover .word-bg {
+            opacity: 0.05;
+            filter: drop-shadow(0 0 6px white);
+        }
+
+        .word-group:hover .word {
+            filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.445));
+        }
+    </style>
+</head>
+    <body>
+        
+        <div id="word-cloud"><h1 style="color: white; text-align: center; margin: 10px 0;">Comments WordCloud</h1></div>
+        
+        <div class="tooltip" id="tooltip">
+            <div class="tooltip-content">
+                <div id="tooltip-word">Word</div>
+                <div class="tooltip-line"></div>
+                <div id="tooltip-frequency">Frequency</div>
+            </div>
+        </div>
+
+        <script>
+const words = [
+    { text: "AI", size: 120 },
+    { text: "Machine Learning", size: 115 },
+    { text: "Deep Learning", size: 110 },
+    { text: "Data Science", size: 108 },
+    { text: "Python", size: 106 },
+    { text: "Neural Networks", size: 104 },
+    { text: "Large Language Models", size: 102 },
+    { text: "Generative AI", size: 100 },
+    { text: "Natural Language Processing", size: 98 },
+    { text: "Computer Vision", size: 96 },
+    { text: "Statistics", size: 94 },
+    { text: "Big Data", size: 92 },
+    { text: "TensorFlow", size: 90 },
+    { text: "PyTorch", size: 88 },
+    { text: "Scikit-learn", size: 86 },
+    { text: "Keras", size: 84 },
+    { text: "Pandas", size: 82 },
+    { text: "NumPy", size: 80 },
+    { text: "Matplotlib", size: 78 },
+    { text: "Seaborn", size: 76 },
+    { text: "Jupyter", size: 74 },
+    { text: "Model Deployment", size: 72 },
+    { text: "Model Evaluation", size: 70 },
+    { text: "Supervised Learning", size: 68 },
+    { text: "Unsupervised Learning", size: 66 },
+    { text: "Reinforcement Learning", size: 64 },
+    { text: "Classification", size: 62 },
+    { text: "Regression", size: 60 },
+    { text: "Clustering", size: 58 },
+    { text: "Feature Engineering", size: 56 },
+    { text: "Dimensionality Reduction", size: 54 },
+    { text: "Principal Component Analysis", size: 52 },
+    { text: "Overfitting", size: 50 },
+    { text: "Underfitting", size: 48 },
+    { text: "Bias", size: 46 },
+    { text: "Variance", size: 44 },
+    { text: "Cross-validation", size: 42 },
+    { text: "Hyperparameter Tuning", size: 40 },
+    { text: "Grid Search", size: 39 },
+    { text: "Random Search", size: 38 },
+    { text: "ROC Curve", size: 37 },
+    { text: "Confusion Matrix", size: 36 },
+    { text: "Precision", size: 35 },
+    { text: "Recall", size: 34 },
+    { text: "F1 Score", size: 33 },
+    { text: "Accuracy", size: 32 },
+    { text: "AUC", size: 31 },
+    { text: "Epochs", size: 30 },
+    { text: "Batch Size", size: 29 },
+    { text: "Learning Rate", size: 28 },
+    { text: "Loss Function", size: 27 },
+    { text: "Activation Function", size: 26 },
+    { text: "Dropout", size: 25 },
+    { text: "Backpropagation", size: 24 },
+    { text: "Gradient Descent", size: 23 },
+    { text: "Convolutional Neural Networks", size: 22 },
+    { text: "Recurrent Neural Networks", size: 21 },
+    { text: "LSTM", size: 20 },
+    { text: "Transformer", size: 19 },
+    { text: "BERT", size: 18 },
+    { text: "GPT", size: 17 },
+    { text: "Autoencoder", size: 16 },
+    { text: "GANs", size: 15 },
+    { text: "Zero-shot Learning", size: 14 },
+    { text: "Few-shot Learning", size: 13 },
+    { text: "Prompt Engineering", size: 12 },
+    { text: "Explainable AI", size: 11 },
+    { text: "SHAP", size: 10 },
+    { text: "LIME", size: 10 },
+    { text: "Data Cleaning", size: 91 },
+    { text: "Data Wrangling", size: 19 },
+    { text: "Data Preprocessing", size: 19 },
+    { text: "ETL", size: 18 },
+    { text: "SQL", size: 81 },
+    { text: "NoSQL", size: 18 },
+    { text: "MongoDB", size: 71 },
+    { text: "Hadoop", size: 17 },
+    { text: "Spark", size: 71 },
+    { text: "Cloud Computing", size: 16 },
+    { text: "AWS", size: 61 },
+    { text: "GCP", size: 16 },
+    { text: "Azure", size: 16 },
+    { text: "Docker", size: 15 },
+    { text: "Kubernetes", size: 51 },
+    { text: "CI/CD", size: 51 },
+    { text: "MLOps", size: 41 },
+    { text: "Version Control", size: 41 },
+    { text: "Git", size: 41 },
+    { text: "OpenCV", size: 41 },
+    { text: "Time Series", size: 31 },
+    { text: "ARIMA", size: 31 },
+    { text: "Anomaly Detection", size: 31 },
+    { text: "Recommendation Systems", size: 31 },
+    { text: "Collaborative Filtering", size: 21 },
+    { text: "Content-based Filtering", size: 21 },
+    { text: "Semantic Search", size: 21 },
+    { text: "Vector Database", size: 11 },
+    { text: "FAISS", size: 11 }
+];
+
+const width = 800;
+const height = 600;
+
+const layout = d3.layout.cloud()
+    .size([width, height])
+    .words(words)
+    .padding(5)
+    .rotate(() => ~~(Math.random() * 2) * 90) // 0 or 90 degrees
+    .font("Impact")
+    .fontSize(d => d.size)
+    .on("end", draw);
+
+layout.start();
+
+function draw(words) {
+    const svg = d3.select("#word-cloud")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    const g = svg.append("g")
+        .attr("transform", `translate(${width / 2},${height / 2})`);
+
+    const tooltip = document.getElementById('tooltip');
+    const tooltipWord = document.getElementById('tooltip-word');
+    const tooltipFreq = document.getElementById('tooltip-frequency');
+
+const wordGroups = g.selectAll(".word-group")
+    .data(words)
+    .enter()
+    .append("g")
+    .attr("class", "word-group")
+    .attr("transform", d => `translate(${d.x},${d.y}) rotate(${d.rotate})`)
+    .on("mouseover", function (event, d) {
+        tooltipWord.textContent = d.text;
+        tooltipFreq.textContent = d.size;
+        tooltip.style.display = 'block';
+    })
+    .on("mousemove", function (event) {
+        tooltip.style.left = `${event.pageX + 15}px`;
+        tooltip.style.top = `${event.pageY + 15}px`;
+    })
+    .on("mouseleave", function () {
+        tooltip.style.display = 'none';
+    })
+    .on("click", function (event, d) {
+        const url = "https://en.wikipedia.org/wiki/" + encodeURIComponent(d.text);
+        window.open(url, "_blank");
+    });
+
+wordGroups.append("text")
+    .attr("class", "word")
+    .style("font-size", d => `${d.size}px`)
+    .style("font-family", "Impact")
+    .style("fill", (_, i) => d3.schemeCategory10[i % 10])
+    .attr("text-anchor", "middle")
+    .text(d => d.text);
+
+}
+        </script>
+    </body>
+</html>

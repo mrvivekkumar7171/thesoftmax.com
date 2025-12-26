@@ -3,3 +3,11 @@ new.ipynb
 main.py
 cookies.txt
 liked_music.json
+# Ignore instance files
+instance/
+# Ignore Flask session files
+flask_session/
+# Ignore environment variables file
+.env
+__pycache__/
+.vscode/

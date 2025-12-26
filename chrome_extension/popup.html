@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TheSoftMax.com</title>
+  <style>
+    /* Dark Theme */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 5px;
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      margin: 0;
+      box-sizing: border-box;
+      width: 620px; /* Set a width that fits the Chrome extension popup */
+    }
+    h1 {
+      font-size: 20px;
+      color: #f1f1f1;
+    }
+    .section {
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-weight: bold;
+      align-items: center;
+      align-self: center;
+      text-align: center;
+      color: #0099ff;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    #reportstatus {
+      align-items: center;
+      align-self: center;
+      text-align: center;
+    }
+    .comment-list {
+      list-style: none;
+      padding: 0;
+    }
+    .comment-item {
+      margin: 8px 0;
+      padding: 8px;
+      background-color: #444;
+      border-radius: 4px;
+    }
+    .comment-sentiment {
+      font-weight: bold;
+      color: #f1f1f1;
+    }
+    /* Image Styling */
+    img {
+      width: 100%;
+    }
+    /* Metrics Styling */
+    .metrics-container {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .metric {
+      width: 48%;
+      background-color: #444;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .metric-title {
+      font-size: 12px;
+      color: #f1f1f1;
+    }
+    .metric-value {
+      font-size: 22px;
+      font-weight: bold;
+      color: #f1f1f1;
+      margin-top: 5px;
+    }
+    #status { 
+      font-weight: bold; 
+      margin: 10px; 
+    }
+
+/* Make items align horizontally */
+.extension-header {
+  display: flex;
+  align-items: center;
+  padding: 0px 8px 8px 8px;
+}
+
+/* Keep logo + name grouped on the left */
+.extension-header .button-container {
+  margin-right: auto; /* pushes everything else away to the right */
+}
+
+/* Button styling */
+.extension-header .button-container button {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Logo fixes */
+.extension-header .button-container img {
+  width: 28px;
+  height: 28px;
+  margin-right: 6px;
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+
+/* "The SoftMax" text */
+.extension-header .logo {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #f1f1f1;
+}
+
+/* Center Video ID */
+.extension-header #videoid {
+  margin: 0 auto; /* centers this element */
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.extension-header {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+/* CENTER (Video ID) */
+.extension-header #videoid {
+  text-align: center; /* centers text */
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+
+.extension-header #userstatus {
+  padding-left: 10px;
+  text-align: right; /* aligns text to the right */
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.extension-header #userstatus:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.extension-header #reloadExt {
+  background:none;
+  border:none;
+  cursor:pointer;
+  text-align: right;
+}
+
+.extension-header #closeExt {
+  text-align: right;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+  </style>
+</head>
+<body>
+
+  <div class="extension-header">
+
+    <div class="button-container">
+      <button id="openSite">
+        <img src="https://thesoftmax.com/assets/images/favicon/favicon.png" alt="thesoftmax's logo">
+        <!-- <h2 class="logo">The SoftMax</h2> -->
+      </button>
+    </div>
+
+    <div id="videoid"></div>
+
+    <div id="closeExt" title="Close Extension"><img src="icons/cross.svg" width="50" height="50"></div>
+    
+    <div id="reloadExt" title="Reload Extension"><img src="icons/reload.svg" width="30" height="30"></div>
+    
+    <div id="userstatus" title="User Status"><img src="icons/user.svg" width="50" height="50"></div>
+    
+  </div>
+
+  <div id="reportstatus"></div>
+  <div id="output" class="section"></div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

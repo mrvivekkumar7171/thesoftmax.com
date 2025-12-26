@@ -1,0 +1,118 @@
+<!-- https://svelte.dev/playground/20adb7678797430185a61dbb47fce3f9?version=5.36.4 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sentiments in Pie Chart</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 40px;
+      background: #131417;
+    }
+
+    .tooltip1 {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 5px;
+      pointer-events: none;
+      font-size: 18px;
+      display: none;
+    }
+
+    svg {
+      overflow: visible;
+    }
+
+    .label-text {
+      font-size: 16px;
+      fill: white;
+      pointer-events: none;
+      font-weight: bold;
+    }
+
+    .Pie_chart {
+      display: inline-block;
+      border: 2px dashed #ccc;
+      padding: 20px;
+      background-color: #252830;
+    }
+  </style>
+</head>
+<body>
+  <div class="Pie_chart">
+    <h1 style="color: white;">Sentiments in Pie Chart</h1>
+    <svg width1="400" height1="400"></svg>
+  </div>
+  <div class="tooltip1" id="tooltip1"></div>
+
+  <script>
+    const data = [
+      { label: "Positive", value: 65 },
+      { label: "Negative", value: 25 },
+      { label: "Neutral", value: 10 }
+    ];
+
+    const width1 = 400;
+    const height1 = 400;
+    const radius = Math.min(width1, height1) / 2;
+
+    const svg = d3.select("svg")
+      .attr("width", width1)
+      .attr("height", height1)
+      .append("g")
+      .attr("transform", `translate(${width1 / 2}, ${height1 / 2})`);
+
+    const color = d3.scaleOrdinal()
+      .domain(data.map(d => d.label))
+      .range(["#8ec055", "#e57f2d", "#3f69bd"]);
+
+    const pie = d3.pie()
+      .value(d => d.value);
+
+    const arc = d3.arc()
+      .innerRadius(0)
+      .outerRadius(radius - 10);
+
+    const tooltip1 = d3.select("#tooltip1");
+
+    const arcs = svg.selectAll("g.slice")
+      .data(pie(data))
+      .enter()
+      .append("g")
+      .attr("class", "slice");
+
+    // Draw pie slices
+    arcs.append("path")
+      .attr("d", arc)
+      .attr("fill", d => color(d.data.label))
+      .attr("stroke", "white")
+      .attr("stroke-width", 3)
+      .attr("stroke-linejoin", "round")
+      .on("mouseover", (event, d) => {
+        tooltip1.style("display", "block")
+              .html(`${d.data.label} : ${d.data.value}%`);
+      })
+      .on("mousemove", (event) => {
+        tooltip1
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 28) + "px");
+      })
+      .on("mouseout", () => {
+        tooltip1.style("display", "none");
+      });
+
+    // Always-visible ₹ value inside each slice
+    arcs.append("text")
+      .attr("transform", d => `translate(${arc.centroid(d)})`)
+      .attr("class", "label-text")
+      .text(d => d.data.label)
+      .style("text-anchor", "middle");
+  </script>
+</body>
+</html>
