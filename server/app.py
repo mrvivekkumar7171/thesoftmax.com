@@ -20,6 +20,11 @@ matplotlib.use('Agg')  # Use non-interactive backend before importing pyplot
 
 
 load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_USERNAME = os.getenv("DATABASE_USERNAME")
+DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
+DATABASE_NAME = os.getenv("DATABASE_NAME")
 MODE = os.getenv('MODE')
 if MODE == "TEST":
     RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID_TEST')
@@ -37,7 +42,7 @@ if not secret_key:
         f.write(f"\nSECRET_KEY={secret_key}")
 app = Flask(__name__)
 app.config["SECRET_KEY"]=secret_key
-app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///database.db" # "sqlite:///ums.sqlite"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_URL}/{DATABASE_NAME}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config["SESSION_PERMANENT"]=True
 app.config["SESSION_TYPE"]='filesystem'
@@ -603,6 +608,7 @@ def analyze_video():
             return jsonify({"error": "No Video ID or Visitor ID provided"}), 400
         if not db_obj.check_user_device(session['user_id'], visitorId):
             return jsonify({"error": "Request from unknown device"}), 400
+        db_obj.update_user_credits(session['user_id'], amount=1, service_name='SATYA')
         
     elif session.get('admin_id'):
         video_id = data.get('videoId')

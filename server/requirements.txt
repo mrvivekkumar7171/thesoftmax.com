@@ -21,3 +21,4 @@ flask
 uvicorn
 requests
 dotenv
+pymysql

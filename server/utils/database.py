@@ -265,7 +265,7 @@ class Database():
         else:
             return False
 
-    def update_user_credits(self, user_id, amount = 0.01, service_name = 'SATYA'):
+    def update_user_credits(self, user_id, amount = 1, service_name = 'SATYA'):
         user = User.query.filter_by(user_id=user_id).first()
         if user:
             user.user_credits -= Decimal(str(amount))
