@@ -361,21 +361,21 @@ Solve a business problem — A data scientist’s strength lies in their abi
                     <!--========== EXPERIENCE ==========-->
                     <section class="experience section" id="experience">
                         <h2 class="section-title">Projects</h2>
-
+                    
                         <div class="experience__container bd-grid">
-
+                    
                             <div class="experience__content">
                                 <div class="experience__time">
                                     <span class="experience__rounder"></span>
                                     <span class="experience__line"></span>
                                 </div>
                                 <div class="experience__data bd-grid">
-                                    <h3 class="experience__title"><a href="https://github.com/mrvivekkumar7171/satya" target="_blank" style="color: inherit;">Satya</a></h3>
-                                    <span class="experience__company">Data Science & Machine Learning</span>
-                                    <p class="experience__description">A software solution that analyzes data from Indian and US stock markets and cryptocurrencies. It uses machine learning to rank stocks and performs sentiment analysis from social media and news, providing investors with valuable insights and rankings.</p>
+                                    <h3 class="experience__title"><a href="https://github.com/mrvivekkumar7171/satya" target="_blank" style="color: inherit;">Satya: Sentiment Analyser</a></h3>
+                                    <span class="experience__company">End-to-End MLOps & Production Engineering</span>
+                                    <p class="experience__description">Developed an end-to-end sentiment analysis pipeline deployed on AWS using MLOps best practices. Set up a centralized MLflow Tracking Server on AWS EC2 backed by an S3 artifact store for model lineage and Optuna hyperparameter optimization. Implemented strict data and pipeline versioning via DVC using an S3 remote registry. The production-ready backend is built with FastAPI/Flask and fully containerized with Docker, featuring automated image building and pushes to AWS ECR. Designed a robust CI/CD pipeline in GitHub Actions that runs automated testing (Pytest), handles automatic model promotion from staging to production, and updates configurations via a GitHub Action Bot commit. Finally, engineered high-availability cloud infrastructure utilizing an AWS Auto Scaling Group (ASG), an Application Load Balancer (ALB), and automated rolling updates via AWS CodeDeploy.</p>
                                 </div>
                             </div>
-
+                    
                             <div class="experience__content">
                                 <div class="experience__time">
                                     <span class="experience__rounder"></span>
@@ -383,35 +383,51 @@ Solve a business problem — A data scientist’s strength lies in their abi
                                 </div>
                                 <div class="experience__data bd-grid">
                                     <h3 class="experience__title"><a href="https://github.com/mrvivekkumar7171/uber-demand-prediction" target="_blank" style="color: inherit;">Uber Demand Prediction</a></h3>
-                                    <span class="experience__company">Machine Learning & Predictive Modeling</span>
-                                    <p class="experience__description">Developed a predictive model to forecast Uber ride demand across different regions and timeframes. Leveraged historical trip data to build machine learning algorithms that identify patterns, ultimately aiding in the optimization of driver allocation and fleet management.</p>
+                                    <span class="experience__company">Unsupervised Learning & Time Series Forecasting</span>
+                                    <p class="experience__description">Built a scalable system to forecast ride-hailing demand in New York City to optimize driver positioning and earnings. Handled a massive multi-million row dataset using Dask for efficient parallel processing and chunked model training. Applied Unsupervised Learning via Mini-Batch KMeans Clustering to dynamically break down NYC into spatial regions represented by cluster centroids, factoring a 15-minute travel radius (1 mile) as the optimal time-space interval. For each clustered zone, processed historical pick-up trends through Time Series Analysis and trained optimized Regression Models to predict incoming ride requests. Hyperparameter tuning was driven by Optuna, using MAPE as the primary metric to address spatial scale biases. Final demand metrics were successfully projected onto map visualizations to clearly isolate high-density hotspots.</p>
                                 </div>
                             </div>
-
+                    
                             <div class="experience__content">
                                 <div class="experience__time">
                                     <span class="experience__rounder"></span>
                                     <span class="experience__line"></span>
                                 </div>
                                 <div class="experience__data bd-grid">
-                                    <h3 class="experience__title"><a href="https://github.com/mrvivekkumar7171/hybrid-recommender-system" target="_blank" style="color: inherit;">Hybrid Recommender System</a></h3>
-                                    <span class="experience__company">Recommendation Engines</span>
-                                    <p class="experience__description">Designed and implemented a hybrid recommendation system that combines content-based filtering and collaborative filtering techniques. The system is engineered to solve the cold-start problem and deliver highly personalized suggestions to improve user engagement.</p>
+                                    <h3 class="experience__title"><a href="https://github.com/mrvivekkumar7171/hybrid-recommender-system" target="_blank" style="color: inherit;">Spotify Hybrid Recommendation System</a></h3>
+                                    <span class="experience__company">Recommendation Engines & Parallel Computing</span>
+                                    <p class="experience__description">Engineered a dual-engine recommendation platform utilizing the Million Song Dataset (Spotify/Last.fm) aimed at driving user retention, improving Click-Through Rates (CTR), and minimizing churn. Implemented a Content-Based Filtering engine using track metadata attributes alongside an Item-Based Collaborative Filtering system powered by user-item interaction matrices. Combined both similarity channels via a Weighted Hybrid approach, utilizing multi-dimensional Cosine Similarity measures to output the top 10 recommended tracks while mitigating cold-start limitations. Managed large-scale data matrix evaluations out-of-core using Dask parallel computing architectures, configuring a decoupled setup across a Client task graph generator, a Dask Scheduler, and parallelized worker compute threads.</p>
                                 </div>
                             </div>
                     
-                            <!-- Project 4: Swiggy Delivery Time Prediction -->
                             <div class="experience__content">
                                 <div class="experience__time">
                                     <span class="experience__rounder"></span>
-                                    <!-- <span class="experience__line"></span> -->
-                                </div>
+                                    </div>
                                 <div class="experience__data bd-grid">
                                     <h3 class="experience__title"><a href="https://github.com/mrvivekkumar7171/swiggy_delivery_time_prediction" target="_blank" style="color: inherit;">Swiggy Delivery Time Prediction</a></h3>
-                                    <span class="experience__company">Regression & Operations Optimization</span>
-                                    <p class="experience__description">Built a machine learning regression model to accurately estimate food delivery times for Swiggy. The project involved analyzing variables such as geographical distance, order volume, and traffic patterns to optimize delivery operations and enhance customer satisfaction.</p>
+                                    <span class="experience__company">Regression Analytics & Business Optimization</span>
+                                    <p class="experience__description">Designed a supervised machine learning regression model to accurately forecast food delivery ETAs in minutes, targeted at improving business performance indicators like Customer Satisfaction (CSAT) and Customer Lifetime Value (CLV). Extracted and engineered predictive features mapping delivery rider demographics, vehicle profiles, real-time traffic density profiles, city classification types, active holidays, weather variables, and spatial distance matrices between restaurants and drop-off points. Validated model performance natively using RMSE and MAE to preserve direct interpretability in minutes over squared errors. Structured the deployment configuration to handle automated input validations directly on the API endpoint, removing downstream infrastructure dependencies.</p>
                                 </div>
                             </div>
+                        </div>
+                    </section>
+                    
+                    <section class="certificate section" id="certificates">
+                        <h2 class="section-title">Certificates and Degrees</h2>
+                    
+                        <div class="certificate__container bd-grid">
+                            
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Data Science Mentorship Program (DSMP) 2.0 (2026)</h3>
+                                <p class="certificate__description">Successfully completed a rigorous, 2-year end-to-end Machine Learning and Data Science program by CampusX (Issued on 03 June 2026). Mastered advanced statistical modeling, advanced unsupervised and supervised pipelines, production-grade MLOps deployment architectures, and industry best practices for building robust corporate AI solutions.</p>
+                            </div>
+                    
+                            <div class="certificate__content">
+                                <h3 class="certificate__title">Bachelor of Computer Applications (BCA)</h3>
+                                <p class="certificate__description">Graduated with a Bachelor's degree from Indira Gandhi National Open University (IGNOU), establishing a strong foundation in core computer science subjects, programming systems, logical structures, and standard software development practices.</p>
+                            </div>
+                    
                         </div>
                     </section>
 
