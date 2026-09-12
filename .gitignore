@@ -11,3 +11,4 @@ flask_session/
 .env
 __pycache__/
 .vscode/
+thesoftmax.txt
