@@ -1,7 +1,7 @@
 {
   "name": "The SoftMax",
   "short_name": "SoftMax",
-  "start_url": "./index.html",
+  "start_url": "./music.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
