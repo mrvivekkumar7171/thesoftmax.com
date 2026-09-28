@@ -429,21 +429,32 @@
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
       try {
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
         const response = await fetch(form.action, {
           method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, subject, message })
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
         });
 
-        if (response.ok) {
+        const result = await response.json();
+
+        if (response.ok && result.success) {
           form.reset();
           successMsg.style.display = 'block';
           errorMsg.style.display = 'none';
           submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
         } else {
-          throw new Error('Form submission failed');
+          console.error('Submission error:', result);
+          throw new Error(result.message || 'Form submission failed');
         }
       } catch (err) {
+        console.error('Fetch error:', err);
         errorMsg.style.display = 'block';
         successMsg.style.display = 'none';
         submitBtn.disabled = false;
