@@ -248,19 +248,6 @@
       hamburger.classList.toggle('open', open);
       hamburger.setAttribute('aria-expanded', open);
     });
-
-    document.querySelectorAll('a[target="_blank"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const url = this.getAttribute('href');
-        if (url && url.startsWith('http')) {
-          e.preventDefault();
-          const win = window.open(url, '_blank', 'noopener,noreferrer');
-          if (!win || win.closed || typeof win.closed === 'undefined') {
-            window.location.href = url;
-          }
-        }
-      });
-    });
   </script>
 </body>
 </html>

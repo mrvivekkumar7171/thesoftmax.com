@@ -12,7 +12,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="BlockBloom — Jewel Block Puzzle Game">
   <meta property="og:description" content="A relaxing, tactile block placement puzzle game with vibrant bloom cascades. Play offline, dark theme by default.">
-  <meta property="og:image" content="https://thesoftmax.com/assets/5.jpg">
+  <meta property="og:image" content="https://thesoftmax.com/assets/blockbloom_3.png">
   <meta property="og:url" content="https://thesoftmax.com/blockbloom.html">
   <meta property="og:type" content="product">
 
@@ -125,23 +125,21 @@
         </div>
 
         <!-- Right: Mobile Device Mockup Showcase -->
-        <div>
-          <div class="screenshot-showcase">
-            <!-- Screen 1: Gameplay / Line Clear -->
-            <div class="device-frame offset-top">
-              <div class="device-notch"></div>
-              <div class="device-screen">
-                <img src="assets/5.jpg" alt="BlockBloom Gameplay Screenshot - Drag and Drop Jewel Blocks" loading="eager">
-              </div>
-            </div>
-
-            <!-- Screen 2: Combo / High Score / Menu -->
-            <div class="device-frame offset-bottom">
-              <div class="device-notch"></div>
-              <div class="device-screen">
-                <img src="assets/6.jpg" alt="BlockBloom Board State &amp; Bloom Combos Screenshot" loading="eager">
-              </div>
-            </div>
+        <div class="product-hero-showcase">
+          <div class="product-hero-mockup-wrap">
+            <img id="heroMockupImg" src="assets/blockbloom_2.png" alt="BlockBloom Android Game - Dynamic Duo Showcase" class="product-hero-img" loading="eager">
+          </div>
+          <!-- View Switcher -->
+          <div class="mockup-view-switcher" role="tablist" aria-label="Mockup View Selector">
+            <button type="button" class="mockup-tab" data-src="assets/blockbloom_1.png" data-alt="BlockBloom Android Game - Solo Showcase">
+              <i class="fas fa-mobile-screen"></i> Solo View
+            </button>
+            <button type="button" class="mockup-tab active" data-src="assets/blockbloom_2.png" data-alt="BlockBloom Android Game - Dynamic Duo Showcase">
+              <i class="fas fa-clone"></i> Duo View
+            </button>
+            <button type="button" class="mockup-tab" data-src="assets/blockbloom_3.png" data-alt="BlockBloom Android Game - Trio Panoramic Showcase">
+              <i class="fas fa-layer-group"></i> Trio View
+            </button>
           </div>
         </div>
 
@@ -208,22 +206,42 @@
           <p style="max-width:520px;margin:16px auto 0;">Experience the aesthetic and gameplay interface captured directly from real device sessions.</p>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;max-width:900px;margin:0 auto;">
+        <div class="preview-showcase-grid">
           
-          <div class="card" style="padding:16px;text-align:center;">
-            <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-glass);box-shadow:0 12px 30px rgba(0,0,0,0.6);">
-              <img src="assets/5.jpg" alt="BlockBloom Puzzle Board View" style="width:100%;height:auto;display:block;">
+          <!-- Mockup 1: Solo Device -->
+          <div class="card preview-card">
+            <div class="preview-img-container">
+              <img src="assets/blockbloom_1.png" alt="BlockBloom Solo View - Clean 8x8 Jewel Board" class="preview-img" loading="lazy">
             </div>
-            <h4 style="margin-top:18px;margin-bottom:6px;">Dynamic Board &amp; Jewel Blocks</h4>
-            <p style="font-size:0.88rem;">Intuitive touch controls allow effortless dragging and precise block snapping on the 8x8 grid.</p>
+            <div class="preview-card-body">
+              <span class="badge badge-pink" style="margin-bottom:10px;"><i class="fas fa-shapes"></i> Solo Device View</span>
+              <h4>Precision Polyomino Grid</h4>
+              <p>Intuitive touch controls allow effortless polyomino dragging and precise block snapping on the 8x8 jewel grid with 0 distraction.</p>
+            </div>
           </div>
 
-          <div class="card" style="padding:16px;text-align:center;">
-            <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-glass);box-shadow:0 12px 30px rgba(0,0,0,0.6);">
-              <img src="assets/6.jpg" alt="BlockBloom Streak and High Score Showcase" style="width:100%;height:auto;display:block;">
+          <!-- Mockup 2: Duo Perspective -->
+          <div class="card preview-card">
+            <div class="preview-img-container">
+              <img src="assets/blockbloom_2.png" alt="BlockBloom Dual View - High Scores &amp; Combos" class="preview-img" loading="lazy">
             </div>
-            <h4 style="margin-top:18px;margin-bottom:6px;">High Score &amp; Streak Mastery</h4>
-            <p style="font-size:0.88rem;">Track personal bests, earn achievement badges, and beat your own records round after round.</p>
+            <div class="preview-card-body">
+              <span class="badge badge-cyan" style="margin-bottom:10px;"><i class="fas fa-bolt"></i> Dual Angle View</span>
+              <h4>Streak Multipliers &amp; 60 FPS</h4>
+              <p>Chain consecutive clears to trigger flower bloom combos, rack up multiplier points, and chase personal high scores round after round.</p>
+            </div>
+          </div>
+
+          <!-- Mockup 3: Trio Panorama -->
+          <div class="card preview-card">
+            <div class="preview-img-container">
+              <img src="assets/blockbloom_3.png" alt="BlockBloom Trio View - Pure Dark Theme Flow" class="preview-img" loading="lazy">
+            </div>
+            <div class="preview-card-body">
+              <span class="badge badge-purple" style="margin-bottom:10px;"><i class="fas fa-moon"></i> Panoramic Trio View</span>
+              <h4>OLED Dark Theme Immersion</h4>
+              <p>Engineered exclusively in dark mode to prevent eye strain during late-night play, conserve OLED battery life, and maximize fluid responsiveness.</p>
+            </div>
           </div>
 
         </div>
@@ -348,6 +366,26 @@
       const open = navMobile.classList.toggle('open');
       hamburger.classList.toggle('open', open);
       hamburger.setAttribute('aria-expanded', open);
+    });
+
+    // Mockup View Switcher (Solo / Duo / Trio)
+    const heroMockupImg = document.getElementById('heroMockupImg');
+    const mockupTabs = document.querySelectorAll('.mockup-tab');
+    mockupTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        mockupTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const newSrc = tab.getAttribute('data-src');
+        const newAlt = tab.getAttribute('data-alt');
+        if (heroMockupImg && newSrc) {
+          heroMockupImg.style.opacity = '0';
+          setTimeout(() => {
+            heroMockupImg.src = newSrc;
+            if (newAlt) heroMockupImg.alt = newAlt;
+            heroMockupImg.style.opacity = '1';
+          }, 150);
+        }
+      });
     });
   </script>
 </body>

@@ -1,8 +1,9 @@
-liked_music.csv
-new.ipynb
-main.py
-cookies.txt
-liked_music.json
+songs/cookies.txt
+songs/liked_music.csv
+songs/liked_music.json
+songs/main.py
+songs/new.ipynb
+songs/thesoftmax.txt
 # Ignore instance files
 instance/
 # Ignore Flask session files
@@ -11,4 +12,3 @@ flask_session/
 .env
 __pycache__/
 .vscode/
-thesoftmax.txt
