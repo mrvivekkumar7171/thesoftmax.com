@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlockBloom — Relaxing Jewel Block Puzzle Game | TheSoftMax</title>
+  <meta name="description" content="BlockBloom is a relaxing, jewel-infused block puzzle game for Android. Clear lines, trigger bloom cascades, play offline, and enjoy sleek dark-mode gameplay.">
+  <meta name="keywords" content="BlockBloom, Block Puzzle, Android Game, Jewel Puzzle, Offline Game, Dark Mode Puzzle, TheSoftMax">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BlockBloom — Jewel Block Puzzle Game">
+  <meta property="og:description" content="A relaxing, tactile block placement puzzle game with vibrant bloom cascades. Play offline, dark theme by default.">
+  <meta property="og:image" content="https://thesoftmax.com/assets/5.jpg">
+  <meta property="og:url" content="https://thesoftmax.com/blockbloom.html">
+  <meta property="og:type" content="product">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">
+          <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+        </div>
+        <span class="nav-logo-text">The<span>SoftMax</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="software.html" class="active">Software</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="software.html" class="active">Software</a>
+    <a href="contact.html">Contact</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ── Product Hero ───────────────────────────────────── -->
+    <section class="product-hero">
+      <div class="grid-bg"></div>
+      <div class="orb orb-cyan" style="width:550px;height:550px;top:-150px;left:-100px;opacity:0.45;position:absolute;"></div>
+      <div class="orb orb-purple" style="width:500px;height:500px;top:20%;right:-150px;opacity:0.4;position:absolute;"></div>
+
+      <div class="product-hero-grid" style="position:relative;z-index:2;">
+        
+        <!-- Left: Product Info -->
+        <div>
+          <div class="product-badges">
+            <span class="badge badge-pink"><i class="fas fa-shapes"></i> Puzzle Game</span>
+            <span class="badge badge-green"><i class="fab fa-android"></i> Android</span>
+            <span class="badge badge-cyan"><i class="fas fa-moon"></i> Dark Theme Only</span>
+            <span class="badge badge-purple"><i class="fas fa-wifi-slash"></i> Offline Ready</span>
+          </div>
+
+          <h1 class="product-title">
+            Clear lines.<br>
+            Trigger combos.<br>
+            <span class="gradient-text">Watch it Bloom.</span>
+          </h1>
+
+          <p class="product-desc">
+            <strong>BlockBloom</strong> is an elegantly crafted jewel block puzzle game designed for pure relaxation and mental sharpening. Drop colorful polyomino blocks onto the grid, complete full rows or columns, and ignite cascading bloom combos — without timers, pressure, or eye strain.
+          </p>
+
+          <div class="product-cta-group">
+            <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" class="btn-playstore">
+              <i class="fab fa-google-play"></i>
+              <div class="btn-playstore-text">
+                <span class="sub">Get it on</span>
+                <span class="main">Google Play</span>
+              </div>
+            </a>
+
+            <a href="#features" class="btn btn-secondary">
+              <i class="fas fa-sparkles"></i> Explore Features
+            </a>
+          </div>
+
+          <!-- Quick Stat Bullets -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px;">
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Category</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Block Puzzle</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Connectivity</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">100% Offline</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">User Login</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Optional / Guest</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Mobile Device Mockup Showcase -->
+        <div>
+          <div class="screenshot-showcase">
+            <!-- Screen 1: Gameplay / Line Clear -->
+            <div class="device-frame offset-top">
+              <div class="device-notch"></div>
+              <div class="device-screen">
+                <img src="assets/5.jpg" alt="BlockBloom Gameplay Screenshot - Drag and Drop Jewel Blocks" loading="eager">
+              </div>
+            </div>
+
+            <!-- Screen 2: Combo / High Score / Menu -->
+            <div class="device-frame offset-bottom">
+              <div class="device-notch"></div>
+              <div class="device-screen">
+                <img src="assets/6.jpg" alt="BlockBloom Board State &amp; Bloom Combos Screenshot" loading="eager">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Why You Will Love BlockBloom ───────────────────── -->
+    <section class="section" id="features" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:50px;">
+          <div class="section-label"><i class="fas fa-gem"></i> Core Mechanics</div>
+          <h2>Designed for flow.<br><span class="gradient-text">Engineered for relaxation.</span></h2>
+          <p style="max-width:540px;margin:16px auto 0;">No countdown timers. No paywalls. Just soothing, rhythmic puzzle action that respects your pace and focus.</p>
+        </div>
+
+        <div class="feature-grid">
+          
+          <div class="card animate-fade-up">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#ec4899,#7c3aed);"><i class="fas fa-shapes" style="color:white;"></i></div>
+            <h3>Satisfying Block Placement</h3>
+            <p style="margin-top:10px;">Drag diverse polyomino block shapes into the grid. Plan ahead, create clearance opportunities, and watch full horizontal and vertical lines vanish in vibrant bursts.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-1">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fas fa-fire-flame-curved" style="color:white;"></i></div>
+            <h3>Combo &amp; Streak Multipliers</h3>
+            <p style="margin-top:10px;">Clear multiple lines in a single placement or maintain consecutive line-clearing streaks to rack up explosive combo multipliers and push your high score to new limits.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-2">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#00d4ff,#7c3aed);"><i class="fas fa-moon" style="color:white;"></i></div>
+            <h3>Native Dark Theme Aesthetic</h3>
+            <p style="margin-top:10px;">True dark background with jewel-toned contrasts. Designed from day one to protect your vision at night, avoid blinding white glare, and conserve OLED battery power.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-3">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#10b981,#00d4ff);"><i class="fas fa-plane-departure" style="color:white;"></i></div>
+            <h3>Full Offline Support</h3>
+            <p style="margin-top:10px;">Play anywhere, anytime — on airplanes, subways, road trips, or during network outages. Your game state and personal best scores are saved safely on your device.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-4">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#7c3aed,#ec4899);"><i class="fas fa-user-check" style="color:white;"></i></div>
+            <h3>Optional Login &amp; Guest Mode</h3>
+            <p style="margin-top:10px;">Jump straight into gameplay as a guest with zero sign-ups. If you want cross-device cloud sync, you can optionally sign in — with full control to delete your account anytime.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#f59e0b,#ec4899);"><i class="fas fa-fire" style="color:white;"></i></div>
+            <h3>Satisfying Combos &amp; Streaks</h3>
+            <p style="margin-top:10px;">Clear multiple rows and columns in consecutive moves to trigger flower bloom effects, rack up streak multipliers, and set new personal bests.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Full Screenshot Showcase Gallery ───────────────── -->
+    <section class="section">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:50px;">
+          <div class="section-label"><i class="fas fa-camera"></i> In-Game Preview</div>
+          <h2>Crisp visuals. <span class="gradient-text">Fluid animations.</span></h2>
+          <p style="max-width:520px;margin:16px auto 0;">Experience the aesthetic and gameplay interface captured directly from real device sessions.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;max-width:900px;margin:0 auto;">
+          
+          <div class="card" style="padding:16px;text-align:center;">
+            <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-glass);box-shadow:0 12px 30px rgba(0,0,0,0.6);">
+              <img src="assets/5.jpg" alt="BlockBloom Puzzle Board View" style="width:100%;height:auto;display:block;">
+            </div>
+            <h4 style="margin-top:18px;margin-bottom:6px;">Dynamic Board &amp; Jewel Blocks</h4>
+            <p style="font-size:0.88rem;">Intuitive touch controls allow effortless dragging and precise block snapping on the 8x8 grid.</p>
+          </div>
+
+          <div class="card" style="padding:16px;text-align:center;">
+            <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-glass);box-shadow:0 12px 30px rgba(0,0,0,0.6);">
+              <img src="assets/6.jpg" alt="BlockBloom Streak and High Score Showcase" style="width:100%;height:auto;display:block;">
+            </div>
+            <h4 style="margin-top:18px;margin-bottom:6px;">High Score &amp; Streak Mastery</h4>
+            <p style="font-size:0.88rem;">Track personal bests, earn achievement badges, and beat your own records round after round.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Technical & Privacy Transparency ───────────────── -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container-narrow">
+        <div style="text-align:center; margin-bottom:40px;">
+          <div class="section-label"><i class="fas fa-circle-info"></i> Product Specifications</div>
+          <h2>Built with <span class="gradient-text">developer integrity</span></h2>
+          <p style="margin-top:12px;">Full clarity on how BlockBloom operates, handles user data, and delivers updates.</p>
+        </div>
+
+        <div class="specs-card">
+          <div class="specs-grid">
+            <div class="spec-item">
+              <span class="label">App Name</span>
+              <span class="val">BlockBloom</span>
+            </div>
+            <div class="spec-item">
+              <span class="label">Platform</span>
+              <span class="val"><i class="fab fa-android" style="color:#34d399;"></i> Android 8.0+</span>
+            </div>
+            <div class="spec-item">
+              <span class="label">Price</span>
+              <span class="val">100% Free</span>
+            </div>
+            <div class="spec-item">
+              <span class="label">Internet</span>
+              <span class="val">Offline Capable</span>
+            </div>
+            <div class="spec-item">
+              <span class="label">User Login</span>
+              <span class="val">Optional (Guest OK)</span>
+            </div>
+            <div class="spec-item">
+              <span class="label">Account Deletion</span>
+              <span class="val">1-Click in Settings</span>
+            </div>
+            <div class="spec-item">
+              <span class="label">Telemetry</span>
+              <span class="val">Crashlytics &amp; Vitals</span>
+            </div>
+            <div class="spec-item">
+              <span class="label">Monetization</span>
+              <span class="val">Google AdMob (Compliant)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Call to Action ─────────────────────────────────── -->
+    <section class="section" style="position:relative;overflow:hidden;">
+      <div class="container-narrow" style="text-align:center;position:relative;z-index:2;">
+        <h2>Ready to <span class="gradient-text">Bloom</span>?</h2>
+        <p style="max-width:480px;margin:16px auto 32px;">Download BlockBloom today on your Android device and immerse yourself in serene, jewel-block puzzle bliss.</p>
+        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+          <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" class="btn-playstore">
+            <i class="fab fa-google-play"></i>
+            <div class="btn-playstore-text">
+              <span class="sub">Free on</span>
+              <span class="main">Google Play</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-badge">
+            <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+          </div>
+          <span class="nav-logo-text">The<span>SoftMax</span></span>
+        </a>
+        <p>&copy; <span id="year">2026</span> TheSoftMax. All rights reserved.</p>
+        <div class="made-in-india">Made with <span class="heart">❤</span> in India</div>
+      </div>
+
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="software.html">All Software</a></li>
+            <li><a href="blockbloom.html">BlockBloom Game</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+  </script>
+</body>
+</html>
+

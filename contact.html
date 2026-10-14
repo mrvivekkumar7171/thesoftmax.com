@@ -87,7 +87,9 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
-        <div class="nav-logo-icon">S<span style="font-size:0.6rem;font-weight:400;display:block;line-height:0.6;margin-top:-1px;opacity:0.7;">max</span></div>
+        <div class="nav-logo-badge">
+          <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+        </div>
         <span class="nav-logo-text">The<span>SoftMax</span></span>
       </a>
       <ul class="nav-links">
@@ -133,53 +135,13 @@
           <!-- Left: Info -->
           <div>
             <h2 style="margin-bottom:8px;">Get in <span class="gradient-text">touch</span></h2>
-            <p style="margin-bottom:28px;">We're a solo data scientist operation — responses may take a few days, but every message is read personally.</p>
-
-            <div class="contact-info-item">
-              <div class="contact-info-icon"><i class="fas fa-globe" style="color:white;"></i></div>
-              <div class="contact-info-text">
-                <h4>Website</h4>
-                <p><a href="https://thesoftmax.com" style="color:var(--accent-cyan);">thesoftmax.com</a></p>
-              </div>
-            </div>
-
-            <div class="contact-info-item">
-              <div class="contact-info-icon" style="background:linear-gradient(135deg,#7c3aed,#ec4899);"><i class="fas fa-code" style="color:white;"></i></div>
-              <div class="contact-info-text">
-                <h4>Built With</h4>
-                <p>HTML · CSS · JavaScript · GitHub Pages</p>
-              </div>
-            </div>
-
-            <div class="contact-info-item">
-              <div class="contact-info-icon" style="background:linear-gradient(135deg,#10b981,#00d4ff);"><i class="fas fa-shield-halved" style="color:white;"></i></div>
-              <div class="contact-info-text">
-                <h4>Privacy Note</h4>
-                <p>This contact form uses Formspree to deliver your message. No data is stored by TheSoftMax.</p>
-              </div>
-            </div>
+            <p style="margin-bottom:28px;">Have feedback, ideas, or questions about our applications? Every message is read personally.</p>
 
             <div class="contact-info-item">
               <div class="contact-info-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fas fa-clock" style="color:white;"></i></div>
               <div class="contact-info-text">
                 <h4>Response Time</h4>
                 <p>Usually within 2–5 business days</p>
-              </div>
-            </div>
-
-            <!-- Quick links -->
-            <div style="margin-top:32px;">
-              <h4 style="color:var(--text-muted);font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Quick Links</h4>
-              <div style="display:flex;flex-direction:column;gap:8px;">
-                <a href="software.html" style="display:flex;align-items:center;gap:10px;color:var(--text-secondary);font-size:0.9rem;padding:10px 14px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;transition:var(--transition);" onmouseover="this.style.borderColor='rgba(0,212,255,0.3)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border-glass)';this.style.color='var(--text-secondary)'">
-                  <i class="fas fa-grid-2" style="color:var(--accent-cyan);width:16px;"></i> View all software
-                </a>
-                <a href="privacy.html" style="display:flex;align-items:center;gap:10px;color:var(--text-secondary);font-size:0.9rem;padding:10px 14px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;transition:var(--transition);" onmouseover="this.style.borderColor='rgba(0,212,255,0.3)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border-glass)';this.style.color='var(--text-secondary)'">
-                  <i class="fas fa-file-shield" style="color:var(--accent-cyan);width:16px;"></i> Privacy Policy
-                </a>
-                <a href="terms.html" style="display:flex;align-items:center;gap:10px;color:var(--text-secondary);font-size:0.9rem;padding:10px 14px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;transition:var(--transition);" onmouseover="this.style.borderColor='rgba(0,212,255,0.3)';this.style.color='var(--text-primary)'" onmouseout="this.style.borderColor='var(--border-glass)';this.style.color='var(--text-secondary)'">
-                  <i class="fas fa-file-contract" style="color:var(--accent-cyan);width:16px;"></i> Terms of Service
-                </a>
               </div>
             </div>
           </div>
@@ -200,37 +162,37 @@
                 <input type="hidden" name="redirect" value="https://thesoftmax.com/contact.html">
 
                 <div class="form-group">
-                  <label class="form-label" for="name">Your Name <span style="color:var(--accent-pink);">*</span></label>
-                  <input class="form-input" type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name">
+                  <label class="form-label" for="name">Your Name <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(Optional)</span></label>
+                  <input class="form-input" type="text" id="name" name="name" placeholder="Anonymous or your name" autocomplete="name">
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="email">Email Address <span style="color:var(--accent-pink);">*</span></label>
-                  <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+                  <label class="form-label" for="email">Email Address <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(Optional — for a reply)</span></label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com (optional)" autocomplete="email">
                 </div>
 
                 <div class="form-group">
                   <label class="form-label" for="subject">Subject <span style="color:var(--accent-pink);">*</span></label>
                   <select class="form-input form-select" id="subject" name="subject" required>
                     <option value="" disabled selected>Select a topic...</option>
+                    <option value="Feedback / Idea">Feedback / Idea</option>
                     <option value="Bug Report">Bug Report</option>
                     <option value="Feature Request">Feature Request</option>
-                    <option value="General Feedback">General Feedback</option>
-                    <option value="Legal / Privacy">Legal / Privacy Query</option>
-                    <option value="Collaboration">Collaboration</option>
-                    <option value="Other">Other</option>
+                    <option value="Account & Data Deletion">Account & Data Deletion</option>
+                    <option value="Privacy / Legal">Privacy / Legal Query</option>
+                    <option value="General Question">General Question</option>
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label" for="message">Message <span style="color:var(--accent-pink);">*</span></label>
-                  <textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                  <textarea class="form-input form-textarea" id="message" name="message" placeholder="An idea, a little hiccup, or something you love? We're listening!" required></textarea>
                 </div>
 
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
                   <input type="checkbox" id="privacyConsent" name="privacyConsent" style="width:16px;height:16px;accent-color:var(--accent-cyan);" required>
                   <label for="privacyConsent" style="font-size:0.83rem;color:var(--text-secondary);cursor:pointer;">
-                    I understand this form is delivered via Formspree and agree to the <a href="privacy.html">Privacy Policy</a>.
+                    I agree that my message may be processed for support.
                   </label>
                 </div>
 
@@ -266,61 +228,31 @@
         <div class="card">
           <div class="faq-item">
             <div class="faq-question">
-              <h4>Do you really collect zero data?</h4>
+              <h4>Can I send feedback anonymously?</h4>
               <i class="fas fa-chevron-down faq-icon"></i>
             </div>
             <div class="faq-answer">
-              <p>Yes, absolutely. Our applications are serverless — there is no backend server to send data to. The only data stored is in your browser's <code>localStorage</code> for preferences (like volume level), and it never leaves your device. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+              <p>Yes. Both your name and email address are completely optional in our feedback form. If you would like a reply, you can optionally include your email.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <div class="faq-question">
-              <h4>Why do you need a Privacy Policy if you collect no data?</h4>
+              <h4>How do I report a bug or suggest an idea?</h4>
               <i class="fas fa-chevron-down faq-icon"></i>
             </div>
             <div class="faq-answer">
-              <p>App stores like Google Play Store and the Apple App Store require a Privacy Policy URL for all app submissions — even if the app collects no data. This page exists to satisfy that requirement and to be transparent about how our apps work.</p>
+              <p>Select "Bug Report" or "Feature Request" in the form above and let us know what happened or what you'd love to see. Every message is read personally.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <div class="faq-question">
-              <h4>Can I install your apps on my phone?</h4>
+              <h4>Are your apps free to download?</h4>
               <i class="fas fa-chevron-down faq-icon"></i>
             </div>
             <div class="faq-answer">
-              <p>Yes! Our apps are built as Progressive Web Apps (PWAs). On Android, open the app in Chrome and tap "Add to Home Screen." On iOS/Safari, tap the share icon and select "Add to Home Screen." The app will behave like a native app.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <h4>I found a bug. How do I report it?</h4>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-              <p>Use the contact form above and select "Bug Report" as the subject. Please describe what you were doing, what you expected to happen, and what actually happened. Include your browser and device if possible. We'll investigate and fix it as soon as we can.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <h4>Are your apps free?</h4>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-              <p>Yes. All current TheSoftMax applications are completely free to use with no ads, no subscriptions, and no in-app purchases. We may add optional features in the future, but the core experience will always remain free.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <h4>What technologies do you use?</h4>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-              <p>TheSoftMax apps are built with pure HTML, CSS, and JavaScript — no frameworks, no build tools, no backend. We use the Web APIs available natively in modern browsers, including the Media Session API, Service Worker API, and localStorage. Apps are hosted on GitHub Pages with a custom domain.</p>
+              <p>Yes. Our applications and games are free to install and enjoy on modern devices.</p>
             </div>
           </div>
         </div>
@@ -333,40 +265,39 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="nav-logo">
-          <div class="nav-logo-icon">S<span style="font-size:0.6rem;font-weight:400;display:block;line-height:0.6;margin-top:-1px;opacity:0.7;">max</span></div>
+          <div class="nav-logo-badge">
+            <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+          </div>
           <span class="nav-logo-text">The<span>SoftMax</span></span>
         </a>
-        <p>Serverless, privacy-first software crafted by a data scientist — built for people who value simplicity and intelligence.</p>
+        <p>&copy; <span id="year">2026</span> TheSoftMax. All rights reserved.</p>
+        <div class="made-in-india">Made with <span class="heart">❤</span> in India</div>
       </div>
-      <div class="footer-col">
-        <h5>Product</h5>
-        <ul>
-          <li><a href="software.html">All Software</a></li>
-          <li><a href="software.html#player">Music Player</a></li>
-          <li><a href="software.html#blockbloom">BlockBloom Game</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> TheSoftMax. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="contact.html">Contact</a>
+
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="software.html">All Software</a></li>
+            <li><a href="blockbloom.html">BlockBloom Game</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </footer>
@@ -413,15 +344,21 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Basic validation
+      // Feedback text is mandatory; name & email are optional
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value.trim();
       const consent = document.getElementById('privacyConsent').checked;
 
-      if (!name || !email || !subject || !message || !consent) {
-        alert('Please fill in all required fields and accept the privacy consent.');
+      if (!message) {
+        alert('Please enter your feedback message.');
+        document.getElementById('message').focus();
+        return;
+      }
+
+      if (!consent) {
+        alert('Please accept the privacy consent checkbox to continue.');
         return;
       }
 
@@ -430,6 +367,15 @@
 
       try {
         const formData = new FormData(form);
+        if (!formData.get('name') || !formData.get('name').trim()) {
+          formData.set('name', 'Anonymous User');
+        }
+        if (!formData.get('email') || !formData.get('email').trim()) {
+          formData.set('email', 'anonymous@thesoftmax.com');
+        }
+        if (!formData.get('subject')) {
+          formData.set('subject', 'Feedback');
+        }
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
 
