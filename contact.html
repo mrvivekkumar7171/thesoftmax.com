@@ -116,100 +116,89 @@
   <div class="page-content">
 
     <!-- Hero -->
-    <div class="inner-hero" style="position:relative;">
+    <div class="inner-hero contact-hero" style="position:relative;">
       <div class="grid-bg"></div>
       <div class="orb orb-cyan" style="width:400px;height:400px;top:-150px;right:-100px;opacity:0.4;position:absolute;"></div>
       <div class="orb orb-purple" style="width:350px;height:350px;top:-100px;left:-80px;opacity:0.3;position:absolute;"></div>
       <div style="position:relative;z-index:1;">
         <div class="section-label"><i class="fas fa-envelope"></i> Contact</div>
         <h1>Let's <span class="gradient-text">connect</span></h1>
-        <p>Have a question about our software, found a bug, or want to share feedback? We'd love to hear from you.</p>
+        <p>Have a question and any ideas about our software, found a bug, or want to share feedback? We'd love to hear from you.</p>
       </div>
     </div>
 
     <!-- Contact Section -->
-    <section class="section">
-      <div class="container">
-        <div class="contact-grid">
+    <section class="section contact-section">
+      <div class="container-narrow">
+        <div class="contact-wrap">
 
-          <!-- Left: Info -->
-          <div>
-            <h2 style="margin-bottom:8px;">Get in <span class="gradient-text">touch</span></h2>
-            <p style="margin-bottom:28px;">Have feedback, ideas, or questions about our applications? Every message is read personally.</p>
+          <!-- Form Card -->
+          <div class="card contact-card">
+            <h3 style="margin-bottom:24px;">Send a message</h3>
 
-            <div class="contact-info-item">
-              <div class="contact-info-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fas fa-clock" style="color:white;"></i></div>
-              <div class="contact-info-text">
-                <h4>Response Time</h4>
-                <p>Usually within 2–5 business days</p>
-              </div>
-            </div>
-          </div>
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="c3e22b25-3de7-48da-b07a-3a43331638ca">
+              <input type="hidden" name="redirect" value="https://thesoftmax.com/contact.html">
 
-          <!-- Right: Form -->
-          <div>
-            <div class="card" style="padding:32px;">
-              <h3 style="margin-bottom:24px;">Send a message</h3>
-
-              <!-- 
-                NOTE: This form uses Formspree for delivery.
-                Replace YOUR_FORM_ID below with your actual Formspree endpoint.
-                Get one free at https://formspree.io
-                Alternatively, replace with mailto: or any other static form service.
-              -->
-              <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="c3e22b25-3de7-48da-b07a-3a43331638ca">
-                <input type="hidden" name="redirect" value="https://thesoftmax.com/contact.html">
-
+              <div class="form-row-2col">
                 <div class="form-group">
                   <label class="form-label" for="name">Your Name <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(Optional)</span></label>
-                  <input class="form-input" type="text" id="name" name="name" placeholder="Anonymous or your name" autocomplete="name">
+                  <input class="form-input" type="text" id="name" name="name" placeholder="Your Name" autocomplete="name">
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="email">Email Address <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(Optional — for a reply)</span></label>
-                  <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com (optional)" autocomplete="email">
+                  <label class="form-label" for="email">Email Address <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(Optional)</span></label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
                 </div>
+              </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="subject">Subject <span style="color:var(--accent-pink);">*</span></label>
-                  <select class="form-input form-select" id="subject" name="subject" required>
-                    <option value="" disabled selected>Select a topic...</option>
-                    <option value="Feedback / Idea">Feedback / Idea</option>
-                    <option value="Bug Report">Bug Report</option>
-                    <option value="Feature Request">Feature Request</option>
-                    <option value="Account & Data Deletion">Account & Data Deletion</option>
-                    <option value="Privacy / Legal">Privacy / Legal Query</option>
-                    <option value="General Question">General Question</option>
-                  </select>
-                </div>
+              <div class="form-group">
+                <label class="form-label" for="subject">Subject <span style="color:var(--accent-pink);">*</span></label>
+                <select class="form-input form-select" id="subject" name="subject" required>
+                  <option value="" disabled selected>Select a topic...</option>
+                  <option value="Feedback / Idea">Feedback / Idea</option>
+                  <option value="Bug Report">Bug Report</option>
+                  <option value="Feature Request">Feature Request</option>
+                  <option value="Account & Data Deletion">Account & Data Deletion</option>
+                  <option value="Privacy / Legal">Privacy / Legal Query</option>
+                  <option value="General Question">General Question</option>
+                </select>
+              </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="message">Message <span style="color:var(--accent-pink);">*</span></label>
-                  <textarea class="form-input form-textarea" id="message" name="message" placeholder="An idea, a little hiccup, or something you love? We're listening!" required></textarea>
-                </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Message <span style="color:var(--accent-pink);">*</span></label>
+                <textarea class="form-input form-textarea" id="message" name="message" placeholder="An idea, a little hiccup, or something you love? We're listening!" required></textarea>
+              </div>
 
-                <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
-                  <input type="checkbox" id="privacyConsent" name="privacyConsent" style="width:16px;height:16px;accent-color:var(--accent-cyan);" required>
-                  <label for="privacyConsent" style="font-size:0.83rem;color:var(--text-secondary);cursor:pointer;">
-                    I agree that my message may be processed for support.
-                  </label>
-                </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+                <input type="checkbox" id="privacyConsent" name="privacyConsent" style="width:16px;height:16px;accent-color:var(--accent-cyan);" required>
+                <label for="privacyConsent" style="font-size:0.83rem;color:var(--text-secondary);cursor:pointer;">
+                  I agree that my message may be processed for support.
+                </label>
+              </div>
 
-                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="submitBtn">
-                  <i class="fas fa-paper-plane"></i> Send Message
-                </button>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
 
-                <div id="successMsg">
-                  <h4>✅ Message sent!</h4>
-                  <p>Thank you for reaching out. We'll get back to you within a few days.</p>
-                </div>
+              <div id="successMsg">
+                <h4>✅ Message sent!</h4>
+                <p>Thank you for reaching out. We'll get back to you within a few days.</p>
+              </div>
 
-                <div id="errorMsg" style="display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius-sm);padding:14px;margin-top:16px;text-align:center;">
-                  <p style="font-size:0.9rem;color:#f87171;margin:0;">⚠️ Something went wrong. Please try again!</p>
-                </div>
+              <div id="errorMsg" style="display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius-sm);padding:14px;margin-top:16px;text-align:center;">
+                <p style="font-size:0.9rem;color:#f87171;margin:0;">⚠️ Something went wrong. Please try again!</p>
+              </div>
 
-              </form>
+            </form>
+          </div>
+
+          <!-- Response Time Box -->
+          <div class="contact-response-box">
+            <div class="contact-info-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fas fa-clock" style="color:white;"></i></div>
+            <div class="contact-info-text">
+              <h4>Response Time</h4>
+              <p>Usually within 2–5 business days</p>
             </div>
           </div>
 

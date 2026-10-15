@@ -101,25 +101,35 @@
                 <span class="main">Google Play</span>
               </div>
             </a>
-
-            <a href="#features" class="btn btn-secondary">
-              <i class="fas fa-sparkles"></i> Explore Features
-            </a>
           </div>
 
           <!-- Quick Stat Bullets -->
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px;">
             <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">App Name</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">BlockBloom</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Platform</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;"><i class="fab fa-android" style="color:#34d399;"></i> Android 8.0+</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
               <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Category</div>
               <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Block Puzzle</div>
             </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px;">
             <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
               <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Connectivity</div>
-              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">100% Offline</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Offline Capable</div>
             </div>
             <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
               <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">User Login</div>
-              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Optional / Guest</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Optional</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Price</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">100% Free</div>
             </div>
           </div>
         </div>
@@ -127,7 +137,7 @@
         <!-- Right: Mobile Device Mockup Showcase -->
         <div class="product-hero-showcase">
           <div class="product-hero-mockup-wrap">
-            <img id="heroMockupImg" src="assets/blockbloom_2.png" alt="BlockBloom Android Game - Dynamic Duo Showcase" class="product-hero-img" loading="eager">
+            <img id="heroMockupImg" src="assets/blockbloom_2.png" alt="BlockBloom Android Game - Dynamic Duo Showcase" class="product-hero-img view-duo" loading="eager">
           </div>
           <!-- View Switcher -->
           <div class="mockup-view-switcher" role="tablist" aria-label="Mockup View Selector">
@@ -172,12 +182,12 @@
           <div class="card animate-fade-up delay-2">
             <div class="feature-icon" style="background: linear-gradient(135deg,#00d4ff,#7c3aed);"><i class="fas fa-moon" style="color:white;"></i></div>
             <h3>Native Dark Theme Aesthetic</h3>
-            <p style="margin-top:10px;">True dark background with jewel-toned contrasts. Designed from day one to protect your vision at night, avoid blinding white glare, and conserve OLED battery power.</p>
+            <p style="margin-top:10px;">True dark background with jewel-toned contrasts. Designed from day one to protect your vision at night, avoid blinding white glare, and conserve OLED battery power and maximize fluid responsiveness.</p>
           </div>
 
           <div class="card animate-fade-up delay-3">
             <div class="feature-icon" style="background: linear-gradient(135deg,#10b981,#00d4ff);"><i class="fas fa-plane-departure" style="color:white;"></i></div>
-            <h3>Full Offline Support</h3>
+            <h3>Offline Support</h3>
             <p style="margin-top:10px;">Play anywhere, anytime — on airplanes, subways, road trips, or during network outages. Your game state and personal best scores are saved safely on your device.</p>
           </div>
 
@@ -186,129 +196,26 @@
             <h3>Optional Login &amp; Guest Mode</h3>
             <p style="margin-top:10px;">Jump straight into gameplay as a guest with zero sign-ups. If you want cross-device cloud sync, you can optionally sign in — with full control to delete your account anytime.</p>
           </div>
+          
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#00d4ff,#7c3aed);"><i class="fas fa-mobile-screen" style="color:white;"></i></div>
+            <h3>Precision Polyomino Grid</h3>
+            <p style="margin-top:10px;">Intuitive touch controls allow effortless polyomino dragging and precise block snapping on the 8x8 jewel grid with 0 distraction.</p>
+          </div>
 
           <div class="card animate-fade-up delay-5">
-            <div class="feature-icon" style="background: linear-gradient(135deg,#f59e0b,#ec4899);"><i class="fas fa-fire" style="color:white;"></i></div>
+            <div class="feature-icon" style="background: linear-gradient(135deg,#10b981,#00d4ff);"><i class="fas fa-hand-holding-heart" style="color:white;"></i></div>
             <h3>Satisfying Combos &amp; Streaks</h3>
             <p style="margin-top:10px;">Clear multiple rows and columns in consecutive moves to trigger flower bloom effects, rack up streak multipliers, and set new personal bests.</p>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Full Screenshot Showcase Gallery ───────────────── -->
-    <section class="section">
-      <div class="container">
-        <div style="text-align:center; margin-bottom:50px;">
-          <div class="section-label"><i class="fas fa-camera"></i> In-Game Preview</div>
-          <h2>Crisp visuals. <span class="gradient-text">Fluid animations.</span></h2>
-          <p style="max-width:520px;margin:16px auto 0;">Experience the aesthetic and gameplay interface captured directly from real device sessions.</p>
-        </div>
-
-        <div class="preview-showcase-grid">
-          
-          <!-- Mockup 1: Solo Device -->
-          <div class="card preview-card">
-            <div class="preview-img-container">
-              <img src="assets/blockbloom_1.png" alt="BlockBloom Solo View - Clean 8x8 Jewel Board" class="preview-img" loading="lazy">
-            </div>
-            <div class="preview-card-body">
-              <span class="badge badge-pink" style="margin-bottom:10px;"><i class="fas fa-shapes"></i> Solo Device View</span>
-              <h4>Precision Polyomino Grid</h4>
-              <p>Intuitive touch controls allow effortless polyomino dragging and precise block snapping on the 8x8 jewel grid with 0 distraction.</p>
-            </div>
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#f59e0b,#ec4899);"><i class="fas fa-gauge-high" style="color:white;"></i></div>
+            <h3>Streak Multipliers &amp; 60 FPS</h3>
+            <p style="margin-top:10px;">Chain consecutive clears to trigger flower bloom combos, rack up multiplier points, and chase personal high scores round after round.</p>
           </div>
 
-          <!-- Mockup 2: Duo Perspective -->
-          <div class="card preview-card">
-            <div class="preview-img-container">
-              <img src="assets/blockbloom_2.png" alt="BlockBloom Dual View - High Scores &amp; Combos" class="preview-img" loading="lazy">
-            </div>
-            <div class="preview-card-body">
-              <span class="badge badge-cyan" style="margin-bottom:10px;"><i class="fas fa-bolt"></i> Dual Angle View</span>
-              <h4>Streak Multipliers &amp; 60 FPS</h4>
-              <p>Chain consecutive clears to trigger flower bloom combos, rack up multiplier points, and chase personal high scores round after round.</p>
-            </div>
-          </div>
 
-          <!-- Mockup 3: Trio Panorama -->
-          <div class="card preview-card">
-            <div class="preview-img-container">
-              <img src="assets/blockbloom_3.png" alt="BlockBloom Trio View - Pure Dark Theme Flow" class="preview-img" loading="lazy">
-            </div>
-            <div class="preview-card-body">
-              <span class="badge badge-purple" style="margin-bottom:10px;"><i class="fas fa-moon"></i> Panoramic Trio View</span>
-              <h4>OLED Dark Theme Immersion</h4>
-              <p>Engineered exclusively in dark mode to prevent eye strain during late-night play, conserve OLED battery life, and maximize fluid responsiveness.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Technical & Privacy Transparency ───────────────── -->
-    <section class="section" style="background: var(--bg-secondary);">
-      <div class="container-narrow">
-        <div style="text-align:center; margin-bottom:40px;">
-          <div class="section-label"><i class="fas fa-circle-info"></i> Product Specifications</div>
-          <h2>Built with <span class="gradient-text">developer integrity</span></h2>
-          <p style="margin-top:12px;">Full clarity on how BlockBloom operates, handles user data, and delivers updates.</p>
-        </div>
-
-        <div class="specs-card">
-          <div class="specs-grid">
-            <div class="spec-item">
-              <span class="label">App Name</span>
-              <span class="val">BlockBloom</span>
-            </div>
-            <div class="spec-item">
-              <span class="label">Platform</span>
-              <span class="val"><i class="fab fa-android" style="color:#34d399;"></i> Android 8.0+</span>
-            </div>
-            <div class="spec-item">
-              <span class="label">Price</span>
-              <span class="val">100% Free</span>
-            </div>
-            <div class="spec-item">
-              <span class="label">Internet</span>
-              <span class="val">Offline Capable</span>
-            </div>
-            <div class="spec-item">
-              <span class="label">User Login</span>
-              <span class="val">Optional (Guest OK)</span>
-            </div>
-            <div class="spec-item">
-              <span class="label">Account Deletion</span>
-              <span class="val">1-Click in Settings</span>
-            </div>
-            <div class="spec-item">
-              <span class="label">Telemetry</span>
-              <span class="val">Crashlytics &amp; Vitals</span>
-            </div>
-            <div class="spec-item">
-              <span class="label">Monetization</span>
-              <span class="val">Google AdMob (Compliant)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Call to Action ─────────────────────────────────── -->
-    <section class="section" style="position:relative;overflow:hidden;">
-      <div class="container-narrow" style="text-align:center;position:relative;z-index:2;">
-        <h2>Ready to <span class="gradient-text">Bloom</span>?</h2>
-        <p style="max-width:480px;margin:16px auto 32px;">Download BlockBloom today on your Android device and immerse yourself in serene, jewel-block puzzle bliss.</p>
-        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-          <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" class="btn-playstore">
-            <i class="fab fa-google-play"></i>
-            <div class="btn-playstore-text">
-              <span class="sub">Free on</span>
-              <span class="main">Google Play</span>
-            </div>
-          </a>
         </div>
       </div>
     </section>
@@ -382,6 +289,10 @@
           setTimeout(() => {
             heroMockupImg.src = newSrc;
             if (newAlt) heroMockupImg.alt = newAlt;
+            let viewClass = 'view-duo';
+            if (newSrc.includes('blockbloom_1')) viewClass = 'view-solo';
+            else if (newSrc.includes('blockbloom_3')) viewClass = 'view-trio';
+            heroMockupImg.className = 'product-hero-img ' + viewClass;
             heroMockupImg.style.opacity = '1';
           }, 150);
         }

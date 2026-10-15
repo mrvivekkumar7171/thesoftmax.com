@@ -65,28 +65,6 @@
       </div>
     </div>
 
-    <!-- Principles Bar -->
-    <div style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);border-bottom:1px solid var(--border-glass);padding:20px;">
-      <div class="container">
-        <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <i class="fas fa-moon" style="color:var(--accent-cyan);"></i>
-            <span style="font-size:0.88rem;color:var(--text-secondary);font-weight:500;">Native Dark Theme</span>
-          </div>
-          <div style="width:1px;height:20px;background:var(--border-glass);"></div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <i class="fas fa-layer-group" style="color:var(--accent-cyan);"></i>
-            <span style="font-size:0.88rem;color:var(--text-secondary);font-weight:500;">Focused Software</span>
-          </div>
-          <div style="width:1px;height:20px;background:var(--border-glass);"></div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <i class="fas fa-gauge-high" style="color:var(--accent-cyan);"></i>
-            <span style="font-size:0.88rem;color:var(--text-secondary);font-weight:500;">60 FPS Fluidity</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Available Software -->
     <section class="section" id="products">
       <div class="container">
@@ -102,8 +80,8 @@
             
             <!-- App Icon / Screenshot thumbnail -->
             <div style="display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;">
-              <div style="width:84px;height:84px;border-radius:22px;background:linear-gradient(135deg,rgba(236,72,153,0.2),rgba(124,58,237,0.2));border:1px solid rgba(236,72,153,0.35);display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 0 25px rgba(236,72,153,0.25);">
-                🧱
+              <div style="width:84px;height:84px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);box-shadow:0 0 25px rgba(236,72,153,0.3);flex-shrink:0;">
+                <img src="assets/block-bloom.jpeg" alt="BlockBloom Game Icon" style="width:100%;height:100%;object-fit:cover;display:block;">
               </div>
               <a href="blockbloom.html" class="badge badge-pink" style="text-decoration:none;font-weight:600;">
                 <i class="fas fa-arrow-up-right-from-square"></i> Open Page
@@ -129,7 +107,7 @@
               <!-- Action buttons -->
               <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;">
                 <a href="blockbloom.html" class="btn btn-primary btn-sm">
-                  <i class="fas fa-info-circle"></i> View Product Details &amp; Screenshots
+                  <i class="fas fa-info-circle"></i> View Product Details
                 </a>
                 <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display:inline-flex;align-items:center;gap:8px;">
                   <i class="fab fa-google-play" style="color:#34d399;"></i> Google Play Store
@@ -174,28 +152,6 @@
 
       </div>
     </section>
-
-    <!-- Philosophy -->
-    <section class="section" style="background:var(--bg-secondary);">
-      <div class="container-narrow" style="text-align:center;">
-        <div class="section-label"><i class="fas fa-lightbulb"></i> Development Standards</div>
-        <h2>Software should <span class="gradient-text">empower</span>, not exploit</h2>
-        <p style="margin:20px auto;max-width:560px;">We engineer tools that respect users. Seamless dark theme, transparent data control, no hidden traps — just useful software crafted with care.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px;text-align:left;">
-          <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-md);padding:24px;">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
-            <h4 style="margin-bottom:6px;">Always Dark Theme</h4>
-            <p style="font-size:0.85rem;">Designed specifically to prevent eye fatigue and screen glare, saving battery on modern OLED displays.</p>
-          </div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-md);padding:24px;">
-            <div style="font-size:1.5rem;margin-bottom:10px;">⚡</div>
-            <h4 style="margin-bottom:6px;">Performance First</h4>
-            <p style="font-size:0.85rem;">Engineered for buttery smooth 60fps frame rates, immediate responsiveness, and clean memory management.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </div>
 
   <footer class="footer">
