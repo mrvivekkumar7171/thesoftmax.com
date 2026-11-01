@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensor Master — Hardware Diagnostics &amp; Sensor Care | TheSoftMax</title>
+  <meta name="description" content="Sensor Master is an all-in-one Android diagnostic tool to test, benchmark, and monitor physical sensors and hardware components. 100% on-device and privacy-first.">
+  <meta name="keywords" content="Sensor Master, Android Diagnostics, Sensor Test, Hardware Test, Speaker Cleaner, Water Ejector, Dead Pixel Test, Gyroscope Test, Accelerometer, TheSoftMax">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sensor Master — Hardware Diagnostics &amp; Sensor Care">
+  <meta property="og:description" content="Comprehensive Android diagnostic tool to inspect and test 18 hardware modules and sensors. 100% on-device, dark theme native, and privacy-respecting.">
+  <meta property="og:image" content="https://thesoftmax.com/assets/sensormaster_3.png">
+  <meta property="og:url" content="https://thesoftmax.com/sensormaster.html">
+  <meta property="og:type" content="product">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">
+          <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+        </div>
+        <span class="nav-logo-text">The<span>SoftMax</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="software.html" class="active">Software</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="software.html" class="active">Software</a>
+    <a href="contact.html">Contact</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ── Product Hero ───────────────────────────────────── -->
+    <section class="product-hero">
+      <div class="grid-bg"></div>
+      <div class="orb orb-cyan" style="width:550px;height:550px;top:-150px;left:-100px;opacity:0.45;position:absolute;"></div>
+      <div class="orb orb-purple" style="width:500px;height:500px;top:20%;right:-150px;opacity:0.4;position:absolute;"></div>
+
+      <div class="product-hero-grid" style="position:relative;z-index:2;">
+        
+        <!-- Left: Product Info -->
+        <div>
+          <div class="product-badges">
+            <span class="badge badge-cyan"><i class="fas fa-microchip"></i> Hardware Diagnostics</span>
+            <span class="badge badge-green"><i class="fab fa-android"></i> Android</span>
+            <span class="badge badge-purple"><i class="fas fa-circle-half-stroke"></i> Dark &amp; Light Theme</span>
+            <span class="badge badge-yellow"><i class="fas fa-shield-halved"></i> 100% On-Device</span>
+          </div>
+
+          <h1 class="product-title">
+            Test sensors.<br>
+            Verify hardware.<br>
+            <span class="gradient-text">Care for your device.</span>
+          </h1>
+
+          <p class="product-desc">
+            <strong>Sensor Master</strong> is a comprehensive, privacy-first Android diagnostic tool built to inspect, benchmark, and evaluate every physical sensor and hardware component in your device. Run real-time interactive tests across 18 modules — from acoustic speaker water ejectors and display dead pixel checks to CPU compute benchmarks and GNSS satellite tracking.
+          </p>
+
+          <div class="product-cta-group">
+            <a href="https://play.google.com/store/apps/details?id=com.thesoftmax.sensormaster" target="_blank" rel="noopener noreferrer" class="btn-playstore">
+              <i class="fab fa-google-play"></i>
+              <div class="btn-playstore-text">
+                <span class="sub">Get it on</span>
+                <span class="main">Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Quick Stat Bullets -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px;">
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">App Name</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Sensor Master</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Platform</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;"><i class="fab fa-android" style="color:#34d399;"></i> Android 8.0+</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Category</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Hardware &amp; Tools</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px;">
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Diagnostics</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">18 Modules Tested</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">User Login</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Not Required</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Operation</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">100% On-Device</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Mobile Device Mockup Showcase -->
+        <div class="product-hero-showcase">
+          <div class="product-hero-mockup-wrap">
+            <img id="heroMockupImg" src="assets/sensormaster_2.png" alt="Sensor Master Android App Showcase" class="product-hero-img view-duo" loading="eager">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Core Hardware & Sensor Features ────────────────── -->
+    <section class="section" id="features" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:50px;">
+          <div class="section-label"><i class="fas fa-stethoscope"></i> Diagnostic Capabilities</div>
+          <h2>Precision engineering.<br><span class="gradient-text">Built for complete device transparency.</span></h2>
+          <p style="max-width:560px;margin:16px auto 0;">Real-time interactive diagnostics covering every critical chip, sensor, transducer, and interface on your Android device.</p>
+        </div>
+
+        <div class="feature-grid">
+          
+          <div class="card animate-fade-up">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#00d4ff,#7c3aed);"><i class="fas fa-microchip" style="color:white;"></i></div>
+            <h3>18 Dedicated Hardware Modules</h3>
+            <p style="margin-top:10px;">Comprehensive diagnostic suite evaluating Accelerometer, Gyroscope, Magnetometer, Light, Proximity, CPU, Display, Battery, RAM, Storage, Camera, Speaker, Mic, Haptics, Network, GPS, NFC, and Fingerprint.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-1">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#06b6d4,#3b82f6);"><i class="fas fa-water" style="color:white;"></i></div>
+            <h3>165Hz Acoustic Water Ejector</h3>
+            <p style="margin-top:10px;">Emits targeted acoustic frequency sweeps and pure low-frequency resonance vibrations specifically calculated to assist in dislodging trapped moisture and particulate dust from speaker grilles.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-2">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#ec4899,#7c3aed);"><i class="fas fa-mobile-screen" style="color:white;"></i></div>
+            <h3>Display &amp; Multi-Touch Grid</h3>
+            <p style="margin-top:10px;">Verify screen health with full-spectrum dead pixel RGB sweeps, 50% gray uniformity inspections, refresh rate detection, touch panel response tracking, and simultaneous multi-finger digitizer tests.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-3">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fas fa-gauge-high" style="color:white;"></i></div>
+            <h3>CPU Compute &amp; FPU Stress Test</h3>
+            <p style="margin-top:10px;">Measure multi-core and single-core floating-point arithmetic performance in real time. Inspect active CPU core clock speeds, processor architecture, and execution thread stability under load.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-4">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#10b981,#00d4ff);"><i class="fas fa-battery-three-quarters" style="color:white;"></i></div>
+            <h3>Battery Health &amp; Charging Metrics</h3>
+            <p style="margin-top:10px;">Monitor real-time battery voltage, charging amperage, chemical health ratings, operating temperatures, power cell technology, and discharge rates with live system broadcast telemetry.</p>
+          </div>
+          
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#7c3aed,#ec4899);"><i class="fas fa-satellite-dish" style="color:white;"></i></div>
+            <h3>GNSS Orbital Satellite Mesh</h3>
+            <p style="margin-top:10px;">Inspect GPS, GLONASS, Galileo, and BeiDou satellite constellation locks. View signal-to-noise ratios, orbital azimuth angles, elevation coordinates, and live geolocation fix precision.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#10b981,#3b82f6);"><i class="fas fa-shield-halved" style="color:white;"></i></div>
+            <h3>100% On-Device &amp; Private</h3>
+            <p style="margin-top:10px;">Your sensor data stays strictly on your phone. No microphone audio samples, camera frames, biometric templates, or precise GPS logs are ever recorded, saved, or uploaded to any remote server.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#f59e0b,#10b981);"><i class="fas fa-language" style="color:white;"></i></div>
+            <h3>14 Languages &amp; RTL Support</h3>
+            <p style="margin-top:10px;">Engineered for a global audience with native support for 14 languages, including English, Japanese, German, Spanish, French, Korean, Traditional Chinese, Hindi, Arabic, and Hebrew with native RTL layout.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-badge">
+            <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+          </div>
+          <span class="nav-logo-text">The<span>SoftMax</span></span>
+        </a>
+        <p>&copy; <span id="year">2026</span> TheSoftMax. All rights reserved.</p>
+        <div class="made-in-india">Made with <span class="heart">❤</span> in India</div>
+      </div>
+
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="software.html">All Software</a></li>
+            <li><a href="blockbloom.html">BlockBloom Game</a></li>
+            <li><a href="apk-extractor.html">APK Extractor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    // Automatic Mockup Showcase Slideshow
+    const heroMockupImg = document.getElementById('heroMockupImg');
+    if (heroMockupImg) {
+      const slides = [
+        { src: 'assets/sensormaster_1.png', alt: 'Sensor Master Android App - Solo Showcase', viewClass: 'view-solo' },
+        { src: 'assets/sensormaster_2.png', alt: 'Sensor Master Android App - Duo Showcase', viewClass: 'view-duo' },
+        { src: 'assets/sensormaster_3.png', alt: 'Sensor Master Android App - Trio Showcase', viewClass: 'view-trio' }
+      ];
+      let currentSlide = 1; // Start at duo view
+      let isHovered = false;
+
+      const mockupWrap = document.querySelector('.product-hero-mockup-wrap');
+      if (mockupWrap) {
+        mockupWrap.addEventListener('mouseenter', () => { isHovered = true; });
+        mockupWrap.addEventListener('mouseleave', () => { isHovered = false; });
+      }
+
+      setInterval(() => {
+        if (isHovered) return;
+        currentSlide = (currentSlide + 1) % slides.length;
+        const next = slides[currentSlide];
+        heroMockupImg.style.opacity = '0';
+        setTimeout(() => {
+          heroMockupImg.src = next.src;
+          heroMockupImg.alt = next.alt;
+          heroMockupImg.className = 'product-hero-img ' + next.viewClass;
+          heroMockupImg.style.opacity = '1';
+        }, 180);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
