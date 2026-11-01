@@ -110,26 +110,34 @@
               <li><strong>ON-DEVICE PRIVACY COMMITMENT:</strong> All hardware and sensor diagnostic tests are executed strictly on your physical device in real time. We <strong>DO NOT</strong> record, transmit, stream, or store your camera images, microphone audio samples, biometric fingerprint data, or precise GPS travel routes on any remote server. Once a diagnostic test finishes, raw sensor measurements are immediately discarded from memory.</li>
             </ul>
 
-            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">C. User Profile &amp; Account Credentials (Only for Apps with Optional/Required Login)</h3>
+            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">C. Installed Application Inventory &amp; Package Metadata (Package Extraction &amp; Utility Apps)</h3>
+            <p>For applications designed to inspect, extract, or backup installed Android application packages (such as APK Extract):</p>
+            <ul>
+              <li><strong>Package Inventory &amp; Metadata:</strong> To display your installed applications and allow you to select apps for inspection or extraction, the application queries installed package metadata directly on your device (including application label, package name, version name, version code, app icon, install/update date, and the on-device APK file path).</li>
+              <li><strong>Local File Generation &amp; Sharing:</strong> Extracted APK files and package assets are generated and saved strictly to your device's local storage (such as the public Downloads directory or app-specific storage). Extracted files are shared externally only when you voluntarily invoke the Android system share sheet via Android FileProvider.</li>
+              <li><strong>STRICT ON-DEVICE PRIVACY COMMITMENT:</strong> All installed package querying, analysis, and APK extraction occur entirely on your physical device in local memory. We <strong>DO NOT</strong> collect, upload, stream, sync, or transmit your list of installed applications, package names, or extracted APK files to our servers or any third parties.</li>
+            </ul>
+
+            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">D. User Profile &amp; Account Credentials (Only for Apps with Optional/Required Login)</h3>
             <ul>
               <li>For applications that support user accounts (e.g., for cross-device cloud saves, multiplayer leaderboards, or profile backups), we process basic identifiers such as your display name, email address, avatar photo, and a unique user identifier provided via Google Sign-In, email, or third-party OAuth authentication.</li>
               <li>If an application does not offer account registration or is operated in Guest Mode, <strong>NO</strong> personal profile information, name, or email address is ever requested, processed, or stored.</li>
             </ul>
 
-            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">D. Local Preferences &amp; Session State</h3>
+            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">E. Local Preferences &amp; Session State</h3>
             <ul>
               <li><strong>Application configurations:</strong> Selected language, dark/light theme preference, sound effects volume, haptic vibration intensity, notification reminder schedules, and high scores/levels completed.</li>
               <li><strong>Storage location:</strong> Stored securely in local device memory (via Android SharedPreferences, Jetpack DataStore, or local SQLite database). This data remains entirely on your device and is never uploaded to external servers unless you explicitly choose to log into a cloud account.</li>
             </ul>
 
-            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">E. Diagnostic Telemetry &amp; Crash Reporting</h3>
+            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">F. Diagnostic Telemetry &amp; Crash Reporting</h3>
             <ul>
               <li><strong>Technical crash dumps:</strong> Stack traces, exception types, crash timestamps, active activity/screen name, memory usage at the time of failure, and thread states to identify and resolve stability issues across device models.</li>
               <li><strong>Breadcrumbs:</strong> Chronological technical milestones (e.g., screen navigation, diagnostic test started/completed, memory optimization triggered) captured by Sentry to diagnose what triggered an unexpected shutdown.</li>
               <li>Crash reports contain <strong>NO</strong> personal conversations, contacts, gallery photos, passwords, or sensitive user files.</li>
             </ul>
 
-            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">F. User Feedback &amp; Support Correspondence</h3>
+            <h3 style="font-size:1.1rem;color:var(--text-primary);margin-top:18px;margin-bottom:8px;">G. User Feedback &amp; Support Correspondence</h3>
             <ul>
               <li>When you submit a bug report, troubleshooting inquiry, or feedback form (either in-app or via our website), we receive your message, feedback category, and any optional contact details (such as your name or email) that you provide.</li>
               <li>If you optionally attach a screenshot to a bug report, it is transmitted securely and reviewed solely for technical debugging purposes.</li>
@@ -140,6 +148,7 @@
             <h2><span class="section-num">4</span> Sensitive Permissions &amp; In-App Prominent Disclosures</h2>
             <p>Certain advanced features require system-level Android permissions:</p>
             <ul>
+              <li><strong>Query All Packages (<code>android.permission.QUERY_ALL_PACKAGES</code>):</strong> Required in application extraction utilities (such as APK Extract) to query the device's package manager, identify installed user and system applications, and enable you to inspect, backup, or extract their APK packages. This data is processed exclusively on-device in memory and is never transmitted, collected, or shared.</li>
               <li><strong>Camera (<code>android.permission.CAMERA</code>):</strong> Required only when you run camera sensor diagnostics or preview viewfinder tests.</li>
               <li><strong>Microphone (<code>android.permission.RECORD_AUDIO</code>):</strong> Required only when evaluating real-time ambient sound levels or testing audio recording fidelity.</li>
               <li><strong>Location (<code>android.permission.ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>):</strong> Required only when analyzing GNSS satellite constellations and GPS accuracy.</li>
