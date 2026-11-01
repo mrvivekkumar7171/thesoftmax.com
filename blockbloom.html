@@ -139,18 +139,6 @@
           <div class="product-hero-mockup-wrap">
             <img id="heroMockupImg" src="assets/blockbloom_2.png" alt="BlockBloom Android Game - Dynamic Duo Showcase" class="product-hero-img view-duo" loading="eager">
           </div>
-          <!-- View Switcher -->
-          <div class="mockup-view-switcher" role="tablist" aria-label="Mockup View Selector">
-            <button type="button" class="mockup-tab" data-src="assets/blockbloom_1.png" data-alt="BlockBloom Android Game - Solo Showcase">
-              <i class="fas fa-mobile-screen"></i> Solo View
-            </button>
-            <button type="button" class="mockup-tab active" data-src="assets/blockbloom_2.png" data-alt="BlockBloom Android Game - Dynamic Duo Showcase">
-              <i class="fas fa-clone"></i> Duo View
-            </button>
-            <button type="button" class="mockup-tab" data-src="assets/blockbloom_3.png" data-alt="BlockBloom Android Game - Trio Panoramic Showcase">
-              <i class="fas fa-layer-group"></i> Trio View
-            </button>
-          </div>
         </div>
 
       </div>
@@ -242,6 +230,7 @@
           <ul>
             <li><a href="software.html">All Software</a></li>
             <li><a href="blockbloom.html">BlockBloom Game</a></li>
+            <li><a href="apk-extractor.html">APK Extractor</a></li>
           </ul>
         </div>
 
@@ -275,29 +264,36 @@
       hamburger.setAttribute('aria-expanded', open);
     });
 
-    // Mockup View Switcher (Solo / Duo / Trio)
+    // Automatic Mockup Showcase Slideshow
     const heroMockupImg = document.getElementById('heroMockupImg');
-    const mockupTabs = document.querySelectorAll('.mockup-tab');
-    mockupTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        mockupTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const newSrc = tab.getAttribute('data-src');
-        const newAlt = tab.getAttribute('data-alt');
-        if (heroMockupImg && newSrc) {
-          heroMockupImg.style.opacity = '0';
-          setTimeout(() => {
-            heroMockupImg.src = newSrc;
-            if (newAlt) heroMockupImg.alt = newAlt;
-            let viewClass = 'view-duo';
-            if (newSrc.includes('blockbloom_1')) viewClass = 'view-solo';
-            else if (newSrc.includes('blockbloom_3')) viewClass = 'view-trio';
-            heroMockupImg.className = 'product-hero-img ' + viewClass;
-            heroMockupImg.style.opacity = '1';
-          }, 150);
-        }
-      });
-    });
+    if (heroMockupImg) {
+      const slides = [
+        { src: 'assets/blockbloom_1.png', alt: 'BlockBloom Android Game - Solo Showcase', viewClass: 'view-solo' },
+        { src: 'assets/blockbloom_2.png', alt: 'BlockBloom Android Game - Dynamic Duo Showcase', viewClass: 'view-duo' },
+        { src: 'assets/blockbloom_3.png', alt: 'BlockBloom Android Game - Trio Panoramic Showcase', viewClass: 'view-trio' }
+      ];
+      let currentSlide = 1; // Start at duo view
+      let isHovered = false;
+
+      const mockupWrap = document.querySelector('.product-hero-mockup-wrap');
+      if (mockupWrap) {
+        mockupWrap.addEventListener('mouseenter', () => { isHovered = true; });
+        mockupWrap.addEventListener('mouseleave', () => { isHovered = false; });
+      }
+
+      setInterval(() => {
+        if (isHovered) return;
+        currentSlide = (currentSlide + 1) % slides.length;
+        const next = slides[currentSlide];
+        heroMockupImg.style.opacity = '0';
+        setTimeout(() => {
+          heroMockupImg.src = next.src;
+          heroMockupImg.alt = next.alt;
+          heroMockupImg.className = 'product-hero-img ' + next.viewClass;
+          heroMockupImg.style.opacity = '1';
+        }, 180);
+      }, 3500);
+    }
   </script>
 </body>
 </html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APK Extractor — Fast &amp; Secure Android APK Backup &amp; Export | TheSoftMax</title>
+  <meta name="description" content="APK Extractor is a fast, privacy-first Android utility to inspect, extract, and backup installed APK packages, app icons, and package metadata. No root required.">
+  <meta name="keywords" content="APK Extractor, APK Extract, Android Utility, Backup APK, Export APK, Extract Icons, Package Manager, TheSoftMax">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="APK Extractor — Fast &amp; Secure Android APK Backup &amp; Export">
+  <meta property="og:description" content="Inspect, extract, and export installed user and system APK packages, app icons, and metadata. 100% on-device and private.">
+  <meta property="og:image" content="https://thesoftmax.com/assets/apkextractor_3.png">
+  <meta property="og:url" content="https://thesoftmax.com/apk-extractor.html">
+  <meta property="og:type" content="product">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">
+          <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+        </div>
+        <span class="nav-logo-text">The<span>SoftMax</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="software.html" class="active">Software</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="software.html" class="active">Software</a>
+    <a href="contact.html">Contact</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ── Product Hero ───────────────────────────────────── -->
+    <section class="product-hero">
+      <div class="grid-bg"></div>
+      <div class="orb orb-cyan" style="width:550px;height:550px;top:-150px;left:-100px;opacity:0.45;position:absolute;"></div>
+      <div class="orb orb-purple" style="width:500px;height:500px;top:20%;right:-150px;opacity:0.4;position:absolute;"></div>
+
+      <div class="product-hero-grid" style="position:relative;z-index:2;">
+        
+        <!-- Left: Product Info -->
+        <div>
+          <div class="product-badges">
+            <span class="badge badge-cyan"><i class="fas fa-box-archive"></i> System Utility</span>
+            <span class="badge badge-green"><i class="fab fa-android"></i> Android</span>
+            <span class="badge badge-purple"><i class="fas fa-circle-half-stroke"></i> Dark &amp; Light Theme</span>
+            <span class="badge badge-yellow"><i class="fas fa-shield-halved"></i> 100% On-Device</span>
+          </div>
+
+          <h1 class="product-title">
+            Inspect packages.<br>
+            Extract archives.<br>
+            <span class="gradient-text">Backup with ease.</span>
+          </h1>
+
+          <p class="product-desc">
+            <strong>APK Extractor</strong> is a high-speed, privacy-first Android utility engineered to inspect, extract, and share installed application packages and branding icons. Easily export both user-installed and system APKs to your preferred destination folder — without requiring root access.
+          </p>
+
+          <div class="product-cta-group">
+            <a href="https://play.google.com/store/apps/details?id=com.thesoftmax.apkextractor" target="_blank" rel="noopener noreferrer" class="btn-playstore">
+              <i class="fab fa-google-play"></i>
+              <div class="btn-playstore-text">
+                <span class="sub">Get it on</span>
+                <span class="main">Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Quick Stat Bullets -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px;">
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">App Name</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">APK Extract</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Platform</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;"><i class="fab fa-android" style="color:#34d399;"></i> Android 8.0+</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Category</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">System Utility</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px;">
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Operation</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">100% On-Device</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">User Login</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Not Required</div>
+            </div>
+            <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:12px 16px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Theme</div>
+              <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-top:2px;">Dark &amp; Light</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Mobile Device Mockup Showcase -->
+        <div class="product-hero-showcase">
+          <div class="product-hero-mockup-wrap">
+            <img id="heroMockupImg" src="assets/apkextractor_2.png" alt="APK Extractor Android App Showcase" class="product-hero-img view-duo" loading="eager">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Why You Will Love APK Extractor ───────────────────── -->
+    <section class="section" id="features" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:50px;">
+          <div class="section-label"><i class="fas fa-wrench"></i> Core Features</div>
+          <h2>Engineered for control.<br><span class="gradient-text">Built for precision.</span></h2>
+          <p style="max-width:540px;margin:16px auto 0;">All the essential tools to backup, manage, and share your Android applications locally without complexity.</p>
+        </div>
+
+        <div class="feature-grid">
+          
+          <div class="card animate-fade-up">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#00d4ff,#0284c7);"><i class="fas fa-file-export" style="color:white;"></i></div>
+            <h3>Fast Single &amp; Batch Extraction</h3>
+            <p style="margin-top:10px;">Extract individual APK packages with a single tap, or enter multi-selection mode to batch extract dozens of applications simultaneously into organized storage.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-1">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#7c3aed,#ec4899);"><i class="fas fa-icons" style="color:white;"></i></div>
+            <h3>High-Resolution Icon Export</h3>
+            <p style="margin-top:10px;">Export clean, uncompressed visual branding icons of any installed package directly to your gallery or storage for developer documentation and asset management.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-2">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#ec4899,#f59e0b);"><i class="fas fa-filter" style="color:white;"></i></div>
+            <h3>Smart Filters &amp; Sorting</h3>
+            <p style="margin-top:10px;">Instantly filter your catalog by All, User, System, or Updated System applications. Sort by Name (A&rarr;Z, Z&rarr;A) or APK Size (Largest or Smallest first).</p>
+          </div>
+
+          <div class="card animate-fade-up delay-3">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#10b981,#00d4ff);"><i class="fas fa-sliders" style="color:white;"></i></div>
+            <h3>Custom Naming Rules</h3>
+            <p style="margin-top:10px;">Configure output APK filename formats to match your backup workflow: include Application Name, Package Identifier, Version String, and Version Build Number.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-4">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fas fa-folder-open" style="color:white;"></i></div>
+            <h3>Custom Export Directory</h3>
+            <p style="margin-top:10px;">Choose your preferred output folder location using Android's native Storage Access Framework (SAF). Change directories anytime without permission hassle.</p>
+          </div>
+          
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#0284c7,#7c3aed);"><i class="fas fa-share-nodes" style="color:white;"></i></div>
+            <h3>Instant Package Sharing</h3>
+            <p style="margin-top:10px;">Directly share extracted APK archives or app icons to nearby devices, cloud storage, messaging apps, or email using Android's secure FileProvider share sheet.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#7c3aed,#00d4ff);"><i class="fas fa-circle-half-stroke" style="color:white;"></i></div>
+            <h3>Theme &amp; System Integration</h3>
+            <p style="margin-top:10px;">Switch effortlessly between an eye-friendly Dark Theme, a crisp Light Theme, or follow your device System Default mode automatically.</p>
+          </div>
+
+          <div class="card animate-fade-up delay-5">
+            <div class="feature-icon" style="background: linear-gradient(135deg,#10b981,#059669);"><i class="fas fa-shield-halved" style="color:white;"></i></div>
+            <h3>100% On-Device &amp; Privacy-First</h3>
+            <p style="margin-top:10px;">No account creation required, no root needed, and no package telemetry transmitted. All scanning, extraction, and file management happen strictly on your device.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-badge">
+            <img src="assets/favicon.png" alt="TheSoftMax Logo" class="nav-logo-img">
+          </div>
+          <span class="nav-logo-text">The<span>SoftMax</span></span>
+        </a>
+        <p>&copy; <span id="year">2026</span> TheSoftMax. All rights reserved.</p>
+        <div class="made-in-india">Made with <span class="heart">❤</span> in India</div>
+      </div>
+
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="software.html">All Software</a></li>
+            <li><a href="blockbloom.html">BlockBloom Game</a></li>
+            <li><a href="apk-extractor.html">APK Extractor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    // Automatic Mockup Showcase Slideshow
+    const heroMockupImg = document.getElementById('heroMockupImg');
+    if (heroMockupImg) {
+      const slides = [
+        { src: 'assets/apkextractor_1.png', alt: 'APK Extractor Android App - Solo Showcase', viewClass: 'view-solo' },
+        { src: 'assets/apkextractor_2.png', alt: 'APK Extractor Android App - Duo Showcase', viewClass: 'view-duo' },
+        { src: 'assets/apkextractor_3.png', alt: 'APK Extractor Android App - Trio Showcase', viewClass: 'view-trio' }
+      ];
+      let currentSlide = 1; // Start at duo view
+      let isHovered = false;
+
+      const mockupWrap = document.querySelector('.product-hero-mockup-wrap');
+      if (mockupWrap) {
+        mockupWrap.addEventListener('mouseenter', () => { isHovered = true; });
+        mockupWrap.addEventListener('mouseleave', () => { isHovered = false; });
+      }
+
+      setInterval(() => {
+        if (isHovered) return;
+        currentSlide = (currentSlide + 1) % slides.length;
+        const next = slides[currentSlide];
+        heroMockupImg.style.opacity = '0';
+        setTimeout(() => {
+          heroMockupImg.src = next.src;
+          heroMockupImg.alt = next.alt;
+          heroMockupImg.className = 'product-hero-img ' + next.viewClass;
+          heroMockupImg.style.opacity = '1';
+        }, 180);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
