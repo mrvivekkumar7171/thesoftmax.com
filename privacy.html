@@ -149,6 +149,7 @@
             <p>Certain advanced features require system-level Android permissions:</p>
             <ul>
               <li><strong>Query All Packages (<code>android.permission.QUERY_ALL_PACKAGES</code>):</strong> Required in application extraction utilities (such as APK Extract) to query the device's package manager, identify installed user and system applications, and enable you to inspect, backup, or extract their APK packages. This data is processed exclusively on-device in memory and is never transmitted, collected, or shared.</li>
+              <li><strong>Install Packages (<code>android.permission.REQUEST_INSTALL_PACKAGES</code>):</strong> Used solely to allow you to reinstall or restore APK backup files that you have extracted. The app never installs software silently or in the background; all installations require your manual confirmation through standard Android system prompts.</li>
               <li><strong>Camera (<code>android.permission.CAMERA</code>):</strong> Required only when you run camera sensor diagnostics or preview viewfinder tests.</li>
               <li><strong>Microphone (<code>android.permission.RECORD_AUDIO</code>):</strong> Required only when evaluating real-time ambient sound levels or testing audio recording fidelity.</li>
               <li><strong>Location (<code>android.permission.ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>):</strong> Required only when analyzing GNSS satellite constellations and GPS accuracy.</li>
