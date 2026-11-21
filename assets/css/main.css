@@ -195,7 +195,7 @@ html.dark .grid-bg {
   justify-content: space-between;
 }
 
-/* Crisp Clean Logo matching PrivacyFirst */
+/* Crisp Clean Logo */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -204,33 +204,50 @@ html.dark .grid-bg {
 }
 
 .nav-logo-badge {
-  width: 36px;
-  height: 36px;
-  background: #ffffff;
-  border-radius: 9px;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border-radius: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+  border: none;
   flex-shrink: 0;
   transition: var(--transition);
 }
 
 html:not(.dark) .nav-logo-badge {
-  border-color: #e2e8f0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .nav-logo:hover .nav-logo-badge {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .nav-logo-img {
-  width: 22px;
-  height: 22px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   display: block;
-  filter: none !important;
+  /* Soft, low-opacity white fog & outline defining the black hexagon */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.25)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.12));
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.nav-logo:hover .nav-logo-img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.65)) drop-shadow(0 0 7px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 14px rgba(255, 255, 255, 0.2));
+}
+
+html:not(.dark) .nav-logo-img {
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
+}
+
+html:not(.dark) .nav-logo:hover .nav-logo-img {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
 }
 
 .nav-logo-text {
