@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +33,26 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Anti-FOUC Theme Preload -->
+  <script>
+    (function() {
+      try {
+        var m = document.cookie.match(/(?:^|;\s*)thesoftmax_theme=([^;]+)/);
+        var t = m ? decodeURIComponent(m[1]) : (localStorage.getItem('thesoftmax_theme') || localStorage.getItem('theme'));
+        if (t === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      } catch(e) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 </head>
 <body>
 
-  <!-- ── Navigation ────────────────────────────────────── -->
+    <!-- ── Navigation ────────────────────────────────────── -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
@@ -46,18 +62,26 @@
         <span class="nav-logo-text">The<span>SoftMax</span></span>
       </a>
 
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="software.html">Software</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="terms.html">Terms</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html" class="">About</a></li>
+          <li><a href="software.html" class="">Software</a></li>
+          <li><a href="contact.html" class="">Contact</a></li>
+          <li><a href="terms.html" class="">Terms</a></li>
+          <li><a href="privacy.html" class="">Privacy</a></li>
+        </ul>
 
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg class="theme-icon-light hidden" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg class="theme-icon-dark hidden" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -247,18 +271,6 @@
     </div>
   </footer>
 
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Hamburger
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('navMobile');
-    hamburger.addEventListener('click', () => {
-      const open = navMobile.classList.toggle('open');
-      hamburger.classList.toggle('open', open);
-      hamburger.setAttribute('aria-expanded', open);
-    });
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
