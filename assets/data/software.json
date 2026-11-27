@@ -1,0 +1,287 @@
+[
+  {
+    "id": "blockbloom",
+    "name": "BlockBloom",
+    "category": "Android Game",
+    "filterTags": ["android", "game"],
+    "url": "https://blockbloom.thesoftmax.com/",
+    "ctaLabel": "Open Page",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "playStoreUrl": "https://play.google.com/store",
+    "iconUrl": "https://blockbloom.thesoftmax.com/assets/block-bloom.jpeg",
+    "iconGlow": "rgba(236,72,153,0.3)",
+    "badgeColor": "badge-pink",
+    "description": "A soothing jewel-block puzzle game for Android. Place polyomino blocks onto the board, clear full lines and columns, and watch colorful flower bloom animations emerge. Designed with a rich, battery-friendly dark theme and completely playable offline.",
+    "badges": [
+      { "text": "Game", "icon": "fa-shapes", "style": "badge-pink" },
+      { "text": "Android", "icon": "fa-android", "fab": true, "style": "badge-green" },
+      { "text": "Dark Theme", "icon": "fa-moon", "style": "badge-cyan" },
+      { "text": "Offline", "icon": "fa-wifi-slash", "style": "badge-purple" }
+    ],
+    "highlights": [
+      { "text": "8x8 Jewel Grid", "icon": "fa-th", "color": "var(--accent-pink)" },
+      { "text": "Cascading Combos", "icon": "fa-fire", "color": "var(--accent-yellow)" },
+      { "text": "100% Offline Ready", "icon": "fa-wifi-slash", "color": "var(--accent-green)" },
+      { "text": "Zero Timers", "icon": "fa-infinity", "color": "var(--accent-cyan)" }
+    ]
+  },
+  {
+    "id": "apk-extractor",
+    "name": "APK Extractor",
+    "category": "Android App",
+    "filterTags": ["android", "utility"],
+    "url": "https://apk-extractor.thesoftmax.com/",
+    "ctaLabel": "Open Page",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.thesoftmax.apkextractor",
+    "iconUrl": "https://apk-extractor.thesoftmax.com/assets/apkextractor.jpeg",
+    "iconGlow": "rgba(0,212,255,0.3)",
+    "badgeColor": "badge-cyan",
+    "description": "A fast, privacy-first Android utility to inspect, extract, and backup installed user and system APK packages and branding icons directly to your preferred folder—with no root required.",
+    "badges": [
+      { "text": "System Utility", "icon": "fa-box-archive", "style": "badge-cyan" },
+      { "text": "Android", "icon": "fa-android", "fab": true, "style": "badge-green" },
+      { "text": "100% On-Device", "icon": "fa-shield-halved", "style": "badge-yellow" },
+      { "text": "No Root", "icon": "fa-check", "style": "badge-purple" }
+    ],
+    "highlights": [
+      { "text": "Single & Batch Export", "icon": "fa-file-export", "color": "var(--accent-cyan)" },
+      { "text": "High-Res App Icons", "icon": "fa-icons", "color": "var(--accent-pink)" },
+      { "text": "Custom Naming Rules", "icon": "fa-sliders", "color": "var(--accent-green)" },
+      { "text": "SAF Folder Support", "icon": "fa-folder-open", "color": "var(--accent-yellow)" }
+    ]
+  },
+  {
+    "id": "sensormaster",
+    "name": "Sensor Master",
+    "category": "Android App",
+    "filterTags": ["android", "utility"],
+    "url": "https://sensormaster.thesoftmax.com/",
+    "ctaLabel": "Open Page",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.thesoftmax.sensormaster",
+    "iconUrl": "https://sensormaster.thesoftmax.com/assets/sensormaster.png",
+    "iconGlow": "rgba(16,185,129,0.3)",
+    "badgeColor": "badge-cyan",
+    "description": "A 18-module Android hardware & sensor diagnostic suite to inspect accelerometers, gyroscopes, display pixels, CPU compute, battery health, GNSS satellites, and speaker water ejection 100% on-device.",
+    "badges": [
+      { "text": "Diagnostics", "icon": "fa-microchip", "style": "badge-cyan" },
+      { "text": "Android", "icon": "fa-android", "fab": true, "style": "badge-green" },
+      { "text": "18 Modules", "icon": "fa-stethoscope", "style": "badge-purple" },
+      { "text": "On-Device", "icon": "fa-shield-halved", "style": "badge-yellow" }
+    ],
+    "highlights": [
+      { "text": "18 Hardware Modules", "icon": "fa-microchip", "color": "var(--accent-cyan)" },
+      { "text": "165Hz Water Ejector", "icon": "fa-water", "color": "var(--accent-green)" },
+      { "text": "CPU & Display Tests", "icon": "fa-gauge-high", "color": "var(--accent-yellow)" },
+      { "text": "GNSS Satellite Mesh", "icon": "fa-satellite-dish", "color": "var(--accent-pink)" }
+    ]
+  },
+  {
+    "id": "karma",
+    "name": "Karma Web Browser",
+    "category": "Android App",
+    "filterTags": ["android", "utility"],
+    "url": "https://karma.thesoftmax.com/",
+    "ctaLabel": "Open Page",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.karma.browser",
+    "iconUrl": "https://karma.thesoftmax.com/assets/logo512.png",
+    "iconGlow": "rgba(16,185,129,0.3)",
+    "badgeColor": "badge-green",
+    "description": "Lightweight, privacy-focused Android web browser built with Jetpack Compose. Features Karma Shield ad & tracker blocking, isolated multi-profile incognito tabs, DNS pre-warming, sanitized Reader Mode, and offline Dino game.",
+    "badges": [
+      { "text": "Web Browser", "icon": "fa-compass", "style": "badge-green" },
+      { "text": "Android", "icon": "fa-android", "fab": true, "style": "badge-cyan" },
+      { "text": "Karma Shield", "icon": "fa-shield-halved", "style": "badge-purple" },
+      { "text": "Multi-Profile", "icon": "fa-user-secret", "style": "badge-yellow" }
+    ],
+    "highlights": [
+      { "text": "Ad & Tracker Blocker", "icon": "fa-shield-halved", "color": "var(--accent-green)" },
+      { "text": "Isolated Incognito", "icon": "fa-user-secret", "color": "var(--accent-purple)" },
+      { "text": "DNS Pre-Warming", "icon": "fa-bolt", "color": "var(--accent-cyan)" },
+      { "text": "Sanitized Reader Mode", "icon": "fa-book-open", "color": "var(--accent-yellow)" }
+    ]
+  },
+  {
+    "id": "missile",
+    "name": "Missile Simulator",
+    "category": "Web Game",
+    "filterTags": ["web", "game"],
+    "url": "https://missile.thesoftmax.com/",
+    "ctaLabel": "Launch App",
+    "ctaIcon": "fa-play",
+    "iconUrl": "https://missile.thesoftmax.com/data/img/missile.png",
+    "iconGlow": "rgba(245,158,11,0.3)",
+    "badgeColor": "badge-yellow",
+    "description": "Interactive geodesic ballistic missile range and nuclear blast effects simulator with synchronized 2D map projections and 3D globe rendering directly in your browser.",
+    "badges": [
+      { "text": "Web Simulator", "icon": "fa-globe", "style": "badge-yellow" },
+      { "text": "2D & 3D Map", "icon": "fa-earth-americas", "style": "badge-cyan" },
+      { "text": "60 FPS", "icon": "fa-gauge-high", "style": "badge-pink" },
+      { "text": "Instant Play", "icon": "fa-bolt", "style": "badge-green" }
+    ],
+    "highlights": [
+      { "text": "Geodesic Range Rings", "icon": "fa-crosshairs", "color": "var(--accent-pink)" },
+      { "text": "Dual 2D / 3D Globe", "icon": "fa-globe", "color": "var(--accent-cyan)" },
+      { "text": "CEP & Overpressure", "icon": "fa-bullseye", "color": "var(--accent-yellow)" },
+      { "text": "Zero Installation", "icon": "fa-bolt", "color": "var(--accent-green)" }
+    ]
+  },
+  {
+    "id": "mockups",
+    "name": "MockupStudio",
+    "category": "Web Tool",
+    "filterTags": ["web", "utility"],
+    "url": "https://mockups.thesoftmax.com/",
+    "ctaLabel": "Open Tool",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "iconClass": "fa-mobile-screen-button",
+    "iconGradient": "linear-gradient(135deg,#00d4ff,#7c3aed)",
+    "iconGlow": "rgba(0,212,255,0.3)",
+    "badgeColor": "badge-cyan",
+    "description": "Create high-resolution App Store and Play Store device mockups (iPhone, MacBook, Pixel, Galaxy) on a multi-slide canvas directly in your browser with instant PNG and ZIP export.",
+    "badges": [
+      { "text": "Web Tool", "icon": "fa-globe", "style": "badge-cyan" },
+      { "text": "In-Browser", "icon": "fa-microchip", "style": "badge-green" },
+      { "text": "Zero Uploads", "icon": "fa-shield-halved", "style": "badge-purple" },
+      { "text": "PWA Ready", "icon": "fa-bolt", "style": "badge-yellow" }
+    ],
+    "highlights": [
+      { "text": "iPhone & Pixel Frames", "icon": "fa-mobile-screen", "color": "var(--accent-cyan)" },
+      { "text": "Multi-Slide Storyboard", "icon": "fa-layer-group", "color": "var(--accent-purple)" },
+      { "text": "Batch ZIP Export", "icon": "fa-file-zipper", "color": "var(--accent-green)" },
+      { "text": "IndexedDB Saves", "icon": "fa-database", "color": "var(--accent-pink)" }
+    ]
+  },
+  {
+    "id": "image-resizer",
+    "name": "Image Resizer & Compressor",
+    "category": "Web Tool",
+    "filterTags": ["web", "utility"],
+    "url": "https://image-resizer.thesoftmax.com/",
+    "ctaLabel": "Open Tool",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "iconClass": "fa-image",
+    "iconGradient": "linear-gradient(135deg,#10b981,#0284c7)",
+    "iconGlow": "rgba(16,185,129,0.3)",
+    "badgeColor": "badge-green",
+    "description": "Resize, crop, convert formats, and compress photos or signatures to exact target KB sizes inside browser RAM—with built-in presets for UPSC, SSC, IBPS, and NEET forms.",
+    "badges": [
+      { "text": "Web Tool", "icon": "fa-globe", "style": "badge-green" },
+      { "text": "Target KB", "icon": "fa-compress", "style": "badge-cyan" },
+      { "text": "Exam Presets", "icon": "fa-id-card", "style": "badge-purple" },
+      { "text": "Zero Uploads", "icon": "fa-lock", "style": "badge-yellow" }
+    ],
+    "highlights": [
+      { "text": "Exact KB Compression", "icon": "fa-bullseye", "color": "var(--accent-green)" },
+      { "text": "UPSC / SSC / NEET Presets", "icon": "fa-id-badge", "color": "var(--accent-cyan)" },
+      { "text": "Batch ZIP Download", "icon": "fa-file-zipper", "color": "var(--accent-purple)" },
+      { "text": "100% Client-Side", "icon": "fa-shield-halved", "color": "var(--accent-pink)" }
+    ]
+  },
+  {
+    "id": "pdf-tools",
+    "name": "PDF Studio",
+    "category": "Web Tool",
+    "filterTags": ["web", "utility"],
+    "url": "https://pdf-tools.thesoftmax.com/",
+    "ctaLabel": "Open Tool",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "iconClass": "fa-file-pdf",
+    "iconGradient": "linear-gradient(135deg,#ef4444,#ec4899)",
+    "iconGlow": "rgba(239,68,68,0.3)",
+    "badgeColor": "badge-pink",
+    "description": "Merge, split, compress, reorder pages, and extract text from PDF documents completely inside your browser memory with no file-size paywalls or server uploads.",
+    "badges": [
+      { "text": "Web Tool", "icon": "fa-globe", "style": "badge-pink" },
+      { "text": "Merge & Split", "icon": "fa-scissors", "style": "badge-cyan" },
+      { "text": "No File Limits", "icon": "fa-infinity", "style": "badge-green" },
+      { "text": "Zero Uploads", "icon": "fa-lock", "style": "badge-purple" }
+    ],
+    "highlights": [
+      { "text": "Merge & Split PDFs", "icon": "fa-object-group", "color": "var(--accent-pink)" },
+      { "text": "In-Browser Text Extract", "icon": "fa-file-lines", "color": "var(--accent-cyan)" },
+      { "text": "Page Reordering", "icon": "fa-arrow-down-up-across-line", "color": "var(--accent-green)" },
+      { "text": "Private Local Memory", "icon": "fa-shield-halved", "color": "var(--accent-yellow)" }
+    ]
+  },
+  {
+    "id": "json-formatter",
+    "name": "JSON Formatter & Diff Studio",
+    "category": "Web Tool",
+    "filterTags": ["web", "utility"],
+    "url": "https://json-formatter.thesoftmax.com/",
+    "ctaLabel": "Open Tool",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "iconClass": "fa-code",
+    "iconGradient": "linear-gradient(135deg,#7c3aed,#00d4ff)",
+    "iconGlow": "rgba(124,58,237,0.3)",
+    "badgeColor": "badge-purple",
+    "description": "Format, minify, validate against RFC 8259, auto-repair broken JSON, and run semantic JSON diffs strictly inside your browser's JavaScript engine.",
+    "badges": [
+      { "text": "Developer Tool", "icon": "fa-terminal", "style": "badge-purple" },
+      { "text": "RFC 8259", "icon": "fa-check-double", "style": "badge-cyan" },
+      { "text": "Semantic Diff", "icon": "fa-code-compare", "style": "badge-green" },
+      { "text": "Zero Telemetry", "icon": "fa-lock", "style": "badge-yellow" }
+    ],
+    "highlights": [
+      { "text": "Beautify & Minify", "icon": "fa-wand-magic-sparkles", "color": "var(--accent-purple)" },
+      { "text": "Auto-Repair JSON", "icon": "fa-screwdriver-wrench", "color": "var(--accent-cyan)" },
+      { "text": "Tree & Diff View", "icon": "fa-diagram-project", "color": "var(--accent-green)" },
+      { "text": "100% Local Parsing", "icon": "fa-shield-halved", "color": "var(--accent-pink)" }
+    ]
+  },
+  {
+    "id": "notebook",
+    "name": "Private Offline Notebook",
+    "category": "Web Tool",
+    "filterTags": ["web", "utility"],
+    "url": "https://notebook.thesoftmax.com/",
+    "ctaLabel": "Open Tool",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "iconClass": "fa-book-open",
+    "iconGradient": "linear-gradient(135deg,#10b981,#7c3aed)",
+    "iconGlow": "rgba(16,185,129,0.3)",
+    "badgeColor": "badge-green",
+    "description": "Distraction-free offline markdown notebook with IndexedDB persistence and optional AES-256-GCM client-side encryption so your notes never leave your browser.",
+    "badges": [
+      { "text": "Productivity", "icon": "fa-note-sticky", "style": "badge-green" },
+      { "text": "AES-256-GCM", "icon": "fa-key", "style": "badge-purple" },
+      { "text": "IndexedDB", "icon": "fa-database", "style": "badge-cyan" },
+      { "text": "Offline Ready", "icon": "fa-wifi-slash", "style": "badge-yellow" }
+    ],
+    "highlights": [
+      { "text": "AES-256 Note Locking", "icon": "fa-lock", "color": "var(--accent-purple)" },
+      { "text": "Markdown & Export", "icon": "fa-file-code", "color": "var(--accent-cyan)" },
+      { "text": "Local IndexedDB Sync", "icon": "fa-hard-drive", "color": "var(--accent-green)" },
+      { "text": "Installable PWA", "icon": "fa-download", "color": "var(--accent-yellow)" }
+    ]
+  },
+  {
+    "id": "pomodoro-timer",
+    "name": "Pomodoro Timer & Soundscape",
+    "category": "Web Tool",
+    "filterTags": ["web", "utility"],
+    "url": "https://pomodoro-timer.thesoftmax.com/",
+    "ctaLabel": "Open Tool",
+    "ctaIcon": "fa-arrow-up-right-from-square",
+    "iconClass": "fa-clock",
+    "iconGradient": "linear-gradient(135deg,#f59e0b,#ec4899)",
+    "iconGlow": "rgba(245,158,11,0.3)",
+    "badgeColor": "badge-yellow",
+    "description": "Customizable Pomodoro focus timer paired with procedural Web Audio ambient soundscapes (rain, white/brown noise) generated live in your browser with zero audio downloads.",
+    "badges": [
+      { "text": "Focus Timer", "icon": "fa-stopwatch", "style": "badge-yellow" },
+      { "text": "Web Audio", "icon": "fa-wave-square", "style": "badge-cyan" },
+      { "text": "Offline Ready", "icon": "fa-wifi-slash", "style": "badge-green" },
+      { "text": "Dark Mode", "icon": "fa-moon", "style": "badge-purple" }
+    ],
+    "highlights": [
+      { "text": "Custom Focus Intervals", "icon": "fa-hourglass-half", "color": "var(--accent-yellow)" },
+      { "text": "Procedural Ambient Sound", "icon": "fa-volume-high", "color": "var(--accent-cyan)" },
+      { "text": "Session Task Tracking", "icon": "fa-list-check", "color": "var(--accent-green)" },
+      { "text": "Zero Audio Downloads", "icon": "fa-bolt", "color": "var(--accent-pink)" }
+    ]
+  }
+]

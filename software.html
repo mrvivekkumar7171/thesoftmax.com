@@ -140,357 +140,29 @@ window.__h82AlnkH6D91__("WyJwdWItMTU5MDQxMjk0NjgyMjkzMiIsW251bGwsbnVsbCxudWxsLCJ
     <!-- Available Software -->
     <section class="section" id="products">
       <div class="container">
-        <div style="margin-bottom:40px;">
+        <div style="margin-bottom:28px;">
           <div class="section-label"><i class="fas fa-rocket"></i> Our Products</div>
           <h2>Featured <span class="gradient-text">Software</span></h2>
-          <p style="margin-top:10px;">Discover applications engineered and maintained under TheSoftMax.</p>
+          <p style="margin-top:10px;">Discover Android apps, games, and client-side web tools engineered under TheSoftMax.</p>
         </div>
 
-        <!-- 1. BlockBloom Game Card (Flagship Product) -->
-        <div class="card" id="blockbloom" style="margin-bottom:32px;padding:32px;">
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">
-            
-            <!-- App Icon / Screenshot thumbnail -->
-            <div style="display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;">
-              <div style="width:84px;height:84px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);box-shadow:0 0 25px rgba(236,72,153,0.3);flex-shrink:0;">
-                <img src="assets/block-bloom.jpeg" alt="BlockBloom Game Icon" style="width:100%;height:100%;object-fit:cover;display:block;">
-              </div>
-              <a href="blockbloom.html" class="badge badge-pink" style="text-decoration:none;font-weight:600;">
-                <i class="fas fa-arrow-up-right-from-square"></i> Open Page
-              </a>
-            </div>
-
-            <div>
-              <div class="software-meta" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-                <span class="badge badge-pink"><i class="fas fa-shapes"></i> Game</span>
-                <span class="badge badge-green"><i class="fab fa-android"></i> Android</span>
-                <span class="badge badge-cyan"><i class="fas fa-moon"></i> Dark Theme</span>
-                <span class="badge badge-purple"><i class="fas fa-wifi-slash"></i> Offline</span>
-              </div>
-
-              <h2 style="font-size:1.8rem;margin-top:12px;margin-bottom:12px;">
-                <a href="blockbloom.html" style="color:inherit;text-decoration:none;">BlockBloom</a>
-              </h2>
-
-              <p style="font-size:1.05rem;line-height:1.75;margin-bottom:20px;">
-                A soothing jewel-block puzzle game for Android. Place polyomino blocks onto the board, clear full lines and columns, and watch colorful flower bloom animations emerge. Designed with a rich, battery-friendly dark theme and completely playable offline.
-              </p>
-
-              <!-- Action buttons -->
-              <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;">
-                <a href="blockbloom.html" class="btn btn-primary btn-sm">
-                  <i class="fas fa-info-circle"></i> View Product Details
-                </a>
-                <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display:inline-flex;align-items:center;gap:8px;">
-                  <i class="fab fa-google-play" style="color:#34d399;"></i> Google Play Store
-                </a>
-              </div>
-
-              <!-- Feature Highlights -->
-              <div>
-                <h4 style="color:var(--text-muted);font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Product Highlights</h4>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;">
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-border-all" style="color:var(--accent-pink);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Polyomino Grid Gameplay</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-bolt" style="color:var(--accent-cyan);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Combo Multipliers</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-moon" style="color:var(--accent-purple);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">True Dark Theme</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-user-shield" style="color:var(--accent-green);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">No Login Required</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+        <!-- Search & Category Filter Controls -->
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:28px;">
+          <div style="position:relative;flex:1;min-width:240px;max-width:440px;">
+            <i class="fas fa-search" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.9rem;"></i>
+            <input id="softwareSearch" type="search" placeholder="Search apps, games, PDF, JSON, APK..." aria-label="Search software" style="width:100%;padding:11px 14px 11px 40px;border-radius:10px;border:1px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:0.95rem;outline:none;">
+          </div>
+          <div id="softwareFilters" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <button type="button" class="btn btn-primary btn-sm filter-btn" data-filter="all">All</button>
+            <button type="button" class="btn btn-secondary btn-sm filter-btn" data-filter="android">Android</button>
+            <button type="button" class="btn btn-secondary btn-sm filter-btn" data-filter="web">Web Tools</button>
+            <button type="button" class="btn btn-secondary btn-sm filter-btn" data-filter="game">Games</button>
+            <span id="softwareCount" style="font-size:0.82rem;color:var(--text-muted);margin-left:6px;"></span>
           </div>
         </div>
 
-        <!-- 2. APK Extractor Card -->
-        <div class="card" id="apk-extractor" style="margin-bottom:32px;padding:32px;">
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">
-            
-            <!-- App Icon / Screenshot thumbnail -->
-            <div style="display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;">
-              <div style="width:84px;height:84px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);box-shadow:0 0 25px rgba(0,212,255,0.3);flex-shrink:0;">
-                <img src="assets/apkextractor.jpeg" alt="APK Extractor App Icon" style="width:100%;height:100%;object-fit:cover;display:block;">
-              </div>
-              <a href="apk-extractor.html" class="badge badge-cyan" style="text-decoration:none;font-weight:600;">
-                <i class="fas fa-arrow-up-right-from-square"></i> Open Page
-              </a>
-            </div>
-
-            <div>
-              <div class="software-meta" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-                <span class="badge badge-cyan"><i class="fas fa-box-archive"></i> System Utility</span>
-                <span class="badge badge-green"><i class="fab fa-android"></i> Android</span>
-                <span class="badge badge-purple"><i class="fas fa-circle-half-stroke"></i> Dark &amp; Light Theme</span>
-                <span class="badge badge-yellow"><i class="fas fa-shield-halved"></i> 100% On-Device</span>
-              </div>
-
-              <h2 style="font-size:1.8rem;margin-top:12px;margin-bottom:12px;">
-                <a href="apk-extractor.html" style="color:inherit;text-decoration:none;">APK Extractor</a>
-              </h2>
-
-              <p style="font-size:1.05rem;line-height:1.75;margin-bottom:20px;">
-                A fast, reliable Android utility to inspect, backup, and extract APK packages and app icons from installed user and system applications. Features batch extraction, custom naming rules, custom export directory selection, and direct package sharing without requiring root.
-              </p>
-
-              <!-- Action buttons -->
-              <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;">
-                <a href="apk-extractor.html" class="btn btn-primary btn-sm">
-                  <i class="fas fa-info-circle"></i> View Product Details
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.thesoftmax.apkextractor" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display:inline-flex;align-items:center;gap:8px;">
-                  <i class="fab fa-google-play" style="color:#34d399;"></i> Google Play Store
-                </a>
-              </div>
-
-              <!-- Feature Highlights -->
-              <div>
-                <h4 style="color:var(--text-muted);font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Product Highlights</h4>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;">
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-file-export" style="color:var(--accent-cyan);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">One-Tap &amp; Batch APK Extract</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-icons" style="color:var(--accent-purple);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">High-Res App Icon Export</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-filter" style="color:var(--accent-pink);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">System &amp; User App Filtering</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-sliders" style="color:var(--accent-green);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Custom Naming &amp; Directory</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Sensor Master Card -->
-        <div class="card" id="sensormaster" style="margin-bottom:32px;padding:32px;">
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">
-            
-            <!-- App Icon / Screenshot thumbnail -->
-            <div style="display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;">
-              <div style="width:84px;height:84px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);box-shadow:0 0 25px rgba(0,212,255,0.3);flex-shrink:0;">
-                <img src="assets/sensormaster.png" alt="Sensor Master App Icon" style="width:100%;height:100%;object-fit:cover;display:block;">
-              </div>
-              <a href="sensormaster.html" class="badge badge-cyan" style="text-decoration:none;font-weight:600;">
-                <i class="fas fa-arrow-up-right-from-square"></i> Open Page
-              </a>
-            </div>
-
-            <div>
-              <div class="software-meta" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-                <span class="badge badge-cyan"><i class="fas fa-microchip"></i> Hardware Diagnostics</span>
-                <span class="badge badge-green"><i class="fab fa-android"></i> Android</span>
-                <span class="badge badge-purple"><i class="fas fa-circle-half-stroke"></i> Dark &amp; Light Theme</span>
-                <span class="badge badge-yellow"><i class="fas fa-shield-halved"></i> 100% On-Device</span>
-              </div>
-
-              <h2 style="font-size:1.8rem;margin-top:12px;margin-bottom:12px;">
-                <a href="sensormaster.html" style="color:inherit;text-decoration:none;">Sensor Master</a>
-              </h2>
-
-              <p style="font-size:1.05rem;line-height:1.75;margin-bottom:20px;">
-                A comprehensive hardware diagnostic and sensor care utility for Android. Inspect, evaluate, and benchmark 18 hardware modules — including acoustic water ejection sweeps, dead pixel screen checks, multi-core CPU compute tests, battery health, and real-time sensor monitoring without cloud requirements.
-              </p>
-
-              <!-- Action buttons -->
-              <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;">
-                <a href="sensormaster.html" class="btn btn-primary btn-sm">
-                  <i class="fas fa-info-circle"></i> View Product Details
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.thesoftmax.sensormaster" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display:inline-flex;align-items:center;gap:8px;">
-                  <i class="fab fa-google-play" style="color:#34d399;"></i> Google Play Store
-                </a>
-              </div>
-
-              <!-- Feature Highlights -->
-              <div>
-                <h4 style="color:var(--text-muted);font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Product Highlights</h4>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;">
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-microchip" style="color:var(--accent-cyan);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">18 Hardware &amp; Sensor Modules</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-water" style="color:var(--accent-cyan);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">165Hz Speaker Water Ejector</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-mobile-screen" style="color:var(--accent-pink);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Display &amp; Multi-Touch Grid</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-shield-halved" style="color:var(--accent-green);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">100% On-Device &amp; Private</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. PrivacyFirst Web Utilities Card -->
-        <div class="card" id="privacyfirst" style="margin-bottom:32px;padding:32px;">
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">
-            
-            <div style="display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;">
-              <div style="width:84px;height:84px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);background:linear-gradient(135deg,#00d4ff,#7c3aed);display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(0,212,255,0.3);flex-shrink:0;">
-                <i class="fas fa-shield-halved" style="font-size:2.2rem;color:white;"></i>
-              </div>
-              <a href="https://mockups.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="badge badge-cyan" style="text-decoration:none;font-weight:600;">
-                <i class="fas fa-arrow-up-right-from-square"></i> Open Tools
-              </a>
-            </div>
-
-            <div>
-              <div class="software-meta" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-                <span class="badge badge-cyan"><i class="fas fa-globe"></i> Web Suite</span>
-                <span class="badge badge-green"><i class="fas fa-microchip"></i> 100% In-Browser</span>
-                <span class="badge badge-purple"><i class="fas fa-lock"></i> Zero Telemetry</span>
-                <span class="badge badge-yellow"><i class="fas fa-wifi-slash"></i> Offline Ready</span>
-              </div>
-
-              <h2 style="font-size:1.8rem;margin-top:12px;margin-bottom:12px;">
-                Client-Side Web Utilities
-              </h2>
-
-              <p style="font-size:1.05rem;line-height:1.75;margin-bottom:20px;">
-                A comprehensive collection of client-side web utilities built to run 100% inside your browser. No files, text, or tokens are ever uploaded to remote servers. Features MockupStudio for device mockup generation, AES-256 encrypted Private Notebook, photo and signature resizers for official exams, JSON formatter, PDF split/merge tools, and focus timers.
-              </p>
-
-              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;">
-                <a href="https://mockups.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <i class="fas fa-arrow-up-right-from-square"></i> MockupStudio
-                </a>
-                <a href="https://image-resizer.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <i class="fas fa-arrow-up-right-from-square"></i> Image Resizer
-                </a>
-                <a href="https://pdf-tools.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <i class="fas fa-arrow-up-right-from-square"></i> PDF Studio
-                </a>
-                <a href="https://json-formatter.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <i class="fas fa-arrow-up-right-from-square"></i> JSON Formatter
-                </a>
-                <a href="https://notebook.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <i class="fas fa-arrow-up-right-from-square"></i> Notebook
-                </a>
-                <a href="https://pomodoro-timer.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <i class="fas fa-arrow-up-right-from-square"></i> Pomodoro Timer
-                </a>
-              </div>
-
-              <div>
-                <h4 style="color:var(--text-muted);font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Product Highlights</h4>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;">
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-layer-group" style="color:var(--accent-cyan);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">6 Integrated Web Tools</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-shield-halved" style="color:var(--accent-green);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Zero Server Uploads</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-lock" style="color:var(--accent-purple);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">AES-256-GCM Note Encryption</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-bolt" style="color:var(--accent-pink);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Hardware Mockup Generator</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Missile Game Card -->
-        <div class="card" id="missile" style="margin-bottom:32px;padding:32px;">
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">
-            
-            <div style="display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;">
-              <div style="width:84px;height:84px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(245,158,11,0.3);flex-shrink:0;">
-                <i class="fas fa-rocket" style="font-size:2.2rem;color:white;"></i>
-              </div>
-              <a href="https://missile.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="badge badge-yellow" style="text-decoration:none;font-weight:600;">
-                <i class="fas fa-arrow-up-right-from-square"></i> Play Now
-              </a>
-            </div>
-
-            <div>
-              <div class="software-meta" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-                <span class="badge badge-yellow"><i class="fas fa-gamepad"></i> Web Game</span>
-                <span class="badge badge-pink"><i class="fas fa-fire"></i> Arcade Action</span>
-                <span class="badge badge-cyan"><i class="fas fa-gauge-high"></i> 60 FPS Fluid</span>
-                <span class="badge badge-green"><i class="fas fa-bolt"></i> Instant Play</span>
-              </div>
-
-              <h2 style="font-size:1.8rem;margin-top:12px;margin-bottom:12px;">
-                <a href="https://missile.thesoftmax.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Missile</a>
-              </h2>
-
-              <p style="font-size:1.05rem;line-height:1.75;margin-bottom:20px;">
-                A fast-paced, real-time web arcade and physics game. Experience fluid high-FPS missile trajectories, dynamic particle explosions, and responsive evasion mechanics engineered with lightweight web performance and zero installation required.
-              </p>
-
-              <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;">
-                <a href="https://missile.thesoftmax.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <i class="fas fa-play"></i> Play Missile Online
-                </a>
-              </div>
-
-              <div>
-                <h4 style="color:var(--text-muted);font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Product Highlights</h4>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;">
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-crosshairs" style="color:var(--accent-pink);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Real-Time Physics Dynamics</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-tachometer-alt" style="color:var(--accent-cyan);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Smooth 60 FPS Engine</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-mobile-screen" style="color:var(--accent-green);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Desktop &amp; Mobile Controls</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">
-                    <i class="fas fa-bolt" style="color:var(--accent-yellow);font-size:0.85rem;flex-shrink:0;"></i>
-                    <span style="font-size:0.85rem;color:var(--text-secondary);">Instant Zero-Download Play</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Labs & Pipeline Card -->
-        <div class="card" style="border-style:dashed;border-color:rgba(255,255,255,0.15);padding:32px;text-align:center;">
-          <div style="max-width:540px;margin:0 auto;">
-            <div style="font-size:2rem;margin-bottom:12px;">🧪</div>
-            <h3 style="font-size:1.3rem;margin-bottom:8px;">More Products in Development</h3>
-            <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:20px;">We are actively developing new lightweight utilities, tools, and engaging games.</p>
-          </div>
+        <div id="softwareGrid">
+          <div class="card" style="padding:32px;text-align:center;color:var(--text-secondary);">Loading software catalog...</div>
         </div>
 
       </div>
@@ -515,7 +187,7 @@ window.__h82AlnkH6D91__("WyJwdWItMTU5MDQxMjk0NjgyMjkzMiIsW251bGwsbnVsbCxudWxsLCJ
           <h5>Product</h5>
           <ul>
             <li><a href="software.html">All Software</a></li>
-            <li><a href="apk-extractor.html">APK Extractor</a></li>
+            <li><a href="https://apk-extractor.thesoftmax.com/" target="_blank" rel="noopener noreferrer">APK Extractor</a></li>
           </ul>
         </div>
 
@@ -549,6 +221,120 @@ window.__h82AlnkH6D91__("WyJwdWItMTU5MDQxMjk0NjgyMjkzMiIsW251bGwsbnVsbCxudWxsLCJ
       hamburger.classList.toggle('open', open);
       hamburger.setAttribute('aria-expanded', open);
     });
+  </script>
+  <script>
+    (function () {
+      var grid = document.getElementById('softwareGrid');
+      var searchInput = document.getElementById('softwareSearch');
+      var countEl = document.getElementById('softwareCount');
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var items = [];
+      var activeFilter = 'all';
+
+      function esc(str) {
+        return String(str || '').replace(/[&<>"']/g, function (m) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
+        });
+      }
+
+      function renderCard(item) {
+        var iconHtml = item.iconUrl
+          ? '<img src="' + esc(item.iconUrl) + '" alt="' + esc(item.name) + ' Icon" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">'
+          : '<div style="width:100%;height:100%;background:' + esc(item.iconGradient || 'linear-gradient(135deg,#00d4ff,#7c3aed)') + ';display:flex;align-items:center;justify-content:center;"><i class="fas ' + esc(item.iconClass || 'fa-cube') + '" style="font-size:2.1rem;color:white;"></i></div>';
+
+        var badgesHtml = (item.badges || []).map(function (b) {
+          var prefix = b.fab ? 'fab' : 'fas';
+          return '<span class="badge ' + esc(b.style || 'badge-cyan') + '"><i class="' + prefix + ' ' + esc(b.icon) + '"></i> ' + esc(b.text) + '</span>';
+        }).join('');
+
+        var playBtn = item.playStoreUrl
+          ? '<a href="' + esc(item.playStoreUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display:inline-flex;align-items:center;gap:8px;"><i class="fab fa-google-play"></i> Google Play</a>'
+          : '';
+
+        var highlightsHtml = (item.highlights || []).map(function (h) {
+          return '<div style="display:flex;align-items:center;gap:10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:10px 14px;">' +
+            '<i class="fas ' + esc(h.icon) + '" style="color:' + esc(h.color || 'var(--accent-cyan)') + ';font-size:0.85rem;flex-shrink:0;"></i>' +
+            '<span style="font-size:0.85rem;color:var(--text-secondary);">' + esc(h.text) + '</span>' +
+          '</div>';
+        }).join('');
+
+        return '<div class="card" id="' + esc(item.id) + '" style="margin-bottom:32px;padding:32px;">' +
+          '<div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">' +
+            '<div style="display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;">' +
+              '<div style="width:84px;height:84px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);box-shadow:0 0 25px ' + esc(item.iconGlow || 'rgba(0,212,255,0.25)') + ';flex-shrink:0;">' +
+                iconHtml +
+              '</div>' +
+              '<a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" class="badge ' + esc(item.badgeColor || 'badge-cyan') + '" style="text-decoration:none;font-weight:600;">' +
+                '<i class="fas ' + esc(item.ctaIcon || 'fa-arrow-up-right-from-square') + '"></i> ' + esc(item.ctaLabel || 'Open App') +
+              '</a>' +
+            '</div>' +
+            '<div>' +
+              '<div class="software-meta" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">' + badgesHtml + '</div>' +
+              '<h2 style="font-size:1.8rem;margin-top:12px;margin-bottom:12px;">' +
+                '<a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">' + esc(item.name) + '</a>' +
+              '</h2>' +
+              '<p style="font-size:1.05rem;line-height:1.75;margin-bottom:20px;">' + esc(item.description) + '</p>' +
+              '<div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;">' +
+                '<a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">' +
+                  '<i class="fas ' + esc(item.ctaIcon || 'fa-arrow-up-right-from-square') + '"></i> ' + esc(item.ctaLabel || 'Open App') +
+                '</a>' +
+                playBtn +
+              '</div>' +
+              (highlightsHtml ? '<div><h4 style="color:var(--text-muted);font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Product Highlights</h4><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;">' + highlightsHtml + '</div></div>' : '') +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }
+
+      function applyFilters() {
+        var q = (searchInput ? searchInput.value : '').trim().toLowerCase();
+        var filtered = items.filter(function (item) {
+          var matchesTag = activeFilter === 'all' || (item.filterTags && item.filterTags.indexOf(activeFilter) !== -1);
+          if (!matchesTag) return false;
+          if (!q) return true;
+          var haystack = [
+            item.name,
+            item.category,
+            item.description,
+            (item.badges || []).map(function (b) { return b.text; }).join(' '),
+            (item.highlights || []).map(function (h) { return h.text; }).join(' ')
+          ].join(' ').toLowerCase();
+          return haystack.indexOf(q) !== -1;
+        });
+
+        if (countEl) countEl.textContent = filtered.length + ' of ' + items.length + ' products';
+        if (!filtered.length) {
+          grid.innerHTML = '<div class="card" style="padding:32px;text-align:center;color:var(--text-secondary);">No matching software found. Try clearing your search or filter.</div>';
+          return;
+        }
+        grid.innerHTML = filtered.map(renderCard).join('');
+      }
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activeFilter = btn.getAttribute('data-filter') || 'all';
+          filterBtns.forEach(function (b) {
+            b.classList.toggle('btn-primary', b === btn);
+            b.classList.toggle('btn-secondary', b !== btn);
+          });
+          applyFilters();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+      }
+
+      fetch('assets/data/software.json')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          items = Array.isArray(data) ? data : [];
+          applyFilters();
+        })
+        .catch(function () {
+          grid.innerHTML = '<div class="card" style="padding:32px;text-align:center;color:var(--text-secondary);">Unable to load software catalog right now.</div>';
+        });
+    })();
   </script>
   <script src="assets/js/main.js" defer></script>
 </body>
