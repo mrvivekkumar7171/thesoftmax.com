@@ -185,7 +185,7 @@
     "name": "PDF Studio",
     "category": "Web Tool",
     "filterTags": ["web", "utility"],
-    "url": "https://pdf-tools.thesoftmax.com/",
+    "url": "https://pdf-editor.thesoftmax.com/",
     "ctaLabel": "Open Tool",
     "ctaIcon": "fa-arrow-up-right-from-square",
     "iconClass": "fa-file-pdf",
